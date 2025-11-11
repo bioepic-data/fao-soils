@@ -1,0 +1,1041 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://bioepic-data.github.io/fao-soils/elements/">
+      
+      
+        <link rel="prev" href="../hwsd2/">
+      
+      
+        <link rel="next" href="../about/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>Schema - fao-soils</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#fao-harmonized-world-soil-database-v20-schema" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="fao-soils" class="md-header__button md-logo" aria-label="fao-soils" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            fao-soils
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Schema
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/bioepic-data/fao-soils" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="fao-soils" class="md-nav__button md-logo" aria-label="fao-soils" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    fao-soils
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/bioepic-data/fao-soils" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Databases
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Databases
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hwsd2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HWSD2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Schema
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Schema
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slots" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slots
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enumerations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subsets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subsets
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slots" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slots
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enumerations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subsets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subsets
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="fao-harmonized-world-soil-database-v20-schema">FAO Harmonized World Soil Database v2.0 Schema</h1>
+<p>LinkML schema for the FAO Harmonized World Soil Database (HWSD) version 2.0.</p>
+<p>The HWSD v2.0 provides comprehensive soil data including physical and chemical properties
+at multiple soil layers for global coverage. This database is essential for ecosystem
+modeling, climate modeling, and agricultural applications.</p>
+<p>Main components:
+- Soil Mapping Units (SMU): Summary-level soil characteristics
+- Soil Layers: Detailed physical and chemical properties at different depths
+- Classification systems: WRB, FAO-90, USDA taxonomy
+- Domain tables: Lookup tables for codes and classifications</p>
+<p>URI: https://w3id.org/bioepic-data/fao-soils/hwsd2</p>
+<p>Name: hwsd2</p>
+<h2 id="classes">Classes</h2>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="SoilLayer/">SoilLayer</a></td>
+<td>Detailed soil properties at a specific depth layer</td>
+</tr>
+<tr>
+<td><a href="SoilMappingUnit/">SoilMappingUnit</a></td>
+<td>A Soil Mapping Unit (SMU) represents a distinct area with relatively homogene...</td>
+</tr>
+<tr>
+<td><a href="WRBClass/">WRBClass</a></td>
+<td>World Reference Base (WRB) soil classification with RGB color codes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="slots">Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Slot</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="add_prop/">add_prop</a></td>
+<td>Additional soil properties (Gelic, Vertic)</td>
+</tr>
+<tr>
+<td><a href="alum_sat/">alum_sat</a></td>
+<td>Aluminium saturation percentage</td>
+</tr>
+<tr>
+<td><a href="awc/">awc</a></td>
+<td>Available Water Capacity</td>
+</tr>
+<tr>
+<td><a href="awc_layer/">awc_layer</a></td>
+<td>Available Water Capacity for rootable soil depth</td>
+</tr>
+<tr>
+<td><a href="blue/">blue</a></td>
+<td>Blue RGB color component (0-255)</td>
+</tr>
+<tr>
+<td><a href="botdep/">botdep</a></td>
+<td>Depth of bottom of layer</td>
+</tr>
+<tr>
+<td><a href="bsat/">bsat</a></td>
+<td>Base saturation percentage</td>
+</tr>
+<tr>
+<td><a href="bulk/">bulk</a></td>
+<td>Bulk density</td>
+</tr>
+<tr>
+<td><a href="bulk_density/">bulk_density</a></td>
+<td>Bulk density (SMU level)</td>
+</tr>
+<tr>
+<td><a href="cec_clay/">cec_clay</a></td>
+<td>Cation Exchange Capacity of clay fraction</td>
+</tr>
+<tr>
+<td><a href="cec_eff/">cec_eff</a></td>
+<td>Effective Cation Exchange Capacity (ECEC)</td>
+</tr>
+<tr>
+<td><a href="cec_soil/">cec_soil</a></td>
+<td>Cation Exchange Capacity of soil</td>
+</tr>
+<tr>
+<td><a href="class_number/">class_number</a></td>
+<td>Class number</td>
+</tr>
+<tr>
+<td><a href="clay/">clay</a></td>
+<td>Clay content percentage by weight</td>
+</tr>
+<tr>
+<td><a href="cn_ratio/">cn_ratio</a></td>
+<td>Carbon to nitrogen ratio (C/N)</td>
+</tr>
+<tr>
+<td><a href="coarse/">coarse</a></td>
+<td>Coarse fragments percentage by volume</td>
+</tr>
+<tr>
+<td><a href="coverage/">coverage</a></td>
+<td>Data source coverage (ESDB, CHINA, SOTWIS, etc</td>
+</tr>
+<tr>
+<td><a href="divider/">divider</a></td>
+<td>Divider value</td>
+</tr>
+<tr>
+<td><a href="drainage/">drainage</a></td>
+<td>Reference soil drainage class</td>
+</tr>
+<tr>
+<td><a href="elec_cond/">elec_cond</a></td>
+<td>Electric conductivity</td>
+</tr>
+<tr>
+<td><a href="esp/">esp</a></td>
+<td>Exchangeable Sodium Percentage</td>
+</tr>
+<tr>
+<td><a href="fao90/">fao90</a></td>
+<td>Soil Unit Symbol from FAO 1990 classification</td>
+</tr>
+<tr>
+<td><a href="green/">green</a></td>
+<td>Green RGB color component (0-255)</td>
+</tr>
+<tr>
+<td><a href="gypsum/">gypsum</a></td>
+<td>Gypsum content percentage by weight</td>
+</tr>
+<tr>
+<td><a href="hwsd1_smu_id/">hwsd1_smu_id</a></td>
+<td>Soil Mapping Unit identifier from HWSD version 1</td>
+</tr>
+<tr>
+<td><a href="hwsd2_smu_id/">hwsd2_smu_id</a></td>
+<td>Soil Mapping Unit identifier in HWSD version 2</td>
+</tr>
+<tr>
+<td><a href="id/">id</a></td>
+<td>Database internal ID</td>
+</tr>
+<tr>
+<td><a href="id_class/">id_class</a></td>
+<td>Class identifier</td>
+</tr>
+<tr>
+<td><a href="il/">il</a></td>
+<td>Impermeable layer depth in cm (ESDB)</td>
+</tr>
+<tr>
+<td><a href="koppen/">koppen</a></td>
+<td>Köppen-Geiger climate classification</td>
+</tr>
+<tr>
+<td><a href="label/">label</a></td>
+<td>Full label for WRB class</td>
+</tr>
+<tr>
+<td><a href="layer/">layer</a></td>
+<td>Depth layer code (D1 through D7)</td>
+</tr>
+<tr>
+<td><a href="nsc/">nsc</a></td>
+<td>National Soil Classification code</td>
+</tr>
+<tr>
+<td><a href="nsc_mu_source1/">nsc_mu_source1</a></td>
+<td>National Soil Classification source 1</td>
+</tr>
+<tr>
+<td><a href="nsc_mu_source2/">nsc_mu_source2</a></td>
+<td>National Soil Classification source 2</td>
+</tr>
+<tr>
+<td><a href="org_carbon/">org_carbon</a></td>
+<td>Organic carbon content percentage by weight</td>
+</tr>
+<tr>
+<td><a href="ph_water/">ph_water</a></td>
+<td>pH measured in water</td>
+</tr>
+<tr>
+<td><a href="phase1/">phase1</a></td>
+<td>Primary soil phase (Stony, Lithic, Petric, etc</td>
+</tr>
+<tr>
+<td><a href="phase2/">phase2</a></td>
+<td>Secondary soil phase</td>
+</tr>
+<tr>
+<td><a href="red/">red</a></td>
+<td>Red RGB color component (0-255)</td>
+</tr>
+<tr>
+<td><a href="ref_bulk/">ref_bulk</a></td>
+<td>Reference bulk density</td>
+</tr>
+<tr>
+<td><a href="ref_bulk_density/">ref_bulk_density</a></td>
+<td>Reference bulk density (SMU level)</td>
+</tr>
+<tr>
+<td><a href="root_depth/">root_depth</a></td>
+<td>Rooting depth category</td>
+</tr>
+<tr>
+<td><a href="root_depth_layer/">root_depth_layer</a></td>
+<td>Rootable soil depth for specific layer</td>
+</tr>
+<tr>
+<td><a href="roots/">roots</a></td>
+<td>Obstacle to roots depth in cm (ESDB)</td>
+</tr>
+<tr>
+<td><a href="sand/">sand</a></td>
+<td>Sand content percentage by weight</td>
+</tr>
+<tr>
+<td><a href="sequence/">sequence</a></td>
+<td>Sequence number in Soil Mapping Unit</td>
+</tr>
+<tr>
+<td><a href="share/">share</a></td>
+<td>Percentage share in Soil Mapping Unit</td>
+</tr>
+<tr>
+<td><a href="silt/">silt</a></td>
+<td>Silt content percentage by weight</td>
+</tr>
+<tr>
+<td><a href="swr/">swr</a></td>
+<td>Soil Water Regime (ESDB)</td>
+</tr>
+<tr>
+<td><a href="symbol/">symbol</a></td>
+<td>Symbol code for WRB class</td>
+</tr>
+<tr>
+<td><a href="tcarbon_eq/">tcarbon_eq</a></td>
+<td>Calcium carbonate equivalent percentage by weight</td>
+</tr>
+<tr>
+<td><a href="teb/">teb</a></td>
+<td>Total Exchangeable Bases</td>
+</tr>
+<tr>
+<td><a href="texture_soter/">texture_soter</a></td>
+<td>SOTER soil texture class</td>
+</tr>
+<tr>
+<td><a href="texture_usda/">texture_usda</a></td>
+<td>USDA soil texture class</td>
+</tr>
+<tr>
+<td><a href="topdep/">topdep</a></td>
+<td>Depth of top of layer</td>
+</tr>
+<tr>
+<td><a href="total_n/">total_n</a></td>
+<td>Total nitrogen content</td>
+</tr>
+<tr>
+<td><a href="wise30s_smu_id/">wise30s_smu_id</a></td>
+<td>Soil Mapping Unit identifier from WISE30s database</td>
+</tr>
+<tr>
+<td><a href="wrb2/">wrb2</a></td>
+<td>Soil Unit Symbol from WRB 2022 (2-character code)</td>
+</tr>
+<tr>
+<td><a href="wrb2_code/">wrb2_code</a></td>
+<td>Numeric code for WRB2 dominant soil group</td>
+</tr>
+<tr>
+<td><a href="wrb4/">wrb4</a></td>
+<td>Soil Unit Symbol from World Reference Base 2022 (4-character code)</td>
+</tr>
+<tr>
+<td><a href="wrb_phases/">wrb_phases</a></td>
+<td>Detailed Soil Unit Symbol from WRB 2022 with phases</td>
+</tr>
+</tbody>
+</table>
+<h2 id="enumerations">Enumerations</h2>
+<table>
+<thead>
+<tr>
+<th>Enumeration</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="AddPropEnum/">AddPropEnum</a></td>
+<td>Additional soil properties</td>
+</tr>
+<tr>
+<td><a href="CoverageEnum/">CoverageEnum</a></td>
+<td>Data source coverage codes</td>
+</tr>
+<tr>
+<td><a href="DrainageEnum/">DrainageEnum</a></td>
+<td>Soil drainage classes</td>
+</tr>
+<tr>
+<td><a href="ILEnum/">ILEnum</a></td>
+<td>Impermeable layer depth ranges (ESDB)</td>
+</tr>
+<tr>
+<td><a href="KoppenEnum/">KoppenEnum</a></td>
+<td>Köppen-Geiger climate classification</td>
+</tr>
+<tr>
+<td><a href="PhaseEnum/">PhaseEnum</a></td>
+<td>Soil phase modifiers</td>
+</tr>
+<tr>
+<td><a href="RootDepthEnum/">RootDepthEnum</a></td>
+<td>Root depth categories</td>
+</tr>
+<tr>
+<td><a href="RootsEnum/">RootsEnum</a></td>
+<td>Obstacle to roots depth ranges (ESDB)</td>
+</tr>
+<tr>
+<td><a href="SWREnum/">SWREnum</a></td>
+<td>Soil Water Regime classes (ESDB)</td>
+</tr>
+<tr>
+<td><a href="TextureSOTEREnum/">TextureSOTEREnum</a></td>
+<td>SOTER soil texture classes</td>
+</tr>
+<tr>
+<td><a href="TextureUSDAEnum/">TextureUSDAEnum</a></td>
+<td>USDA soil texture classes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="types">Types</h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="Boolean/">Boolean</a></td>
+<td>A binary (true or false) value</td>
+</tr>
+<tr>
+<td><a href="Curie/">Curie</a></td>
+<td>a compact URI</td>
+</tr>
+<tr>
+<td><a href="Date/">Date</a></td>
+<td>a date (year, month and day) in an idealized calendar</td>
+</tr>
+<tr>
+<td><a href="DateOrDatetime/">DateOrDatetime</a></td>
+<td>Either a date or a datetime</td>
+</tr>
+<tr>
+<td><a href="Datetime/">Datetime</a></td>
+<td>The combination of a date and time</td>
+</tr>
+<tr>
+<td><a href="Decimal/">Decimal</a></td>
+<td>A real number with arbitrary precision that conforms to the xsd:decimal speci...</td>
+</tr>
+<tr>
+<td><a href="Double/">Double</a></td>
+<td>A real number that conforms to the xsd:double specification</td>
+</tr>
+<tr>
+<td><a href="Float/">Float</a></td>
+<td>A real number that conforms to the xsd:float specification</td>
+</tr>
+<tr>
+<td><a href="Integer/">Integer</a></td>
+<td>An integer</td>
+</tr>
+<tr>
+<td><a href="Jsonpath/">Jsonpath</a></td>
+<td>A string encoding a JSON Path</td>
+</tr>
+<tr>
+<td><a href="Jsonpointer/">Jsonpointer</a></td>
+<td>A string encoding a JSON Pointer</td>
+</tr>
+<tr>
+<td><a href="Ncname/">Ncname</a></td>
+<td>Prefix part of CURIE</td>
+</tr>
+<tr>
+<td><a href="Nodeidentifier/">Nodeidentifier</a></td>
+<td>A URI, CURIE or BNODE that represents a node in a model</td>
+</tr>
+<tr>
+<td><a href="Objectidentifier/">Objectidentifier</a></td>
+<td>A URI or CURIE that represents an object in the model</td>
+</tr>
+<tr>
+<td><a href="Sparqlpath/">Sparqlpath</a></td>
+<td>A string encoding a SPARQL Property Path</td>
+</tr>
+<tr>
+<td><a href="String/">String</a></td>
+<td>A character string</td>
+</tr>
+<tr>
+<td><a href="Time/">Time</a></td>
+<td>A time object represents a (local) time of day, independent of any particular...</td>
+</tr>
+<tr>
+<td><a href="Uri/">Uri</a></td>
+<td>a complete URI</td>
+</tr>
+<tr>
+<td><a href="Uriorcurie/">Uriorcurie</a></td>
+<td>a URI or a CURIE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="subsets">Subsets</h2>
+<table>
+<thead>
+<tr>
+<th>Subset</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

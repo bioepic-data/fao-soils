@@ -1,0 +1,1479 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://bioepic-data.github.io/fao-soils/elements/SoilLayer/" rel="canonical"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.23" name="generator"/>
+<title>Class: SoilLayer - fao-soils</title>
+<link href="../../assets/stylesheets/main.84d31ad4.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../css/ansi-colours.css" rel="stylesheet"/>
+<link href="../../css/jupyter-cells.css" rel="stylesheet"/>
+<link href="../../css/pandas-dataframe.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#class-soillayer">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="fao-soils" class="md-header__button md-logo" data-md-component="logo" href="../.." title="fao-soils">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            fao-soils
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Class: SoilLayer
+            
+          </span>
+</div>
+</div>
+</div>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/bioepic-data/fao-soils" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="fao-soils" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="fao-soils">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    fao-soils
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/bioepic-data/fao-soils" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    Home
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Databases
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            Databases
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../hwsd2/">
+<span class="md-ellipsis">
+    HWSD2
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../">
+<span class="md-ellipsis">
+    Schema
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../about/">
+<span class="md-ellipsis">
+    About
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#slots">
+<span class="md-ellipsis">
+      Slots
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#identifier-and-mapping-information">
+<span class="md-ellipsis">
+      Identifier and Mapping Information
+    </span>
+</a>
+<nav aria-label="Identifier and Mapping Information" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#schema-source">
+<span class="md-ellipsis">
+      Schema Source
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mappings">
+<span class="md-ellipsis">
+      Mappings
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#linkml-source">
+<span class="md-ellipsis">
+      LinkML Source
+    </span>
+</a>
+<nav aria-label="LinkML Source" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#direct">
+<span class="md-ellipsis">
+      Direct
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#induced">
+<span class="md-ellipsis">
+      Induced
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="class-soillayer">Class: SoilLayer</h1>
+<p><em>Detailed soil properties at a specific depth layer. Each Soil Mapping Unit</em></p>
+<p><em>can have multiple layers (typically D1 through D7) representing different</em></p>
+<p><em>soil horizons from surface to depth.</em></p>
+<p>__</p>
+<p><em>Contains comprehensive physical properties (texture, bulk density), chemical</em></p>
+<p><em>properties (pH, organic carbon, nutrients), and cation exchange characteristics.</em></p>
+<p>URI: <a href="https://w3id.org/bioepic-data/fao-soils/hwsd2/SoilLayer">hwsd2:SoilLayer</a></p>
+<div class="mermaid"> classDiagram
+    class SoilLayer
+    click SoilLayer href "../SoilLayer/"
+      SoilLayer : add_prop
+
+
+
+
+
+        SoilLayer --&gt; "0..1" AddPropEnum : add_prop
+        click AddPropEnum href "../AddPropEnum/"
+
+
+
+      SoilLayer : alum_sat
+
+      SoilLayer : awc_layer
+
+      SoilLayer : botdep
+
+      SoilLayer : bsat
+
+      SoilLayer : bulk
+
+      SoilLayer : cec_clay
+
+      SoilLayer : cec_eff
+
+      SoilLayer : cec_soil
+
+      SoilLayer : clay
+
+      SoilLayer : cn_ratio
+
+      SoilLayer : coarse
+
+      SoilLayer : coverage
+
+
+
+
+
+        SoilLayer --&gt; "0..1" CoverageEnum : coverage
+        click CoverageEnum href "../CoverageEnum/"
+
+
+
+      SoilLayer : drainage
+
+
+
+
+
+        SoilLayer --&gt; "0..1" DrainageEnum : drainage
+        click DrainageEnum href "../DrainageEnum/"
+
+
+
+      SoilLayer : elec_cond
+
+      SoilLayer : esp
+
+      SoilLayer : fao90
+
+      SoilLayer : gypsum
+
+      SoilLayer : hwsd1_smu_id
+
+      SoilLayer : hwsd2_smu_id
+
+      SoilLayer : id
+
+      SoilLayer : il
+
+
+
+
+
+        SoilLayer --&gt; "0..1" ILEnum : il
+        click ILEnum href "../ILEnum/"
+
+
+
+      SoilLayer : layer
+
+      SoilLayer : nsc
+
+      SoilLayer : nsc_mu_source1
+
+      SoilLayer : nsc_mu_source2
+
+      SoilLayer : org_carbon
+
+      SoilLayer : ph_water
+
+      SoilLayer : phase1
+
+
+
+
+
+        SoilLayer --&gt; "0..1" PhaseEnum : phase1
+        click PhaseEnum href "../PhaseEnum/"
+
+
+
+      SoilLayer : phase2
+
+
+
+
+
+        SoilLayer --&gt; "0..1" PhaseEnum : phase2
+        click PhaseEnum href "../PhaseEnum/"
+
+
+
+      SoilLayer : ref_bulk
+
+      SoilLayer : root_depth_layer
+
+      SoilLayer : roots
+
+
+
+
+
+        SoilLayer --&gt; "0..1" RootsEnum : roots
+        click RootsEnum href "../RootsEnum/"
+
+
+
+      SoilLayer : sand
+
+      SoilLayer : sequence
+
+      SoilLayer : share
+
+      SoilLayer : silt
+
+      SoilLayer : swr
+
+
+
+
+
+        SoilLayer --&gt; "0..1" SWREnum : swr
+        click SWREnum href "../SWREnum/"
+
+
+
+      SoilLayer : tcarbon_eq
+
+      SoilLayer : teb
+
+      SoilLayer : texture_soter
+
+
+
+
+
+        SoilLayer --&gt; "0..1" TextureSOTEREnum : texture_soter
+        click TextureSOTEREnum href "../TextureSOTEREnum/"
+
+
+
+      SoilLayer : texture_usda
+
+
+
+
+
+        SoilLayer --&gt; "0..1" TextureUSDAEnum : texture_usda
+        click TextureUSDAEnum href "../TextureUSDAEnum/"
+
+
+
+      SoilLayer : topdep
+
+      SoilLayer : total_n
+
+      SoilLayer : wise30s_smu_id
+
+      SoilLayer : wrb2
+
+      SoilLayer : wrb4
+
+      SoilLayer : wrb_phases
+
+
+</div>
+<!-- no inheritance hierarchy -->
+<h2 id="slots">Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Cardinality and Range</th>
+<th>Description</th>
+<th>Inheritance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../id/">id</a></td>
+<td>1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Database internal ID</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../hwsd2_smu_id/">hwsd2_smu_id</a></td>
+<td>1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Soil Mapping Unit identifier in HWSD version 2</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../nsc_mu_source1/">nsc_mu_source1</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>National Soil Classification source 1</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../nsc_mu_source2/">nsc_mu_source2</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>National Soil Classification source 2</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../wise30s_smu_id/">wise30s_smu_id</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Soil Mapping Unit identifier from WISE30s database</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../hwsd1_smu_id/">hwsd1_smu_id</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Soil Mapping Unit identifier from HWSD version 1</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../coverage/">coverage</a></td>
+<td>0..1 <br/> <a href="../CoverageEnum/">CoverageEnum</a></td>
+<td>Data source coverage (ESDB, CHINA, SOTWIS, etc</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../sequence/">sequence</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Sequence number in Soil Mapping Unit</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../share/">share</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Percentage share in Soil Mapping Unit</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../nsc/">nsc</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>National Soil Classification code</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../wrb_phases/">wrb_phases</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Detailed Soil Unit Symbol from WRB 2022 with phases</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../wrb4/">wrb4</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Soil Unit Symbol from World Reference Base 2022 (4-character code)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../wrb2/">wrb2</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Soil Unit Symbol from WRB 2022 (2-character code)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../fao90/">fao90</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Soil Unit Symbol from FAO 1990 classification</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../root_depth_layer/">root_depth_layer</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Rootable soil depth for specific layer</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../phase1/">phase1</a></td>
+<td>0..1 <br/> <a href="../PhaseEnum/">PhaseEnum</a></td>
+<td>Primary soil phase (Stony, Lithic, Petric, etc</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../phase2/">phase2</a></td>
+<td>0..1 <br/> <a href="../PhaseEnum/">PhaseEnum</a></td>
+<td>Secondary soil phase</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../roots/">roots</a></td>
+<td>0..1 <br/> <a href="../RootsEnum/">RootsEnum</a></td>
+<td>Obstacle to roots depth in cm (ESDB)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../il/">il</a></td>
+<td>0..1 <br/> <a href="../ILEnum/">ILEnum</a></td>
+<td>Impermeable layer depth in cm (ESDB)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../swr/">swr</a></td>
+<td>0..1 <br/> <a href="../SWREnum/">SWREnum</a></td>
+<td>Soil Water Regime (ESDB)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../drainage/">drainage</a></td>
+<td>0..1 <br/> <a href="../DrainageEnum/">DrainageEnum</a></td>
+<td>Reference soil drainage class</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../awc_layer/">awc_layer</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Available Water Capacity for rootable soil depth</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../add_prop/">add_prop</a></td>
+<td>0..1 <br/> <a href="../AddPropEnum/">AddPropEnum</a></td>
+<td>Additional soil properties (Gelic, Vertic)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../layer/">layer</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Depth layer code (D1 through D7)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../topdep/">topdep</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Depth of top of layer</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../botdep/">botdep</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Depth of bottom of layer</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../coarse/">coarse</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Coarse fragments percentage by volume</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../sand/">sand</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Sand content percentage by weight</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../silt/">silt</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Silt content percentage by weight</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../clay/">clay</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Clay content percentage by weight</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../texture_usda/">texture_usda</a></td>
+<td>0..1 <br/> <a href="../TextureUSDAEnum/">TextureUSDAEnum</a></td>
+<td>USDA soil texture class</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../texture_soter/">texture_soter</a></td>
+<td>0..1 <br/> <a href="../TextureSOTEREnum/">TextureSOTEREnum</a></td>
+<td>SOTER soil texture class</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../bulk/">bulk</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Bulk density</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../ref_bulk/">ref_bulk</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Reference bulk density</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../org_carbon/">org_carbon</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Organic carbon content percentage by weight</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../ph_water/">ph_water</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>pH measured in water</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../total_n/">total_n</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Total nitrogen content</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../cn_ratio/">cn_ratio</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Carbon to nitrogen ratio (C/N)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../cec_soil/">cec_soil</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Cation Exchange Capacity of soil</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../cec_clay/">cec_clay</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Cation Exchange Capacity of clay fraction</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../cec_eff/">cec_eff</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Effective Cation Exchange Capacity (ECEC)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../teb/">teb</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Total Exchangeable Bases</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../bsat/">bsat</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Base saturation percentage</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../alum_sat/">alum_sat</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Aluminium saturation percentage</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../esp/">esp</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Exchangeable Sodium Percentage</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../tcarbon_eq/">tcarbon_eq</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Calcium carbonate equivalent percentage by weight</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../gypsum/">gypsum</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Gypsum content percentage by weight</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../elec_cond/">elec_cond</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Electric conductivity</td>
+<td>direct</td>
+</tr>
+</tbody>
+</table>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: https://w3id.org/bioepic-data/fao-soils/hwsd2</li>
+</ul>
+<h2 id="mappings">Mappings</h2>
+<table>
+<thead>
+<tr>
+<th>Mapping Type</th>
+<th>Mapped Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>self</td>
+<td>hwsd2:SoilLayer</td>
+</tr>
+<tr>
+<td>native</td>
+<td>hwsd2:SoilLayer</td>
+</tr>
+</tbody>
+</table>
+<h2 id="linkml-source">LinkML Source</h2>
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+<h3 id="direct">Direct</h3>
+<details>
+<pre><code class="language-yaml">name: SoilLayer
+description: 'Detailed soil properties at a specific depth layer. Each Soil Mapping
+  Unit
+
+  can have multiple layers (typically D1 through D7) representing different
+
+  soil horizons from surface to depth.
+
+
+  Contains comprehensive physical properties (texture, bulk density), chemical
+
+  properties (pH, organic carbon, nutrients), and cation exchange characteristics.'
+from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+slots:
+- id
+- hwsd2_smu_id
+- nsc_mu_source1
+- nsc_mu_source2
+- wise30s_smu_id
+- hwsd1_smu_id
+- coverage
+- sequence
+- share
+- nsc
+- wrb_phases
+- wrb4
+- wrb2
+- fao90
+- root_depth_layer
+- phase1
+- phase2
+- roots
+- il
+- swr
+- drainage
+- awc_layer
+- add_prop
+- layer
+- topdep
+- botdep
+- coarse
+- sand
+- silt
+- clay
+- texture_usda
+- texture_soter
+- bulk
+- ref_bulk
+- org_carbon
+- ph_water
+- total_n
+- cn_ratio
+- cec_soil
+- cec_clay
+- cec_eff
+- teb
+- bsat
+- alum_sat
+- esp
+- tcarbon_eq
+- gypsum
+- elec_cond
+class_uri: hwsd2:SoilLayer
+
+</code></pre>
+</details>
+<h3 id="induced">Induced</h3>
+<details>
+<pre><code class="language-yaml">name: SoilLayer
+description: 'Detailed soil properties at a specific depth layer. Each Soil Mapping
+  Unit
+
+  can have multiple layers (typically D1 through D7) representing different
+
+  soil horizons from surface to depth.
+
+
+  Contains comprehensive physical properties (texture, bulk density), chemical
+
+  properties (pH, organic carbon, nutrients), and cation exchange characteristics.'
+from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+attributes:
+  id:
+    name: id
+    description: Database internal ID
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    identifier: true
+    alias: id
+    owner: SoilLayer
+    domain_of:
+    - SoilMappingUnit
+    - SoilLayer
+    - WRBClass
+    range: integer
+    required: true
+  hwsd2_smu_id:
+    name: hwsd2_smu_id
+    description: Soil Mapping Unit identifier in HWSD version 2
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: hwsd2_smu_id
+    owner: SoilLayer
+    domain_of:
+    - SoilMappingUnit
+    - SoilLayer
+    range: integer
+    required: true
+  nsc_mu_source1:
+    name: nsc_mu_source1
+    description: National Soil Classification source 1
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: nsc_mu_source1
+    owner: SoilLayer
+    domain_of:
+    - SoilLayer
+    range: string
+  nsc_mu_source2:
+    name: nsc_mu_source2
+    description: National Soil Classification source 2
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: nsc_mu_source2
+    owner: SoilLayer
+    domain_of:
+    - SoilLayer
+    range: string
+  wise30s_smu_id:
+    name: wise30s_smu_id
+    description: Soil Mapping Unit identifier from WISE30s database
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: wise30s_smu_id
+    owner: SoilLayer
+    domain_of:
+    - SoilMappingUnit
+    - SoilLayer
+    range: string
+  hwsd1_smu_id:
+    name: hwsd1_smu_id
+    description: Soil Mapping Unit identifier from HWSD version 1
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: hwsd1_smu_id
+    owner: SoilLayer
+    domain_of:
+    - SoilMappingUnit
+    - SoilLayer
+    range: integer
+  coverage:
+    name: coverage
+    description: Data source coverage (ESDB, CHINA, SOTWIS, etc.)
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: coverage
+    owner: SoilLayer
+    domain_of:
+    - SoilMappingUnit
+    - SoilLayer
+    range: CoverageEnum
+  sequence:
+    name: sequence
+    description: Sequence number in Soil Mapping Unit
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: sequence
+    owner: SoilLayer
+    domain_of:
+    - SoilLayer
+    range: integer
+  share:
+    name: share
+    description: Percentage share in Soil Mapping Unit
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: share
+    owner: SoilLayer
+    domain_of:
+    - SoilMappingUnit
+    - SoilLayer
+    range: float
+    minimum_value: 0
+    maximum_value: 100
+    unit:
+      ucum_code: '%'
+  nsc:
+    name: nsc
+    description: National Soil Classification code
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: nsc
+    owner: SoilLayer
+    domain_of:
+    - SoilLayer
+    range: string
+  wrb_phases:
+    name: wrb_phases
+    description: Detailed Soil Unit Symbol from WRB 2022 with phases
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: wrb_phases
+    owner: SoilLayer
+    domain_of:
+    - SoilMappingUnit
+    - SoilLayer
+    range: string
+  wrb4:
+    name: wrb4
+    description: Soil Unit Symbol from World Reference Base 2022 (4-character code)
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: wrb4
+    owner: SoilLayer
+    domain_of:
+    - SoilMappingUnit
+    - SoilLayer
+    range: string
+  wrb2:
+    name: wrb2
+    description: Soil Unit Symbol from WRB 2022 (2-character code)
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: wrb2
+    owner: SoilLayer
+    domain_of:
+    - SoilMappingUnit
+    - SoilLayer
+    range: string
+  fao90:
+    name: fao90
+    description: Soil Unit Symbol from FAO 1990 classification
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: fao90
+    owner: SoilLayer
+    domain_of:
+    - SoilMappingUnit
+    - SoilLayer
+    range: string
+  root_depth_layer:
+    name: root_depth_layer
+    description: Rootable soil depth for specific layer
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: root_depth_layer
+    owner: SoilLayer
+    domain_of:
+    - SoilLayer
+    range: string
+  phase1:
+    name: phase1
+    description: Primary soil phase (Stony, Lithic, Petric, etc.)
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: phase1
+    owner: SoilLayer
+    domain_of:
+    - SoilMappingUnit
+    - SoilLayer
+    range: PhaseEnum
+  phase2:
+    name: phase2
+    description: Secondary soil phase
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: phase2
+    owner: SoilLayer
+    domain_of:
+    - SoilMappingUnit
+    - SoilLayer
+    range: PhaseEnum
+  roots:
+    name: roots
+    description: Obstacle to roots depth in cm (ESDB)
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: roots
+    owner: SoilLayer
+    domain_of:
+    - SoilMappingUnit
+    - SoilLayer
+    range: RootsEnum
+  il:
+    name: il
+    description: Impermeable layer depth in cm (ESDB)
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: il
+    owner: SoilLayer
+    domain_of:
+    - SoilMappingUnit
+    - SoilLayer
+    range: ILEnum
+  swr:
+    name: swr
+    description: Soil Water Regime (ESDB)
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: swr
+    owner: SoilLayer
+    domain_of:
+    - SoilLayer
+    range: SWREnum
+  drainage:
+    name: drainage
+    description: Reference soil drainage class
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: drainage
+    owner: SoilLayer
+    domain_of:
+    - SoilMappingUnit
+    - SoilLayer
+    range: DrainageEnum
+  awc_layer:
+    name: awc_layer
+    description: Available Water Capacity for rootable soil depth
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: awc_layer
+    owner: SoilLayer
+    domain_of:
+    - SoilLayer
+    range: string
+    unit:
+      ucum_code: mm
+  add_prop:
+    name: add_prop
+    description: Additional soil properties (Gelic, Vertic)
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: add_prop
+    owner: SoilLayer
+    domain_of:
+    - SoilMappingUnit
+    - SoilLayer
+    range: AddPropEnum
+  layer:
+    name: layer
+    description: Depth layer code (D1 through D7)
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: layer
+    owner: SoilLayer
+    domain_of:
+    - SoilLayer
+    range: string
+    pattern: ^D[1-7]$
+  topdep:
+    name: topdep
+    description: Depth of top of layer
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: topdep
+    owner: SoilLayer
+    domain_of:
+    - SoilLayer
+    range: integer
+    minimum_value: 0
+    unit:
+      ucum_code: cm
+  botdep:
+    name: botdep
+    description: Depth of bottom of layer
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: botdep
+    owner: SoilLayer
+    domain_of:
+    - SoilLayer
+    range: integer
+    minimum_value: 0
+    unit:
+      ucum_code: cm
+  coarse:
+    name: coarse
+    description: Coarse fragments percentage by volume
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: coarse
+    owner: SoilLayer
+    domain_of:
+    - SoilLayer
+    range: float
+    minimum_value: 0
+    maximum_value: 100
+    unit:
+      ucum_code: '% volume'
+  sand:
+    name: sand
+    description: Sand content percentage by weight
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: sand
+    owner: SoilLayer
+    domain_of:
+    - SoilLayer
+    range: float
+    minimum_value: 0
+    maximum_value: 100
+    unit:
+      ucum_code: '% weight'
+  silt:
+    name: silt
+    description: Silt content percentage by weight
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: silt
+    owner: SoilLayer
+    domain_of:
+    - SoilLayer
+    range: float
+    minimum_value: 0
+    maximum_value: 100
+    unit:
+      ucum_code: '% weight'
+  clay:
+    name: clay
+    description: Clay content percentage by weight
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: clay
+    owner: SoilLayer
+    domain_of:
+    - SoilLayer
+    range: float
+    minimum_value: 0
+    maximum_value: 100
+    unit:
+      ucum_code: '% weight'
+  texture_usda:
+    name: texture_usda
+    description: USDA soil texture class
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: texture_usda
+    owner: SoilLayer
+    domain_of:
+    - SoilMappingUnit
+    - SoilLayer
+    range: TextureUSDAEnum
+  texture_soter:
+    name: texture_soter
+    description: SOTER soil texture class
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: texture_soter
+    owner: SoilLayer
+    domain_of:
+    - SoilLayer
+    range: TextureSOTEREnum
+  bulk:
+    name: bulk
+    description: Bulk density
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: bulk
+    owner: SoilLayer
+    domain_of:
+    - SoilLayer
+    range: float
+    minimum_value: 0
+    maximum_value: 3
+    unit:
+      ucum_code: g/cm3
+  ref_bulk:
+    name: ref_bulk
+    description: Reference bulk density
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: ref_bulk
+    owner: SoilLayer
+    domain_of:
+    - SoilLayer
+    range: float
+    minimum_value: 0
+    maximum_value: 3
+    unit:
+      ucum_code: g/cm3
+  org_carbon:
+    name: org_carbon
+    description: Organic carbon content percentage by weight
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: org_carbon
+    owner: SoilLayer
+    domain_of:
+    - SoilLayer
+    range: float
+    minimum_value: 0
+    maximum_value: 100
+    unit:
+      ucum_code: '% weight'
+  ph_water:
+    name: ph_water
+    description: pH measured in water
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: ph_water
+    owner: SoilLayer
+    domain_of:
+    - SoilLayer
+    range: float
+    minimum_value: 0
+    maximum_value: 14
+    unit:
+      ucum_code: -log(H+)
+  total_n:
+    name: total_n
+    description: Total nitrogen content
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: total_n
+    owner: SoilLayer
+    domain_of:
+    - SoilLayer
+    range: float
+    minimum_value: 0
+    unit:
+      ucum_code: g/kg
+  cn_ratio:
+    name: cn_ratio
+    description: Carbon to nitrogen ratio (C/N)
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: cn_ratio
+    owner: SoilLayer
+    domain_of:
+    - SoilLayer
+    range: float
+    minimum_value: 0
+  cec_soil:
+    name: cec_soil
+    description: Cation Exchange Capacity of soil
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: cec_soil
+    owner: SoilLayer
+    domain_of:
+    - SoilLayer
+    range: float
+    minimum_value: 0
+    unit:
+      ucum_code: cmolc/kg
+  cec_clay:
+    name: cec_clay
+    description: Cation Exchange Capacity of clay fraction
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: cec_clay
+    owner: SoilLayer
+    domain_of:
+    - SoilLayer
+    range: float
+    minimum_value: 0
+    unit:
+      ucum_code: cmolc/kg
+  cec_eff:
+    name: cec_eff
+    description: Effective Cation Exchange Capacity (ECEC)
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: cec_eff
+    owner: SoilLayer
+    domain_of:
+    - SoilLayer
+    range: float
+    minimum_value: 0
+    unit:
+      ucum_code: cmolc/kg
+  teb:
+    name: teb
+    description: Total Exchangeable Bases
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: teb
+    owner: SoilLayer
+    domain_of:
+    - SoilLayer
+    range: float
+    minimum_value: 0
+    unit:
+      ucum_code: cmolc/kg
+  bsat:
+    name: bsat
+    description: Base saturation percentage
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: bsat
+    owner: SoilLayer
+    domain_of:
+    - SoilLayer
+    range: float
+    minimum_value: 0
+    maximum_value: 100
+    unit:
+      ucum_code: '% CECsoil'
+  alum_sat:
+    name: alum_sat
+    description: Aluminium saturation percentage
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: alum_sat
+    owner: SoilLayer
+    domain_of:
+    - SoilLayer
+    range: float
+    minimum_value: 0
+    maximum_value: 100
+    unit:
+      ucum_code: '% ECEC'
+  esp:
+    name: esp
+    description: Exchangeable Sodium Percentage
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: esp
+    owner: SoilLayer
+    domain_of:
+    - SoilLayer
+    range: float
+    minimum_value: 0
+    maximum_value: 100
+    unit:
+      ucum_code: '%'
+  tcarbon_eq:
+    name: tcarbon_eq
+    description: Calcium carbonate equivalent percentage by weight
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: tcarbon_eq
+    owner: SoilLayer
+    domain_of:
+    - SoilLayer
+    range: float
+    minimum_value: 0
+    maximum_value: 100
+    unit:
+      ucum_code: '% weight'
+  gypsum:
+    name: gypsum
+    description: Gypsum content percentage by weight
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: gypsum
+    owner: SoilLayer
+    domain_of:
+    - SoilLayer
+    range: float
+    minimum_value: 0
+    maximum_value: 100
+    unit:
+      ucum_code: '% weight'
+  elec_cond:
+    name: elec_cond
+    description: Electric conductivity
+    from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+    rank: 1000
+    alias: elec_cond
+    owner: SoilLayer
+    domain_of:
+    - SoilLayer
+    range: float
+    minimum_value: 0
+    unit:
+      ucum_code: dS/m
+class_uri: hwsd2:SoilLayer
+
+</code></pre>
+</details>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@11.4.1/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>

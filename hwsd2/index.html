@@ -1,0 +1,1800 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://bioepic-data.github.io/fao-soils/hwsd2/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../elements/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>HWSD2 - fao-soils</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hwsd2-harmonized-world-soil-database-v20" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="fao-soils" class="md-header__button md-logo" aria-label="fao-soils" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            fao-soils
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              HWSD2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/bioepic-data/fao-soils" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="fao-soils" class="md-nav__button md-logo" aria-label="fao-soils" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    fao-soils
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/bioepic-data/fao-soils" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Databases
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Databases
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    HWSD2
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    HWSD2
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dataset-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataset Specifications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dataset Specifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spatial-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spatial Coverage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporal-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Temporal Coverage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vertical-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vertical Resolution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Structure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Database Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#soil-mapping-units-smus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Soil Mapping Units (SMUs)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#soil-sequences" class="md-nav__link">
+    <span class="md-ellipsis">
+      Soil Sequences
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-records" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Records
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#soil-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Soil Properties
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Soil Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#physical-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Physical Properties
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Physical Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#particle-size-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Particle Size Distribution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#texture-classifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Texture Classifications
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bulk-density" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bulk Density
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chemical-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chemical Properties
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chemical Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carbon-and-nitrogen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carbon and Nitrogen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acidity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acidity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cation-exchange-capacity-cec" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cation Exchange Capacity (CEC)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#base-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      Base Status
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-chemical-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other Chemical Properties
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hydrological-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hydrological Properties
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hydrological Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#drainage-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Drainage Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#water-capacity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Water Capacity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#root-and-water-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Root and Water Limitations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#soil-classifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Soil Classifications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Soil Classifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#world-reference-base-wrb-2022" class="md-nav__link">
+    <span class="md-ellipsis">
+      World Reference Base (WRB) 2022
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fao-90-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      FAO-90 Classification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#climate-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Climate Classification
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-quality-and-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Quality and Limitations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Quality and Limitations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-sources-and-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Sources and Coverage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#missing-data-indicators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Missing Data Indicators
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uncertainty" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uncertainty
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommended Usage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the Schema
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the Schema">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loading-the-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loading the Schema
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Classes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-slots-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Slots (Properties)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enumerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enumerations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Access
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Access">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#official-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Official Source
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#processing-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Processing Tools
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="References">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#primary-citation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Primary Citation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#related-publications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Related Publications
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schema-citation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schema Citation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      See Also
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../elements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Schema
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dataset-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataset Specifications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dataset Specifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spatial-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spatial Coverage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporal-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Temporal Coverage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vertical-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vertical Resolution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Structure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Database Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#soil-mapping-units-smus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Soil Mapping Units (SMUs)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#soil-sequences" class="md-nav__link">
+    <span class="md-ellipsis">
+      Soil Sequences
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-records" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Records
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#soil-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Soil Properties
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Soil Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#physical-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Physical Properties
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Physical Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#particle-size-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Particle Size Distribution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#texture-classifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Texture Classifications
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bulk-density" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bulk Density
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chemical-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chemical Properties
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chemical Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carbon-and-nitrogen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Carbon and Nitrogen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acidity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acidity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cation-exchange-capacity-cec" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cation Exchange Capacity (CEC)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#base-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      Base Status
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-chemical-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other Chemical Properties
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hydrological-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hydrological Properties
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hydrological Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#drainage-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Drainage Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#water-capacity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Water Capacity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#root-and-water-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Root and Water Limitations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#soil-classifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Soil Classifications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Soil Classifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#world-reference-base-wrb-2022" class="md-nav__link">
+    <span class="md-ellipsis">
+      World Reference Base (WRB) 2022
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fao-90-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      FAO-90 Classification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#climate-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Climate Classification
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-quality-and-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Quality and Limitations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Quality and Limitations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-sources-and-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Sources and Coverage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#missing-data-indicators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Missing Data Indicators
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uncertainty" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uncertainty
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommended Usage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the Schema
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the Schema">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loading-the-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loading the Schema
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Classes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-slots-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Slots (Properties)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enumerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enumerations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Access
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Access">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#official-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Official Source
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#processing-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Processing Tools
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="References">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#primary-citation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Primary Citation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#related-publications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Related Publications
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schema-citation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schema Citation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      See Also
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="hwsd2-harmonized-world-soil-database-v20">HWSD2 - Harmonized World Soil Database v2.0</h1>
+<h2 id="overview">Overview</h2>
+<p>The Harmonized World Soil Database (HWSD) version 2.0 is a comprehensive global soil dataset published by the Food and Agriculture Organization (FAO) of the United Nations. It provides detailed soil physical and chemical properties at multiple depth layers with global coverage.</p>
+<h2 id="dataset-specifications">Dataset Specifications</h2>
+<h3 id="spatial-coverage">Spatial Coverage</h3>
+<ul>
+<li><strong>Resolution</strong>: 30 arc-seconds (~1 km at the equator)</li>
+<li><strong>Grid dimensions</strong>: 43,200 columns × 21,600 rows</li>
+<li><strong>Geographic extent</strong>: Global (-180° to 180°, -90° to 90°)</li>
+<li><strong>Projection</strong>: WGS84 Geographic (EPSG:4326)</li>
+<li><strong>Format</strong>: Binary raster (.bil) with attribute database</li>
+</ul>
+<h3 id="temporal-coverage">Temporal Coverage</h3>
+<ul>
+<li>HWSD v2.0 represents contemporary soil conditions</li>
+<li>Based on soil surveys conducted primarily between 1960-2020</li>
+<li>Periodic updates incorporate new national soil databases</li>
+</ul>
+<h3 id="vertical-resolution">Vertical Resolution</h3>
+<p>The database provides soil properties at <strong>7 standardized depth layers</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Top (cm)</th>
+<th>Bottom (cm)</th>
+<th>Thickness (cm)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D1</td>
+<td>0</td>
+<td>20</td>
+<td>20</td>
+</tr>
+<tr>
+<td>D2</td>
+<td>20</td>
+<td>40</td>
+<td>20</td>
+</tr>
+<tr>
+<td>D3</td>
+<td>40</td>
+<td>60</td>
+<td>20</td>
+</tr>
+<tr>
+<td>D4</td>
+<td>60</td>
+<td>80</td>
+<td>20</td>
+</tr>
+<tr>
+<td>D5</td>
+<td>80</td>
+<td>100</td>
+<td>20</td>
+</tr>
+<tr>
+<td>D6</td>
+<td>100</td>
+<td>150</td>
+<td>50</td>
+</tr>
+<tr>
+<td>D7</td>
+<td>150</td>
+<td>200</td>
+<td>50</td>
+</tr>
+</tbody>
+</table>
+<p>Total profile depth: 0-200 cm (surface to 2 meters)</p>
+<h2 id="database-structure">Database Structure</h2>
+<h3 id="soil-mapping-units-smus">Soil Mapping Units (SMUs)</h3>
+<p>Each location on the global grid is assigned to a <strong>Soil Mapping Unit (SMU)</strong>. An SMU represents a geographic area with relatively homogeneous soil characteristics.</p>
+<ul>
+<li><strong>Total SMUs</strong>: 58,405</li>
+<li><strong>Unique identifiers</strong>: HWSD2_SMU_ID (1 to ~43,000 range)</li>
+<li><strong>Legacy IDs</strong>: Links to HWSD v1.0 and WISE30s databases</li>
+</ul>
+<h3 id="soil-sequences">Soil Sequences</h3>
+<p>To represent spatial heterogeneity, each SMU can contain <strong>multiple soil sequences</strong>:</p>
+<ul>
+<li><strong>Sequence 1</strong>: Usually the dominant soil type (highest share %)</li>
+<li><strong>Sequence 2-N</strong>: Secondary and minor soil types</li>
+<li><strong>Share</strong>: Percentage of the SMU area covered by each sequence (sum = 100%)</li>
+</ul>
+<p>Example: SMU 4726 (Konza Prairie, Kansas)
+- Sequence 1: 60% - Loamy Phaeozem
+- Sequence 2: 30% - Sandy Phaeozem
+- Sequence 3: 10% - Clayey Phaeozem</p>
+<h3 id="data-records">Data Records</h3>
+<ul>
+<li><strong>Total layer records</strong>: 408,835</li>
+<li><strong>Layers per SMU</strong>: 7 (D1 through D7)</li>
+<li><strong>Records per layer</strong>: ~58,405 (one per SMU sequence)</li>
+</ul>
+<h2 id="soil-properties">Soil Properties</h2>
+<h3 id="physical-properties">Physical Properties</h3>
+<h4 id="particle-size-distribution">Particle Size Distribution</h4>
+<ul>
+<li><strong>Sand</strong> (% by weight): 2.0 - 0.05 mm diameter</li>
+<li><strong>Silt</strong> (% by weight): 0.05 - 0.002 mm diameter</li>
+<li><strong>Clay</strong> (% by weight): &lt; 0.002 mm diameter</li>
+<li><strong>Coarse fragments</strong> (% by volume): &gt; 2 mm diameter</li>
+</ul>
+<p>Constraint: Sand + Silt + Clay = 100%</p>
+<h4 id="texture-classifications">Texture Classifications</h4>
+<ul>
+<li><strong>USDA texture class</strong>: 14 classes (Clay, Silty clay, Loam, etc.)</li>
+<li><strong>SOTER texture class</strong>: 5 classes (Coarse, Medium, Fine, Very Fine, Medium Fine)</li>
+</ul>
+<h4 id="bulk-density">Bulk Density</h4>
+<ul>
+<li><strong>Bulk density</strong> (g/cm³): Mass of dry soil per unit volume</li>
+<li><strong>Reference bulk density</strong> (g/cm³): Estimated from texture and organic matter</li>
+<li><strong>Typical range</strong>: 1.0 - 1.8 g/cm³</li>
+</ul>
+<h3 id="chemical-properties">Chemical Properties</h3>
+<h4 id="carbon-and-nitrogen">Carbon and Nitrogen</h4>
+<ul>
+<li><strong>Organic carbon</strong> (% by weight): 0 - 100%</li>
+<li><strong>Total nitrogen</strong> (g/kg): Total N content</li>
+<li><strong>C/N ratio</strong>: Carbon to nitrogen ratio</li>
+<li>Typical range: 8-15 (mineral soils), 20-30 (organic soils)</li>
+</ul>
+<h4 id="acidity">Acidity</h4>
+<ul>
+<li><strong>pH (water)</strong>: Measured in water suspension</li>
+<li>Range: 0-14 (typically 3.5-9.0)</li>
+<li>&lt; 5.5: Acidic</li>
+<li>5.5-7.0: Slightly acidic</li>
+<li>7.0-8.5: Neutral to alkaline</li>
+<li>
+<blockquote>
+<p>8.5: Strongly alkaline</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="cation-exchange-capacity-cec">Cation Exchange Capacity (CEC)</h4>
+<ul>
+<li><strong>CEC soil</strong> (cmolc/kg): Total exchange capacity of the soil</li>
+<li><strong>CEC clay</strong> (cmolc/kg): Exchange capacity of clay fraction</li>
+<li><strong>Effective CEC (ECEC)</strong> (cmolc/kg): Exchange capacity at current pH</li>
+</ul>
+<h4 id="base-status">Base Status</h4>
+<ul>
+<li><strong>Total Exchangeable Bases (TEB)</strong> (cmolc/kg): Sum of base cations</li>
+<li><strong>Base saturation</strong> (% of CEC): Percentage of exchange sites occupied by base cations</li>
+<li><strong>Aluminum saturation</strong> (% of ECEC): Percentage occupied by Al³⁺ (acidic soils)</li>
+<li><strong>Exchangeable Sodium Percentage (ESP)</strong> (%): Na saturation (sodic soils)</li>
+</ul>
+<h4 id="other-chemical-properties">Other Chemical Properties</h4>
+<ul>
+<li><strong>Calcium carbonate equivalent</strong> (% by weight): CaCO₃ content (calcareous soils)</li>
+<li><strong>Gypsum</strong> (% by weight): CaSO₄·2H₂O content (gypsic soils)</li>
+<li><strong>Electrical conductivity</strong> (dS/m): Salinity indicator</li>
+<li>&lt; 2 dS/m: Non-saline</li>
+<li>2-4 dS/m: Slightly saline</li>
+<li>4-8 dS/m: Moderately saline</li>
+<li>
+<blockquote>
+<p>8 dS/m: Highly saline</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="hydrological-properties">Hydrological Properties</h3>
+<h4 id="drainage-class">Drainage Class</h4>
+<p>Seven classes from excessively drained to very poorly drained:
+- <strong>E</strong>: Excessively drained (rapid percolation)
+- <strong>SE</strong>: Somewhat excessively drained
+- <strong>W</strong>: Well drained
+- <strong>MW</strong>: Moderately well drained
+- <strong>I</strong>: Imperfectly drained (seasonal saturation)
+- <strong>P</strong>: Poorly drained (frequent saturation)
+- <strong>VP</strong>: Very poorly drained (permanent saturation)</p>
+<h4 id="water-capacity">Water Capacity</h4>
+<ul>
+<li><strong>Available Water Capacity (AWC)</strong>: mm/m or mm (depending on table)</li>
+<li>Amount of water available to plants between field capacity and wilting point</li>
+<li>Typical range: 50-200 mm/m</li>
+</ul>
+<h4 id="root-and-water-limitations">Root and Water Limitations</h4>
+<ul>
+<li><strong>Root depth</strong>: Deep (&gt;100 cm), Moderately deep (&lt;100 cm), Shallow (&lt;50 cm), Very shallow (&lt;10 cm)</li>
+<li><strong>Obstacle to roots</strong>: Depth to restrictive layer (cm)</li>
+<li><strong>Impermeable layer</strong>: Depth to impermeable horizon (cm)</li>
+<li><strong>Soil water regime</strong>: Wetness duration (ESDB)</li>
+</ul>
+<h3 id="soil-classifications">Soil Classifications</h3>
+<h4 id="world-reference-base-wrb-2022">World Reference Base (WRB) 2022</h4>
+<p>The primary classification system with multiple levels of detail:</p>
+<ul>
+<li><strong>WRB2</strong>: 2-character codes (32 reference soil groups)</li>
+<li>Examples: AC (Acrisols), CH (Chernozems), PT (Plinthosols)</li>
+<li><strong>WRB4</strong>: 4-character codes with qualifier</li>
+<li>Examples: ACfr (Ferric Acrisols), CHha (Haplic Chernozems)</li>
+<li><strong>WRB Phases</strong>: Detailed classification with multiple qualifiers</li>
+<li>Examples: ACfrkk (Akroskeletic Ferric Acrisols)</li>
+</ul>
+<p>Common WRB soil groups:
+- <strong>Acrisols</strong>: Acidic, clay-rich, weathered tropical soils
+- <strong>Chernozems</strong>: Deep, dark, fertile grassland soils
+- <strong>Ferralsols</strong>: Highly weathered tropical soils with oxides
+- <strong>Luvisols</strong>: Clay-enriched temperate forest soils
+- <strong>Phaeozems</strong>: Dark, humus-rich grassland soils
+- <strong>Podzols</strong>: Acidic forest soils with leached surface layer</p>
+<h4 id="fao-90-classification">FAO-90 Classification</h4>
+<p>Legacy FAO classification (1990 system):
+- Similar to WRB but older version
+- 194 soil units in the database</p>
+<h4 id="climate-classification">Climate Classification</h4>
+<ul>
+<li><strong>Köppen-Geiger zones</strong>: A (Tropical), B (Arid), C (Temperate), D (Cold), E (Polar)</li>
+</ul>
+<h2 id="data-quality-and-limitations">Data Quality and Limitations</h2>
+<h3 id="data-sources-and-coverage">Data Sources and Coverage</h3>
+<p>The HWSD v2.0 integrates multiple national and regional databases:</p>
+<ul>
+<li><strong>ESDB</strong>: European Soil Database (high detail)</li>
+<li><strong>CHINA</strong>: China soil database (1:1M scale)</li>
+<li><strong>SOTWIS</strong>: Soil and Terrain Database (global)</li>
+<li><strong>DSMW</strong>: Digital Soil Map of the World (1:5M scale)</li>
+<li><strong>WISE30s</strong>: World Inventory of Soil Emission Potentials (30 arcsec)</li>
+<li><strong>National databases</strong>: Afghanistan, Ghana, Turkey, etc.</li>
+</ul>
+<h3 id="missing-data-indicators">Missing Data Indicators</h3>
+<ul>
+<li><strong>Value -9</strong>: Missing or not applicable</li>
+<li><strong>NODATA (65535)</strong>: No soil data (oceans, ice, water bodies)</li>
+</ul>
+<h3 id="uncertainty">Uncertainty</h3>
+<ul>
+<li><strong>Scale</strong>: Original mapping scales vary (1:250,000 to 1:5,000,000)</li>
+<li><strong>Heterogeneity</strong>: Single SMU values represent area averages</li>
+<li><strong>Temporal</strong>: Soil properties change over time; database is a snapshot</li>
+<li><strong>Analytical</strong>: Different labs and methods used for soil analysis</li>
+</ul>
+<h3 id="recommended-usage">Recommended Usage</h3>
+<p><strong>Appropriate for:</strong>
+- Global and continental-scale modeling
+- Regional assessments (&gt;100 km²)
+- Initial parameterization of ecosystem models
+- Comparative studies across climates/biomes
+- Educational purposes</p>
+<p><strong>Not appropriate for:</strong>
+- Site-specific predictions (&lt; 1 km²)
+- Precision agriculture (&lt; 1 ha)
+- Regulatory decisions
+- Construction planning</p>
+<p><strong>Best practices:</strong>
+- Validate with local soil data when available
+- Perform sensitivity analysis on soil parameters
+- Use dominant sequence or weighted averages
+- Consider uncertainty in model results
+- Cite the database properly</p>
+<h2 id="using-the-schema">Using the Schema</h2>
+<h3 id="loading-the-schema">Loading the Schema</h3>
+<pre><code class="language-python">from linkml_runtime import SchemaView
+
+schema_view = SchemaView(&quot;src/fao_soils/schema/hwsd2.yaml&quot;)
+
+# Explore the schema
+print(schema_view.all_classes())
+print(schema_view.all_slots())
+print(schema_view.all_enums())
+</code></pre>
+<h3 id="key-classes">Key Classes</h3>
+<ul>
+<li><strong>SoilMappingUnit</strong>: Summary properties for an SMU</li>
+<li><strong>SoilLayer</strong>: Detailed properties for a single depth layer</li>
+<li><strong>WRBClass</strong>: World Reference Base soil classification with colors for mapping</li>
+</ul>
+<h3 id="key-slots-properties">Key Slots (Properties)</h3>
+<p>Soil layers have ~47 properties including:
+- Identifiers: <code>hwsd2_smu_id</code>, <code>sequence</code>, <code>layer</code>
+- Depths: <code>topdep</code>, <code>botdep</code>
+- Texture: <code>sand</code>, <code>silt</code>, <code>clay</code>, <code>texture_usda</code>, <code>texture_soter</code>
+- Carbon/N: <code>org_carbon</code>, <code>total_n</code>, <code>cn_ratio</code>
+- Chemistry: <code>ph_water</code>, <code>cec_soil</code>, <code>bsat</code>, <code>esp</code>
+- Physical: <code>bulk</code>, <code>coarse</code></p>
+<h3 id="enumerations">Enumerations</h3>
+<ul>
+<li><strong>DrainageEnum</strong>: 7 drainage classes (E, SE, W, MW, I, P, VP)</li>
+<li><strong>TextureUSDAEnum</strong>: 14 USDA texture classes</li>
+<li><strong>TextureSOTEREnum</strong>: 5 SOTER texture classes</li>
+<li><strong>KoppenEnum</strong>: 5 climate zones (A, B, C, D, E)</li>
+<li><strong>RootDepthEnum</strong>: 4 root depth categories</li>
+<li><strong>PhaseEnum</strong>: 9 soil phase modifiers</li>
+</ul>
+<h2 id="data-access">Data Access</h2>
+<h3 id="official-source">Official Source</h3>
+<p>Download the HWSD v2.0 database from the FAO Soils Portal:
+- <a href="https://www.fao.org/soils-portal/data-hub/soil-maps-and-databases/harmonized-world-soil-database-v20/en/">HWSD v2.0 Download Page</a></p>
+<p>The download includes:
+- Raster files (HWSD2.bil, .hdr, .prj, .stx)
+- Access database (HWSD2.mdb) or CSV exports
+- Documentation (PDF)</p>
+<h3 id="processing-tools">Processing Tools</h3>
+<p>For tools to work with HWSD2 data, see:
+- <a href="https://github.com/bioepic-data/ecosim-co-scientist/tree/main/hwsd_data">ecosim-co-scientist</a> - Python extraction tools
+  - DuckDB database loader
+  - Geographic coordinate to soil profile extractor
+  - Example queries and visualizations</p>
+<h2 id="references">References</h2>
+<h3 id="primary-citation">Primary Citation</h3>
+<pre><code class="language-bibtex">@misc{hwsd2,
+  title = {Harmonized World Soil Database version 2.0},
+  author = {{FAO}},
+  year = {2023},
+  publisher = {Food and Agriculture Organization of the United Nations},
+  url = {https://www.fao.org/soils-portal/data-hub/soil-maps-and-databases/harmonized-world-soil-database-v20/en/}
+}
+</code></pre>
+<h3 id="related-publications">Related Publications</h3>
+<ul>
+<li>FAO/IIASA/ISRIC/ISS-CAS/JRC (2012). Harmonized World Soil Database (version 1.2). FAO, Rome, Italy and IIASA, Laxenburg, Austria.</li>
+<li>Fischer, G., et al. (2008). Global Agro-ecological Zones Assessment for Agriculture (GAEZ 2008). IIASA, Laxenburg, Austria and FAO, Rome, Italy.</li>
+</ul>
+<h3 id="schema-citation">Schema Citation</h3>
+<pre><code class="language-bibtex">@software{hwsd2_schema,
+  title = {HWSD2 LinkML Schema},
+  author = {{BioEPIC Data Team}},
+  year = {2024},
+  url = {https://github.com/bioepic-data/fao-soils},
+  note = {LinkML schema for FAO HWSD v2.0}
+}
+</code></pre>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="https://www.fao.org/soils-portal/en/">FAO Soils Portal</a></li>
+<li><a href="https://www.fao.org/soils-portal/data-hub/soil-classification/world-reference-base/en/">World Reference Base (WRB)</a></li>
+<li><a href="https://linkml.io/">LinkML Documentation</a></li>
+<li><a href="https://www.isric.org/">ISRIC World Soil Information</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
