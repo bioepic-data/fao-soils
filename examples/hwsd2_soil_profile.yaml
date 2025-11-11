@@ -1,0 +1,233 @@
+# Example HWSD2 Soil Profile
+# Location: Konza Prairie, Kansas, USA (39.103°N, 96.563°W)
+# Soil Type: Phaeozems (dark, fertile grassland soil)
+# SMU_ID: 4726
+
+# This example shows the dominant soil sequence (60% of area)
+# conforming to the HWSD2 LinkML schema
+
+soil_mapping_unit:
+  id: "hwsd2:SMU_4726"
+  hwsd2_smu_id: 4726
+  wise30s_smu_id: "WD10004726"
+  hwsd1_smu_id: 4726
+  coverage: ESDB  # European Soil Database format (used for North America too)
+  share: 60.0  # This sequence covers 60% of the mapping unit
+  wrb4: "PHha"  # Haplic Phaeozem
+  wrb2: "PH"  # Phaeozem reference group
+  fao90: "PHh"  # FAO-90 classification
+  koppen: D  # Cold climate (continental)
+  texture_usda: SILT_LOAM
+  ref_bulk_density: 1.52
+  bulk_density: 1.48
+  drainage: MW  # Moderately well drained
+  root_depth: DEEP  # > 100 cm
+  awc: 168  # Available water capacity in mm/m
+
+soil_layers:
+  - id: "hwsd2:SMU_4726_SEQ1_D1"
+    hwsd2_smu_id: 4726
+    sequence: 1  # Dominant sequence
+    layer: "D1"  # Top layer
+    topdep: 0
+    botdep: 20
+
+    # Particle size distribution
+    sand: 28.0  # % by weight
+    silt: 46.0
+    clay: 26.0
+    coarse: 5.0  # Coarse fragments (% by volume)
+
+    # Texture classification
+    texture_usda: SILT_LOAM
+    texture_soter: M  # Medium
+
+    # Physical properties
+    bulk: 1.48  # g/cm³
+    ref_bulk: 1.52
+
+    # Carbon and nitrogen
+    org_carbon: 2.06  # % by weight - high organic matter in topsoil
+    total_n: 1.8  # g/kg
+    cn_ratio: 11.4  # C/N ratio
+
+    # Chemistry
+    ph_water: 6.2  # Slightly acidic
+    cec_soil: 22.5  # cmolc/kg - moderate CEC
+    cec_clay: 65.0  # cmolc/kg
+    teb: 18.0  # Total exchangeable bases
+    bsat: 80.0  # % - high base saturation
+    alum_sat: 2.0  # % - low aluminum
+    esp: 1.5  # % - non-sodic
+
+    # Other chemistry
+    tcarbon_eq: 0.0  # No calcium carbonate
+    gypsum: 0.0
+    elec_cond: 0.3  # dS/m - non-saline
+
+  - id: "hwsd2:SMU_4726_SEQ1_D2"
+    hwsd2_smu_id: 4726
+    sequence: 1
+    layer: "D2"
+    topdep: 20
+    botdep: 40
+    sand: 28.0
+    silt: 45.0
+    clay: 27.0
+    coarse: 8.0
+    texture_usda: SILT_LOAM
+    texture_soter: M
+    bulk: 1.47
+    ref_bulk: 1.52
+    org_carbon: 1.43  # Decreasing with depth
+    total_n: 1.3
+    cn_ratio: 11.0
+    ph_water: 6.4  # Increasing pH with depth
+    cec_soil: 23.0
+    bsat: 82.0
+    alum_sat: 1.5
+    esp: 1.5
+    tcarbon_eq: 0.0
+    gypsum: 0.0
+    elec_cond: 0.3
+
+  - id: "hwsd2:SMU_4726_SEQ1_D3"
+    hwsd2_smu_id: 4726
+    sequence: 1
+    layer: "D3"
+    topdep: 40
+    botdep: 60
+    sand: 30.0
+    silt: 44.0
+    clay: 26.0
+    coarse: 10.0
+    texture_usda: LOAM
+    texture_soter: M
+    bulk: 1.48
+    ref_bulk: 1.53
+    org_carbon: 0.91
+    total_n: 0.85
+    cn_ratio: 10.7
+    ph_water: 6.6
+    cec_soil: 21.0
+    bsat: 84.0
+    alum_sat: 1.0
+    esp: 1.5
+    tcarbon_eq: 0.0
+    gypsum: 0.0
+    elec_cond: 0.3
+
+  - id: "hwsd2:SMU_4726_SEQ1_D4"
+    hwsd2_smu_id: 4726
+    sequence: 1
+    layer: "D4"
+    topdep: 60
+    botdep: 80
+    sand: 32.0
+    silt: 43.0
+    clay: 25.0
+    coarse: 12.0
+    texture_usda: LOAM
+    texture_soter: M
+    bulk: 1.50
+    ref_bulk: 1.54
+    org_carbon: 0.61
+    total_n: 0.60
+    cn_ratio: 10.2
+    ph_water: 6.8
+    cec_soil: 19.5
+    bsat: 86.0
+    alum_sat: 0.8
+    esp: 1.5
+    tcarbon_eq: 0.0
+    gypsum: 0.0
+    elec_cond: 0.3
+
+  - id: "hwsd2:SMU_4726_SEQ1_D5"
+    hwsd2_smu_id: 4726
+    sequence: 1
+    layer: "D5"
+    topdep: 80
+    botdep: 100
+    sand: 33.0
+    silt: 43.0
+    clay: 24.0
+    coarse: 15.0
+    texture_usda: LOAM
+    texture_soter: M
+    bulk: 1.53
+    ref_bulk: 1.56
+    org_carbon: 0.45
+    total_n: 0.45
+    cn_ratio: 10.0
+    ph_water: 6.9
+    cec_soil: 18.0
+    bsat: 88.0
+    alum_sat: 0.5
+    esp: 1.5
+    tcarbon_eq: 0.0
+    gypsum: 0.0
+    elec_cond: 0.3
+
+  - id: "hwsd2:SMU_4726_SEQ1_D6"
+    hwsd2_smu_id: 4726
+    sequence: 1
+    layer: "D6"
+    topdep: 100
+    botdep: 150
+    sand: 35.0
+    silt: 43.0
+    clay: 22.0
+    coarse: 18.0
+    texture_usda: LOAM
+    texture_soter: M
+    bulk: 1.57
+    ref_bulk: 1.59
+    org_carbon: 0.30
+    total_n: 0.32
+    cn_ratio: 9.4
+    ph_water: 7.2
+    cec_soil: 16.5
+    bsat: 90.0
+    alum_sat: 0.3
+    esp: 1.5
+    tcarbon_eq: 0.0
+    gypsum: 0.0
+    elec_cond: 0.3
+
+  - id: "hwsd2:SMU_4726_SEQ1_D7"
+    hwsd2_smu_id: 4726
+    sequence: 1
+    layer: "D7"
+    topdep: 150
+    botdep: 200
+    sand: 32.0
+    silt: 46.0
+    clay: 22.0
+    coarse: 20.0
+    texture_usda: LOAM
+    texture_soter: M
+    bulk: 1.63
+    ref_bulk: 1.65
+    org_carbon: 0.20
+    total_n: 0.22
+    cn_ratio: 9.1
+    ph_water: 7.4
+    cec_soil: 15.0
+    bsat: 92.0
+    alum_sat: 0.2
+    esp: 1.5
+    tcarbon_eq: 0.0
+    gypsum: 0.0
+    elec_cond: 0.3
+
+# Notes on this soil profile:
+# - High organic carbon in topsoil (2.06%) characteristic of grassland soils
+# - Decreasing organic matter with depth (typical pattern)
+# - Slightly acidic to neutral pH (6.2-7.4)
+# - High base saturation (80-92%) - fertile soil
+# - Low aluminum saturation - not acidic
+# - Moderate CEC (15-23 cmolc/kg) - good nutrient retention
+# - Silt loam to loam texture - good water holding capacity
+# - Increasing bulk density with depth (1.48-1.63 g/cm³)
+# - Increasing coarse fragments with depth (5-20%)

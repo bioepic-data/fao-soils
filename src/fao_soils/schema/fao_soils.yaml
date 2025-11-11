@@ -1,0 +1,709 @@
+id: https://w3id.org/bioepic-data/fao-soils/hwsd2
+name: hwsd2
+title: FAO Harmonized World Soil Database v2.0 Schema
+description: |-
+  LinkML schema for the FAO Harmonized World Soil Database (HWSD) version 2.0.
+
+  The HWSD v2.0 provides comprehensive soil data including physical and chemical properties
+  at multiple soil layers for global coverage. This database is essential for ecosystem
+  modeling, climate modeling, and agricultural applications.
+
+  Main components:
+  - Soil Mapping Units (SMU): Summary-level soil characteristics
+  - Soil Layers: Detailed physical and chemical properties at different depths
+  - Classification systems: WRB, FAO-90, USDA taxonomy
+  - Domain tables: Lookup tables for codes and classifications
+
+license: CC-BY-4.0
+version: 2.0.0
+see_also:
+  - https://bioepic-data.github.io/fao-soils
+  - https://www.fao.org/soils-portal/data-hub/soil-maps-and-databases/harmonized-world-soil-database-v20/en/
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  fao_soils: https://w3id.org/bioepic-data/fao-soils/
+  hwsd2: https://w3id.org/bioepic-data/fao-soils/hwsd2/
+  schema: http://schema.org/
+  qudt: http://qudt.org/schema/qudt/
+
+default_prefix: hwsd2
+default_range: string
+
+imports:
+  - linkml:types
+
+# =============================================================================
+# MAIN CLASSES
+# =============================================================================
+
+classes:
+
+  SoilMappingUnit:
+    class_uri: hwsd2:SoilMappingUnit
+    description: |-
+      A Soil Mapping Unit (SMU) represents a distinct area with relatively homogeneous
+      soil characteristics. Each SMU may contain multiple soil types with their
+      proportional shares.
+    slots:
+      - id
+      - hwsd2_smu_id
+      - wise30s_smu_id
+      - hwsd1_smu_id
+      - coverage
+      - share
+      - wrb4
+      - wrb_phases
+      - wrb2
+      - wrb2_code
+      - fao90
+      - koppen
+      - texture_usda
+      - ref_bulk_density
+      - bulk_density
+      - drainage
+      - root_depth
+      - awc
+      - phase1
+      - phase2
+      - roots
+      - il
+      - add_prop
+
+  SoilLayer:
+    class_uri: hwsd2:SoilLayer
+    description: |-
+      Detailed soil properties at a specific depth layer. Each Soil Mapping Unit
+      can have multiple layers (typically D1 through D7) representing different
+      soil horizons from surface to depth.
+
+      Contains comprehensive physical properties (texture, bulk density), chemical
+      properties (pH, organic carbon, nutrients), and cation exchange characteristics.
+    slots:
+      - id
+      - hwsd2_smu_id
+      - nsc_mu_source1
+      - nsc_mu_source2
+      - wise30s_smu_id
+      - hwsd1_smu_id
+      - coverage
+      - sequence
+      - share
+      - nsc
+      - wrb_phases
+      - wrb4
+      - wrb2
+      - fao90
+      - root_depth_layer
+      - phase1
+      - phase2
+      - roots
+      - il
+      - swr
+      - drainage
+      - awc_layer
+      - add_prop
+      - layer
+      - topdep
+      - botdep
+      - coarse
+      - sand
+      - silt
+      - clay
+      - texture_usda
+      - texture_soter
+      - bulk
+      - ref_bulk
+      - org_carbon
+      - ph_water
+      - total_n
+      - cn_ratio
+      - cec_soil
+      - cec_clay
+      - cec_eff
+      - teb
+      - bsat
+      - alum_sat
+      - esp
+      - tcarbon_eq
+      - gypsum
+      - elec_cond
+
+  WRBClass:
+    class_uri: hwsd2:WRBClass
+    description: |-
+      World Reference Base (WRB) soil classification with RGB color codes
+      for visualization and mapping purposes.
+    slots:
+      - id
+      - id_class
+      - class_number
+      - divider
+      - label
+      - symbol
+      - red
+      - green
+      - blue
+
+# =============================================================================
+# SLOTS (ATTRIBUTES/COLUMNS)
+# =============================================================================
+
+slots:
+
+  # Identifiers
+  id:
+    identifier: true
+    range: integer
+    description: Database internal ID
+
+  hwsd2_smu_id:
+    range: integer
+    required: true
+    description: Soil Mapping Unit identifier in HWSD version 2
+
+  wise30s_smu_id:
+    range: string
+    description: Soil Mapping Unit identifier from WISE30s database
+
+  hwsd1_smu_id:
+    range: integer
+    description: Soil Mapping Unit identifier from HWSD version 1
+
+  # National Soil Classification
+  nsc_mu_source1:
+    range: string
+    description: National Soil Classification source 1
+
+  nsc_mu_source2:
+    range: string
+    description: National Soil Classification source 2
+
+  nsc:
+    range: string
+    description: National Soil Classification code
+
+  # Metadata
+  coverage:
+    range: CoverageEnum
+    description: Data source coverage (ESDB, CHINA, SOTWIS, etc.)
+
+  sequence:
+    range: integer
+    description: Sequence number in Soil Mapping Unit
+
+  share:
+    range: float
+    unit:
+      ucum_code: "%"
+    description: Percentage share in Soil Mapping Unit
+    minimum_value: 0
+    maximum_value: 100
+
+  # Soil Classifications
+  wrb4:
+    range: string
+    description: Soil Unit Symbol from World Reference Base 2022 (4-character code)
+
+  wrb_phases:
+    range: string
+    description: Detailed Soil Unit Symbol from WRB 2022 with phases
+
+  wrb2:
+    range: string
+    description: Soil Unit Symbol from WRB 2022 (2-character code)
+
+  wrb2_code:
+    range: string
+    description: Numeric code for WRB2 dominant soil group
+
+  fao90:
+    range: string
+    description: Soil Unit Symbol from FAO 1990 classification
+
+  koppen:
+    range: KoppenEnum
+    description: Köppen-Geiger climate classification
+
+  # Root properties
+  root_depth:
+    range: RootDepthEnum
+    description: Rooting depth category
+
+  root_depth_layer:
+    range: string
+    description: Rootable soil depth for specific layer
+
+  roots:
+    range: RootsEnum
+    description: Obstacle to roots depth in cm (ESDB)
+
+  # Impermeable layer
+  il:
+    range: ILEnum
+    description: Impermeable layer depth in cm (ESDB)
+
+  # Water properties
+  drainage:
+    range: DrainageEnum
+    description: Reference soil drainage class
+
+  swr:
+    range: SWREnum
+    description: Soil Water Regime (ESDB)
+
+  awc:
+    range: float
+    unit:
+      ucum_code: "mm/m"
+    description: Available Water Capacity
+    minimum_value: 0
+
+  awc_layer:
+    range: string
+    unit:
+      ucum_code: "mm"
+    description: Available Water Capacity for rootable soil depth
+
+  # Soil phases and properties
+  phase1:
+    range: PhaseEnum
+    description: Primary soil phase (Stony, Lithic, Petric, etc.)
+
+  phase2:
+    range: PhaseEnum
+    description: Secondary soil phase
+
+  add_prop:
+    range: AddPropEnum
+    description: Additional soil properties (Gelic, Vertic)
+
+  # Layer depth
+  layer:
+    range: string
+    description: Depth layer code (D1 through D7)
+    pattern: "^D[1-7]$"
+
+  topdep:
+    range: integer
+    unit:
+      ucum_code: "cm"
+    description: Depth of top of layer
+    minimum_value: 0
+
+  botdep:
+    range: integer
+    unit:
+      ucum_code: "cm"
+    description: Depth of bottom of layer
+    minimum_value: 0
+
+  # Physical properties - particle size
+  coarse:
+    range: float
+    unit:
+      ucum_code: "% volume"
+    description: Coarse fragments percentage by volume
+    minimum_value: 0
+    maximum_value: 100
+
+  sand:
+    range: float
+    unit:
+      ucum_code: "% weight"
+    description: Sand content percentage by weight
+    minimum_value: 0
+    maximum_value: 100
+
+  silt:
+    range: float
+    unit:
+      ucum_code: "% weight"
+    description: Silt content percentage by weight
+    minimum_value: 0
+    maximum_value: 100
+
+  clay:
+    range: float
+    unit:
+      ucum_code: "% weight"
+    description: Clay content percentage by weight
+    minimum_value: 0
+    maximum_value: 100
+
+  # Texture classification
+  texture_usda:
+    range: TextureUSDAEnum
+    description: USDA soil texture class
+
+  texture_soter:
+    range: TextureSOTEREnum
+    description: SOTER soil texture class
+
+  # Bulk density
+  bulk:
+    range: float
+    unit:
+      ucum_code: "g/cm3"
+    description: Bulk density
+    minimum_value: 0
+    maximum_value: 3
+
+  ref_bulk:
+    range: float
+    unit:
+      ucum_code: "g/cm3"
+    description: Reference bulk density
+    minimum_value: 0
+    maximum_value: 3
+
+  bulk_density:
+    range: float
+    unit:
+      ucum_code: "g/cm3"
+    description: Bulk density (SMU level)
+    minimum_value: 0
+    maximum_value: 3
+
+  ref_bulk_density:
+    range: float
+    unit:
+      ucum_code: "g/cm3"
+    description: Reference bulk density (SMU level)
+    minimum_value: 0
+    maximum_value: 3
+
+  # Chemical properties - carbon and nitrogen
+  org_carbon:
+    range: float
+    unit:
+      ucum_code: "% weight"
+    description: Organic carbon content percentage by weight
+    minimum_value: 0
+    maximum_value: 100
+
+  total_n:
+    range: float
+    unit:
+      ucum_code: "g/kg"
+    description: Total nitrogen content
+    minimum_value: 0
+
+  cn_ratio:
+    range: float
+    description: Carbon to nitrogen ratio (C/N)
+    minimum_value: 0
+
+  # pH
+  ph_water:
+    range: float
+    unit:
+      ucum_code: "-log(H+)"
+    description: pH measured in water
+    minimum_value: 0
+    maximum_value: 14
+
+  # Cation Exchange Capacity (CEC)
+  cec_soil:
+    range: float
+    unit:
+      ucum_code: "cmolc/kg"
+    description: Cation Exchange Capacity of soil
+    minimum_value: 0
+
+  cec_clay:
+    range: float
+    unit:
+      ucum_code: "cmolc/kg"
+    description: Cation Exchange Capacity of clay fraction
+    minimum_value: 0
+
+  cec_eff:
+    range: float
+    unit:
+      ucum_code: "cmolc/kg"
+    description: Effective Cation Exchange Capacity (ECEC)
+    minimum_value: 0
+
+  teb:
+    range: float
+    unit:
+      ucum_code: "cmolc/kg"
+    description: Total Exchangeable Bases
+    minimum_value: 0
+
+  # Saturation percentages
+  bsat:
+    range: float
+    unit:
+      ucum_code: "% CECsoil"
+    description: Base saturation percentage
+    minimum_value: 0
+    maximum_value: 100
+
+  alum_sat:
+    range: float
+    unit:
+      ucum_code: "% ECEC"
+    description: Aluminium saturation percentage
+    minimum_value: 0
+    maximum_value: 100
+
+  esp:
+    range: float
+    unit:
+      ucum_code: "%"
+    description: Exchangeable Sodium Percentage
+    minimum_value: 0
+    maximum_value: 100
+
+  # Other chemical properties
+  tcarbon_eq:
+    range: float
+    unit:
+      ucum_code: "% weight"
+    description: Calcium carbonate equivalent percentage by weight
+    minimum_value: 0
+    maximum_value: 100
+
+  gypsum:
+    range: float
+    unit:
+      ucum_code: "% weight"
+    description: Gypsum content percentage by weight
+    minimum_value: 0
+    maximum_value: 100
+
+  elec_cond:
+    range: float
+    unit:
+      ucum_code: "dS/m"
+    description: Electric conductivity
+    minimum_value: 0
+
+  # WRBClass slots
+  id_class:
+    range: integer
+    description: Class identifier
+
+  class_number:
+    range: integer
+    description: Class number
+
+  divider:
+    range: integer
+    description: Divider value
+
+  label:
+    range: string
+    description: Full label for WRB class
+
+  symbol:
+    range: string
+    description: Symbol code for WRB class
+
+  red:
+    range: integer
+    description: Red RGB color component (0-255)
+    minimum_value: 0
+    maximum_value: 255
+
+  green:
+    range: integer
+    description: Green RGB color component (0-255)
+    minimum_value: 0
+    maximum_value: 255
+
+  blue:
+    range: integer
+    description: Blue RGB color component (0-255)
+    minimum_value: 0
+    maximum_value: 255
+
+# =============================================================================
+# ENUMERATIONS
+# =============================================================================
+
+enums:
+
+  CoverageEnum:
+    description: Data source coverage codes
+    permissible_values:
+      NONE:
+        description: None
+      ESDB:
+        description: European Soil Database
+      CHINA:
+        description: China soil database
+      SOTWIS:
+        description: Soil and Terrain Database
+      DSMW:
+        description: Digital Soil Map of the World
+      WISE30s:
+        description: World Inventory of Soil Emission Potentials (30 arcsec)
+      AFGHANISTAN:
+        description: Afghanistan soil database
+      GHANA:
+        description: Ghana soil database
+      TURKEY:
+        description: Turkey soil database
+
+  DrainageEnum:
+    description: Soil drainage classes
+    permissible_values:
+      E:
+        description: Excessively drained
+      SE:
+        description: Somewhat excessively drained
+      W:
+        description: Well drained
+      MW:
+        description: Moderately well drained
+      I:
+        description: Imperfectly drained
+      P:
+        description: Poorly drained
+      VP:
+        description: Very poorly drained
+
+  RootDepthEnum:
+    description: Root depth categories
+    permissible_values:
+      DEEP:
+        description: Deep (> 100cm)
+      MODERATELY_DEEP:
+        description: Moderately Deep (< 100cm)
+      SHALLOW:
+        description: Shallow (< 50cm)
+      VERY_SHALLOW:
+        description: Very shallow (< 10cm)
+
+  RootsEnum:
+    description: Obstacle to roots depth ranges (ESDB)
+    permissible_values:
+      NONE:
+        description: No obstacle
+      GT_80:
+        description: "> 80 cm"
+      "60_80":
+        description: "60-80 cm"
+      "40_60":
+        description: "40-60 cm"
+      "20_40":
+        description: "20-40 cm"
+      "0_80":
+        description: "0-80 cm"
+      "0_20":
+        description: "0-20 cm"
+
+  ILEnum:
+    description: Impermeable layer depth ranges (ESDB)
+    permissible_values:
+      NONE:
+        description: No impermeable layer
+      GT_150:
+        description: "> 150 cm"
+      "80_150":
+        description: "80-150 cm"
+      "40_80":
+        description: "40-80 cm"
+      LT_40:
+        description: "< 40 cm"
+
+  SWREnum:
+    description: Soil Water Regime classes (ESDB)
+    permissible_values:
+      NONE:
+        description: Not applicable
+      SLIGHTLY_WET:
+        description: Slightly wet
+      MODERATELY_WET:
+        description: Moderately wet
+      WET:
+        description: Wet
+      VERY_WET:
+        description: Very wet
+
+  PhaseEnum:
+    description: Soil phase modifiers
+    permissible_values:
+      NONE:
+        description: No phase
+      STONY:
+        description: Stony phase
+      LITHIC:
+        description: Lithic phase (shallow to bedrock)
+      PETRIC:
+        description: Petric phase (cemented layer)
+      PETROCALCIC:
+        description: Petrocalcic phase (cemented carbonate)
+      PETROGYPSIC:
+        description: Petrogypsic phase (cemented gypsum)
+      PETROFERRIC:
+        description: Petroferric phase (cemented iron)
+      PHREATIC:
+        description: Phreatic phase (groundwater influenced)
+      FRAGIPAN:
+        description: Fragipan phase (dense subsurface layer)
+
+  AddPropEnum:
+    description: Additional soil properties
+    permissible_values:
+      NONE:
+        description: No additional properties
+      GELIC:
+        description: Gelic (permafrost influenced)
+      VERTIC:
+        description: Vertic (high shrink-swell)
+
+  KoppenEnum:
+    description: Köppen-Geiger climate classification
+    permissible_values:
+      A:
+        description: Tropical
+      B:
+        description: Arid
+      C:
+        description: Temperate
+      D:
+        description: Cold
+      E:
+        description: Polar
+
+  TextureUSDAEnum:
+    description: USDA soil texture classes
+    permissible_values:
+      NONE:
+        description: Not classified
+      CLAY_HEAVY:
+        description: Clay (heavy)
+      SILTY_CLAY:
+        description: Silty clay
+      CLAY_LIGHT:
+        description: Clay (light)
+      SILTY_CLAY_LOAM:
+        description: Silty clay loam
+      CLAY_LOAM:
+        description: Clay loam
+      SILT:
+        description: Silt
+      SILT_LOAM:
+        description: Silt loam
+      SANDY_CLAY:
+        description: Sandy clay
+      LOAM:
+        description: Loam
+
+  TextureSOTEREnum:
+    description: SOTER soil texture classes
+    permissible_values:
+      C:
+        description: Coarse
+      M:
+        description: Medium
+      F:
+        description: Fine
+      V:
+        description: Very Fine
+      Z:
+        description: Medium Fine
