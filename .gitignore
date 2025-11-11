@@ -142,3 +142,17 @@ dmypy.json
 .idea
 # Local vscode editor config
 .vscode
+
+# Large data files (download separately)
+data/**/*.db
+data/**/*.bil
+data/**/*.hdr
+data/**/*.stx
+data/**/*.prj
+data/**/*.mdb
+data/**/*.zip
+data/**/HWSD2_RASTER/
+
+# Generated test output
+scripts/output/
+*.duckdb
