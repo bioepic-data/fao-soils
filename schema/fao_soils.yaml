@@ -1459,7 +1459,7 @@ classes:
     class_uri: hwsd2:WRBClass
 metamodel_version: 1.7.0
 source_file: fao_soils.yaml
-source_file_date: '2025-11-11T01:21:53'
+source_file_date: '2025-11-11T01:25:49'
 source_file_size: 16097
-generation_date: '2025-11-11T01:22:03'
+generation_date: '2025-11-11T01:25:59'
 
