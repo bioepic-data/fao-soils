@@ -155,4 +155,6 @@ data/**/HWSD2_RASTER/
 
 # Generated test output
 scripts/output/
-*.duckdb
+
+# Export directory is tracked, but can be regenerated
+# export/*.ddb files are small enough to include if desired

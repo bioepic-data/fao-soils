@@ -71,21 +71,28 @@ def load_hwsd2(db_path: str = "hwsd2.db", csv_dir: str = "HWSD2_csv") -> None:
             continue
 
         # Modify COPY statements to use the correct path
-        if stmt.strip().startswith('COPY'):
+        # Check if COPY appears in the statement (might have comments before it)
+        if 'COPY ' in stmt and ' FROM ' in stmt:
             # Extract the CSV filename
             parts = stmt.split("'")
             if len(parts) >= 2:
                 csv_file = parts[1]
-                # Replace with absolute path
-                full_path = csv_path / csv_file.replace('HWSD2_csv/', '')
-                stmt = stmt.replace(f"'{csv_file}'", f"'{full_path}'")
-                print(f"  Loading: {full_path.name}")
-                copy_count += 1
-        elif stmt.strip().startswith('CREATE TABLE'):
-            table_name = stmt.split()[2]
-            print(f"  Creating: {table_name}")
-            table_count += 1
-        elif stmt.strip().startswith('CREATE INDEX'):
+                # Only process if it's a CSV file path
+                if csv_file.endswith('.csv'):
+                    # Replace with absolute path
+                    full_path = csv_path / csv_file.replace('HWSD2_csv/', '')
+                    stmt = stmt.replace(f"'{csv_file}'", f"'{full_path}'")
+                    print(f"  Loading: {full_path.name}")
+                    copy_count += 1
+        elif 'CREATE TABLE' in stmt:
+            # Extract table name (might have comments before it)
+            for line in stmt.split('\n'):
+                if line.strip().startswith('CREATE TABLE'):
+                    table_name = line.split()[2]
+                    print(f"  Creating: {table_name}")
+                    table_count += 1
+                    break
+        elif 'CREATE INDEX' in stmt:
             continue  # Skip printing indexes
 
         try:

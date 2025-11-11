@@ -38,6 +38,15 @@ The [Harmonized World Soil Database v2.0](https://www.fao.org/soils-portal/data-
 * [docs/](docs/) - mkdocs-managed documentation
   * [elements/](docs/elements/) - generated schema documentation
 * [examples/](examples/) - Examples of using the schema
+* [export/](export/) - **Pre-built databases** (ready to use!)
+  * [`hwsd2.ddb`](export/hwsd2.ddb) - DuckDB database (32 MB)
+* [data/](data/) - Source CSV files
+  * [hwsd2/](data/hwsd2/) - HWSD v2.0 data
+    * [HWSD2_csv/](data/hwsd2/HWSD2_csv/) - 25 CSV files (~100 MB)
+* [scripts/](scripts/) - Data processing and extraction scripts
+  * `fetch_fao_soil_database.py` - Download from FAO
+  * `load_hwsd2.py` - Build DuckDB database
+  * `hwsd2_extractor.py` - Extract by coordinates
 * [project/](project/) - project files (these files are auto-generated, do not edit)
 * [src/](src/) - source files (edit these)
   * [fao_soils](src/fao_soils)
@@ -49,6 +58,84 @@ The [Harmonized World Soil Database v2.0](https://www.fao.org/soils-portal/data-
   * [data/](tests/data) - Example data
 
 ## Quick Start
+
+### Getting the Data
+
+**Option 1: Use the pre-built database** (Recommended, ~32 MB)
+
+```bash
+# Clone the repository
+git clone https://github.com/bioepic-data/fao-soils.git
+cd fao-soils
+
+# The database is ready to use!
+# File: export/hwsd2.ddb
+```
+
+**Option 2: Build from source CSVs**
+
+```bash
+# Install dependencies
+pip install duckdb  # or: uv add duckdb
+
+# Build the database (takes ~10 seconds)
+python scripts/load_hwsd2.py export/hwsd2.ddb
+```
+
+**Option 3: Download from FAO** (Complete dataset with rasters)
+
+```bash
+# Downloads and converts original FAO data
+python scripts/fetch_fao_soil_database.py
+```
+
+### Using the Data
+
+#### Python with DuckDB (Recommended)
+
+```python
+import duckdb
+
+# Connect to the pre-built database
+conn = duckdb.connect('export/hwsd2.ddb', read_only=True)
+
+# Query soil properties
+result = conn.execute("""
+    SELECT l.*, d.VALUE as DRAINAGE_CLASS
+    FROM HWSD2_LAYERS l
+    LEFT JOIN D_DRAINAGE d ON l.DRAINAGE = d.CODE
+    WHERE l.HWSD2_SMU_ID = 4726
+    ORDER BY l.TOPDEP
+""").fetchdf()
+
+print(result)
+```
+
+#### Python with CSV files
+
+```python
+import pandas as pd
+
+# Load from CSV
+layers = pd.read_csv('data/hwsd2/HWSD2_csv/HWSD2_LAYERS.csv')
+drainage = pd.read_csv('data/hwsd2/HWSD2_csv/D_DRAINAGE.csv')
+
+# Join tables
+merged = layers.merge(drainage, left_on='DRAINAGE', right_on='CODE')
+```
+
+#### Extract soil by coordinates
+
+```python
+from scripts.hwsd2_extractor import get_soil_profile
+
+# Get 7-layer soil profile for a location
+profile = get_soil_profile(lat=40.0, lon=-105.0)
+
+if profile:
+    print(f"Soil: {profile['metadata']['WRB2_NAME']}")
+    print(profile['layers'][['LAYER', 'SAND', 'CLAY', 'ORG_CARBON']])
+```
 
 ### Using the Schema
 
