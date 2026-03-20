@@ -6,39 +6,74 @@ This script creates a DuckDB database from the HWSD2 CSV files using the
 schema defined in hwsd2_duckdb_schema.sql.
 
 Usage:
-    uv run python load_hwsd2.py [output_db_path]
+    uv run python load_hwsd2.py [--force] [--csv-dir PATH] [output_db_path]
 
 Default output: hwsd2.db
 """
 
+import argparse
 import sys
 from pathlib import Path
 import duckdb
 
 
-def load_hwsd2(db_path: str = "hwsd2.db", csv_dir: str = "HWSD2_csv") -> None:
+def prepare_output_path(db_path: str, force: bool = False) -> Path:
+    """
+    Validate the output database path and optionally remove an existing file.
+
+    Args:
+        db_path: Path to output DuckDB database file
+        force: Whether to overwrite an existing database
+
+    Returns:
+        Normalized output path
+
+    Raises:
+        FileExistsError: If the database already exists and force is False
+    """
+    output_path = Path(db_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    if output_path.exists():
+        if not force:
+            raise FileExistsError(
+                f"Output database already exists: {output_path}. "
+                "Use --force to overwrite it."
+            )
+        output_path.unlink()
+        print(f"Removed existing database: {output_path}")
+
+    return output_path
+
+
+def load_hwsd2(db_path: str = "hwsd2.db", csv_dir: str = "HWSD2_csv", force: bool = False) -> None:
     """
     Load HWSD2 CSV files into a DuckDB database.
 
     Args:
         db_path: Path to output DuckDB database file
         csv_dir: Path to directory containing CSV files
+        force: Whether to overwrite an existing database
 
     Examples:
         >>> # This will create hwsd2.db in current directory
         >>> load_hwsd2()
         >>> # Use custom paths
         >>> load_hwsd2("my_hwsd.db", "data/HWSD2_csv")
+        >>> # Overwrite an existing database
+        >>> load_hwsd2("my_hwsd.db", "data/HWSD2_csv", force=True)
     """
     csv_path = Path(csv_dir)
     if not csv_path.exists():
         raise FileNotFoundError(f"CSV directory not found: {csv_path}")
 
-    print(f"Creating DuckDB database: {db_path}")
+    output_path = prepare_output_path(db_path, force=force)
+
+    print(f"Creating DuckDB database: {output_path}")
     print(f"Loading from CSV directory: {csv_path}")
 
     # Connect to database (creates if doesn't exist)
-    conn = duckdb.connect(db_path)
+    conn = duckdb.connect(str(output_path))
 
     # Load schema from SQL file
     script_dir = Path(__file__).parent
@@ -98,8 +133,10 @@ def load_hwsd2(db_path: str = "hwsd2.db", csv_dir: str = "HWSD2_csv") -> None:
         try:
             conn.execute(stmt)
         except Exception as e:
-            print(f"Warning: Failed to execute statement: {e}")
-            print(f"Statement: {stmt[:100]}...")
+            snippet = stmt[:160].replace("\n", " ")
+            raise RuntimeError(
+                f"Failed to execute SQL statement: {e}\nStatement: {snippet}..."
+            ) from e
 
     print(f"\nComplete!")
     print(f"  Tables created: {table_count}")
@@ -131,30 +168,54 @@ def load_hwsd2(db_path: str = "hwsd2.db", csv_dir: str = "HWSD2_csv") -> None:
     print(result.to_string())
 
     conn.close()
-    print(f"\nDatabase saved to: {db_path}")
+    print(f"\nDatabase saved to: {output_path}")
+
+
+def parse_args(argv: list[str]) -> argparse.Namespace:
+    """Parse command-line arguments."""
+    parser = argparse.ArgumentParser(description="Load HWSD2 CSV files into DuckDB.")
+    parser.add_argument(
+        "db_path",
+        nargs="?",
+        default="hwsd2.ddb",
+        help="Path to output DuckDB database file",
+    )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Overwrite the output database if it already exists",
+    )
+    parser.add_argument(
+        "--csv-dir",
+        help="Path to the HWSD2_csv directory",
+    )
+    return parser.parse_args(argv)
 
 
 def main():
     """Main entry point for command-line usage."""
-    db_path = sys.argv[1] if len(sys.argv) > 1 else "hwsd2.ddb"
+    args = parse_args(sys.argv[1:])
 
-    # Determine CSV directory relative to this script
-    script_dir = Path(__file__).parent
+    if args.csv_dir:
+        csv_dir = Path(args.csv_dir)
+    else:
+        # Determine CSV directory relative to this script
+        script_dir = Path(__file__).parent
 
-    # Try to find HWSD2_csv in standard locations
-    # First try: data/hwsd2/HWSD2_csv (fao-soils repo structure)
-    csv_dir = script_dir.parent / "data" / "hwsd2" / "HWSD2_csv"
+        # Try to find HWSD2_csv in standard locations
+        # First try: data/hwsd2/HWSD2_csv (fao-soils repo structure)
+        csv_dir = script_dir.parent / "data" / "hwsd2" / "HWSD2_csv"
 
-    # Second try: same directory as script (ecosim-co-scientist structure)
-    if not csv_dir.exists():
-        csv_dir = script_dir / "HWSD2_csv"
+        # Second try: same directory as script (ecosim-co-scientist structure)
+        if not csv_dir.exists():
+            csv_dir = script_dir / "HWSD2_csv"
 
-    # Third try: current working directory
-    if not csv_dir.exists():
-        csv_dir = Path.cwd() / "HWSD2_csv"
+        # Third try: current working directory
+        if not csv_dir.exists():
+            csv_dir = Path.cwd() / "HWSD2_csv"
 
     try:
-        load_hwsd2(str(db_path), str(csv_dir))
+        load_hwsd2(str(args.db_path), str(csv_dir), force=args.force)
     except Exception as e:
         print(f"Error: {e}", file=sys.stderr)
         sys.exit(1)

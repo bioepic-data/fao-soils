@@ -13,15 +13,17 @@ The HWSD includes:
 Downloads from: https://www.fao.org/soils-portal/data-hub/soil-maps-and-databases/harmonized-world-soil-database-v20/en/
 """
 
+import argparse
 import hashlib
 import logging
 import sqlite3
+import shutil
 import subprocess
-import tempfile
+import sys
 import zipfile
 from pathlib import Path
 from typing import Optional
-from urllib.request import urlopen, urlretrieve
+from urllib.request import urlretrieve
 from urllib.parse import urlparse
 
 import pandas as pd
@@ -63,14 +65,16 @@ class HWSDFetcher:
         >>> soil_data = fetcher.get_soil_properties(['organic_carbon', 'bulk_density'])
     """
     
-    def __init__(self, data_dir: str = "./hwsd_data"):
+    def __init__(self, data_dir: str = "./hwsd_data", force_download: bool = False):
         """
         Initialize the HWSD fetcher.
         
         Args:
             data_dir: Directory to store downloaded HWSD data
+            force_download: Whether to re-download files that already exist
         """
         self.data_dir = Path(data_dir)
+        self.force_download = force_download
         self.data_dir.mkdir(exist_ok=True, parents=True)
         logger.info(f"HWSD data directory: {self.data_dir.absolute()}")
     
@@ -90,10 +94,14 @@ class HWSDFetcher:
         
         file_path = self.data_dir / filename
         
-        # Skip if file already exists
+        # Skip if file already exists unless refresh was requested
         if file_path.exists():
-            logger.info(f"File already exists: {file_path}")
-            return file_path
+            if self.force_download:
+                logger.info(f"Removing existing download before refresh: {file_path}")
+                file_path.unlink()
+            else:
+                logger.info(f"File already exists: {file_path}")
+                return file_path
         
         logger.info(f"Downloading {url} to {file_path}")
         
@@ -181,25 +189,36 @@ class HWSDFetcher:
         components = {
             "database": self.download_database(),
             "raster": self.download_raster(),
-            "documentation": self.download_documentation()
         }
+
+        try:
+            components["documentation"] = self.download_documentation()
+        except Exception as e:
+            logger.warning(
+                "Technical report download failed; continuing without it: %s",
+                e,
+            )
         
         logger.info("✓ All HWSD components downloaded successfully!")
         return components
     
-    def extract_zip(self, zip_path: Path, extract_to: Optional[Path] = None) -> Path:
+    def extract_zip(self, zip_path: Path, extract_to: Optional[Path] = None, replace: bool = False) -> Path:
         """
         Extract a ZIP file to the specified directory.
         
         Args:
             zip_path: Path to ZIP file to extract
             extract_to: Directory to extract to (default: same name as zip without extension)
+            replace: Whether to replace the extraction directory if it already exists
             
         Returns:
             Path to extraction directory
         """
         if extract_to is None:
             extract_to = self.data_dir / zip_path.stem
+
+        if replace and extract_to.exists():
+            shutil.rmtree(extract_to)
         
         extract_to.mkdir(exist_ok=True, parents=True)
         
@@ -238,7 +257,7 @@ class HWSDFetcher:
             logger.info("✓ mdb-tools are available")
             return True
         except (subprocess.TimeoutExpired, FileNotFoundError):
-            logger.warning("✗ mdb-tools not found. Install with: sudo apt-get install mdb-tools")
+            logger.warning("✗ mdb-tools not found. Install with: sudo apt-get install mdbtools")
             return False
     
     def convert_mdb_to_sqlite(self, mdb_path: Path, sqlite_path: Optional[Path] = None) -> Path:
@@ -254,6 +273,10 @@ class HWSDFetcher:
         """
         if sqlite_path is None:
             sqlite_path = mdb_path.with_suffix(".db")
+
+        sqlite_path.parent.mkdir(exist_ok=True, parents=True)
+        if sqlite_path.exists():
+            sqlite_path.unlink()
         
         if not self.check_mdb_tools():
             raise RuntimeError("mdb-tools required for .mdb conversion")
@@ -311,7 +334,10 @@ class HWSDFetcher:
         """
         if output_dir is None:
             output_dir = self.data_dir / f"{mdb_path.stem}_csv"
-        
+
+        if output_dir.exists():
+            for csv_file in output_dir.glob("*.csv"):
+                csv_file.unlink()
         output_dir.mkdir(exist_ok=True, parents=True)
         
         if not self.check_mdb_tools():
@@ -376,15 +402,48 @@ class HWSDFetcher:
         return info
 
 
-def main():
+def default_hwsd_data_dir() -> Path:
+    """
+    Determine the default data directory for HWSD assets.
+
+    Returns:
+        Path to the repository data directory when running inside this repo,
+        otherwise a local `hwsd_data` directory.
+    """
+    script_dir = Path(__file__).resolve().parent
+    repo_data_dir = script_dir.parent / "data" / "hwsd2"
+    if repo_data_dir.parent.exists():
+        return repo_data_dir
+    return Path.cwd() / "hwsd_data"
+
+
+def parse_args(argv: list[str]) -> argparse.Namespace:
+    """Parse command-line arguments."""
+    parser = argparse.ArgumentParser(
+        description="Download and refresh HWSD2 source artifacts in the local data directory."
+    )
+    parser.add_argument(
+        "--data-dir",
+        default=str(default_hwsd_data_dir()),
+        help="Directory where HWSD downloads, extracted files, CSVs, and SQLite output should be stored",
+    )
+    parser.add_argument(
+        "--force-download",
+        action="store_true",
+        help="Re-download source archives and documentation even if they already exist",
+    )
+    return parser.parse_args(argv)
+
+
+def main(argv: Optional[list[str]] = None):
     """
     Main function demonstrating HWSD fetcher usage.
     
     Downloads the complete HWSD v2.0 database and converts it to
     accessible formats (SQLite and CSV).
     """
-    # Initialize fetcher
-    fetcher = HWSDFetcher(data_dir="./hwsd_data")
+    args = parse_args(argv or [])
+    fetcher = HWSDFetcher(data_dir=args.data_dir, force_download=args.force_download)
     
     try:
         # Download all components
@@ -394,20 +453,30 @@ def main():
         # Extract database zip
         db_zip = components["database"]
         logger.info("\n=== Extracting Database ===")
-        fetcher.extract_zip(db_zip)
+        db_extract_dir = fetcher.extract_zip(
+            db_zip,
+            extract_to=fetcher.data_dir / "HWSD2_DB",
+            replace=True,
+        )
         
         # Find and convert .mdb files
-        mdb_files = fetcher.find_mdb_files()
+        mdb_files = list(db_extract_dir.rglob("*.mdb"))
         if mdb_files:
             logger.info("\n=== Converting Databases ===")
             for mdb_file in mdb_files:
                 try:
                     # Convert to SQLite
-                    sqlite_file = fetcher.convert_mdb_to_sqlite(mdb_file)
+                    sqlite_file = fetcher.convert_mdb_to_sqlite(
+                        mdb_file,
+                        fetcher.data_dir / "hwsd2.db",
+                    )
                     logger.info(f"✓ SQLite database: {sqlite_file}")
                     
                     # Export to CSV
-                    csv_dir = fetcher.export_tables_to_csv(mdb_file)
+                    csv_dir = fetcher.export_tables_to_csv(
+                        mdb_file,
+                        fetcher.data_dir / "HWSD2_csv",
+                    )
                     logger.info(f"✓ CSV export: {csv_dir}")
                     
                 except Exception as e:
@@ -416,7 +485,11 @@ def main():
         # Extract raster data
         raster_zip = components["raster"] 
         logger.info("\n=== Extracting Raster Data ===")
-        fetcher.extract_zip(raster_zip)
+        fetcher.extract_zip(
+            raster_zip,
+            extract_to=fetcher.data_dir / "HWSD2_RASTER",
+            replace=True,
+        )
         
         # Show final summary
         logger.info("\n=== HWSD Setup Complete ===")
@@ -439,4 +512,4 @@ def main():
 
 
 if __name__ == "__main__":
-    exit(main())
+    exit(main(sys.argv[1:]))

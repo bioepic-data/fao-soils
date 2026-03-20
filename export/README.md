@@ -110,7 +110,7 @@ If you need to rebuild the database (e.g., after updating CSV data):
 
 ```bash
 # From repository root
-python scripts/load_hwsd2.py export/hwsd2.ddb
+just update-export
 ```
 
 The script will:
@@ -121,8 +121,7 @@ The script will:
 5. Validate data integrity
 
 **Requirements:**
-- Python 3.8+
-- duckdb package (`pip install duckdb` or `uv add duckdb`)
+- Project dependencies installed with `uv sync --dev`
 
 ## Alternative: CSV Files
 
@@ -168,11 +167,10 @@ The database is small enough to include in version control if desired, or can be
 To update the database when source CSVs change:
 
 ```bash
-# Remove old database
-rm export/hwsd2.ddb
+just update-export
 
-# Rebuild from CSVs
-python scripts/load_hwsd2.py export/hwsd2.ddb
+# Or run the loader directly
+uv run python scripts/load_hwsd2.py --force export/hwsd2.ddb
 ```
 
 The rebuild process takes ~5-10 seconds on modern hardware.

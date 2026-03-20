@@ -16,16 +16,20 @@ Downloads and converts the FAO Harmonized World Soil Database (HWSD) v2.0 from i
 
 **Usage:**
 ```bash
-# Download all HWSD2 components
-python fetch_fao_soil_database.py
+# Refresh repo-managed HWSD2 source artifacts under data/hwsd2/
+uv sync --dev
+uv run python fetch_fao_soil_database.py --data-dir ../data/hwsd2
 
 # Specify custom output directory
-python fetch_fao_soil_database.py --data-dir /path/to/output
+uv run python fetch_fao_soil_database.py --data-dir /path/to/output
+
+# Re-download source archives before refreshing outputs
+uv run python fetch_fao_soil_database.py --data-dir ../data/hwsd2 --force-download
 ```
 
 **Requirements:**
 - Python 3.8+
-- pandas
+- Project dependencies installed with `uv sync --dev`
 - mdb-tools (for .mdb conversion on Unix/Mac)
 
 ### `install_mdb_tools.sh`
@@ -57,11 +61,21 @@ Loads HWSD2 CSV files into a DuckDB database for fast SQL queries.
 
 **Usage:**
 ```bash
-# Load data into DuckDB (requires CSV files in data/hwsd2/HWSD2_csv/)
-python load_hwsd2.py ../data/hwsd2/hwsd2.db
+# Load data into a new DuckDB file
+uv sync --dev
+uv run python load_hwsd2.py ../data/hwsd2/hwsd2.db
 
 # Use custom CSV directory
-python load_hwsd2.py output.db --csv-dir /path/to/HWSD2_csv
+uv run python load_hwsd2.py output.db --csv-dir /path/to/HWSD2_csv
+
+# Overwrite an existing DuckDB file
+uv run python load_hwsd2.py --force ../data/hwsd2/hwsd2.db
+```
+
+For the packaged export in this repo, use:
+
+```bash
+just update-export
 ```
 
 **Output:**
@@ -139,22 +153,23 @@ python test_extractor.py
 Complete workflow from download to extraction:
 
 ```bash
-# 1. Install dependencies
+# 1. Install system dependency for .mdb extraction
 bash install_mdb_tools.sh
-pip install pandas duckdb
 
-# 2. Download and convert HWSD2 data
-python fetch_fao_soil_database.py
+# 2. Install Python dependencies in the project environment
+uv sync --dev
 
-# 3. Load CSV data into DuckDB
-cd ../data/hwsd2
-python ../../scripts/load_hwsd2.py hwsd2.db
+# 3. Download and convert HWSD2 data
+uv run python fetch_fao_soil_database.py --data-dir ../data/hwsd2
 
-# 4. Extract soil profiles
-python ../../scripts/hwsd2_extractor.py 40.0 -105.0
+# 4. Load CSV data into DuckDB
+uv run python load_hwsd2.py --force ../export/hwsd2.ddb
 
-# 5. Run tests
-python ../../scripts/test_extractor.py
+# 5. Extract soil profiles
+uv run python ../../scripts/hwsd2_extractor.py 40.0 -105.0
+
+# 6. Run tests
+uv run python ../../scripts/test_extractor.py
 ```
 
 ## Directory Structure After Running Scripts
@@ -171,11 +186,24 @@ fao-soils/
 │   └── hwsd2/
 │       ├── HWSD2_csv/          # CSV exports (from fetch script)
 │       ├── HWSD2_RASTER/       # Raster files (from fetch script)
-│       ├── hwsd2.db            # DuckDB database (from load script)
+│       ├── hwsd2.db            # SQLite database (from fetch script)
 │       ├── hwsd2_duckdb_schema.sql
 │       └── README.md
+├── export/
+│   └── hwsd2.ddb               # DuckDB database (from load script)
 └── src/fao_soils/schema/
     └── hwsd2.yaml              # LinkML schema
+```
+
+## Just Targets
+
+From the repository root:
+
+```bash
+just update-data
+just refresh-data-downloads
+just update-export
+just update-artifacts
 ```
 
 ## Data Sources
@@ -196,7 +224,7 @@ If you get errors about mdb-tools:
 brew install mdb-tools
 
 # Ubuntu/Debian
-sudo apt-get install mdb-tools
+sudo apt-get install mdbtools
 
 # Or use the install script
 bash install_mdb_tools.sh

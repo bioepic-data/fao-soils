@@ -13,6 +13,8 @@ This repository includes the derived data products referenced throughout the doc
 
 Choose the DuckDB export when you want one file for analysis, or the CSV directory when you need the individual tables.
 
+To refresh local copies of the repo-managed artifacts, run `just update-data`, `just update-export`, or `just update-artifacts` from the repository root. The data refresh commands require `mdb-tools` because they convert the FAO `.mdb` source database.
+
 ## Dataset Specifications
 
 ### Spatial Coverage

@@ -619,7 +619,12 @@ class SoilMappingUnit(ConfiguredBaseModel):
     share: Optional[float] = Field(default=None, description="""Percentage share in Soil Mapping Unit""", ge=0, le=100, json_schema_extra = { "linkml_meta": {'domain_of': ['SoilMappingUnit', 'SoilLayer'], 'unit': {'ucum_code': '%'}} })
     wrb4: Optional[str] = Field(default=None, description="""Soil Unit Symbol from World Reference Base 2022 (4-character code)""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilMappingUnit', 'SoilLayer']} })
     wrb_phases: Optional[str] = Field(default=None, description="""Detailed Soil Unit Symbol from WRB 2022 with phases""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilMappingUnit', 'SoilLayer']} })
-    wrb2: Optional[FAOSoilTypeEnum] = Field(default=None, description="""Dominant WRB 2022 soil group code (2-character HWSD/WRB symbol)""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilMappingUnit', 'SoilLayer']} })
+    wrb2: Optional[FAOSoilTypeEnum] = Field(default=None, description="""Dominant WRB 2022 soil group code (2-character HWSD/WRB symbol).
+
+Example usage:
+wrb2: FR  # Ferralsols - tropical weathered soils
+wrb2: CR  # Cryosols - permafrost soils
+wrb2: GG  # Glaciers - non-soil areas""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilMappingUnit', 'SoilLayer']} })
     wrb2_code: Optional[str] = Field(default=None, description="""Numeric code for WRB2 dominant soil group""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilMappingUnit']} })
     fao90: Optional[str] = Field(default=None, description="""Soil Unit Symbol from FAO 1990 classification""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilMappingUnit', 'SoilLayer']} })
     koppen: Optional[KoppenEnum] = Field(default=None, description="""Köppen-Geiger climate classification""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilMappingUnit']} })
@@ -660,7 +665,12 @@ class SoilLayer(ConfiguredBaseModel):
     nsc: Optional[str] = Field(default=None, description="""National Soil Classification code""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilLayer']} })
     wrb_phases: Optional[str] = Field(default=None, description="""Detailed Soil Unit Symbol from WRB 2022 with phases""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilMappingUnit', 'SoilLayer']} })
     wrb4: Optional[str] = Field(default=None, description="""Soil Unit Symbol from World Reference Base 2022 (4-character code)""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilMappingUnit', 'SoilLayer']} })
-    wrb2: Optional[FAOSoilTypeEnum] = Field(default=None, description="""Dominant WRB 2022 soil group code (2-character HWSD/WRB symbol)""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilMappingUnit', 'SoilLayer']} })
+    wrb2: Optional[FAOSoilTypeEnum] = Field(default=None, description="""Dominant WRB 2022 soil group code (2-character HWSD/WRB symbol).
+
+Example usage:
+wrb2: FR  # Ferralsols - tropical weathered soils
+wrb2: CR  # Cryosols - permafrost soils
+wrb2: GG  # Glaciers - non-soil areas""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilMappingUnit', 'SoilLayer']} })
     fao90: Optional[str] = Field(default=None, description="""Soil Unit Symbol from FAO 1990 classification""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilMappingUnit', 'SoilLayer']} })
     root_depth_layer: Optional[str] = Field(default=None, description="""Rootable soil depth for specific layer""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilLayer']} })
     phase1: Optional[PhaseEnum] = Field(default=None, description="""Primary soil phase (Stony, Lithic, Petric, etc.)""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilMappingUnit', 'SoilLayer']} })
