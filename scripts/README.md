@@ -17,15 +17,16 @@ Downloads and converts the FAO Harmonized World Soil Database (HWSD) v2.0 from i
 **Usage:**
 ```bash
 # Download all HWSD2 components
-python fetch_fao_soil_database.py
+uv sync --dev
+uv run python fetch_fao_soil_database.py
 
 # Specify custom output directory
-python fetch_fao_soil_database.py --data-dir /path/to/output
+uv run python fetch_fao_soil_database.py --data-dir /path/to/output
 ```
 
 **Requirements:**
 - Python 3.8+
-- pandas
+- Project dependencies installed with `uv sync --dev`
 - mdb-tools (for .mdb conversion on Unix/Mac)
 
 ### `install_mdb_tools.sh`
@@ -139,22 +140,24 @@ python test_extractor.py
 Complete workflow from download to extraction:
 
 ```bash
-# 1. Install dependencies
+# 1. Install system dependency for .mdb extraction
 bash install_mdb_tools.sh
-pip install pandas duckdb
 
-# 2. Download and convert HWSD2 data
-python fetch_fao_soil_database.py
+# 2. Install Python dependencies in the project environment
+uv sync --dev
 
-# 3. Load CSV data into DuckDB
+# 3. Download and convert HWSD2 data
+uv run python fetch_fao_soil_database.py
+
+# 4. Load CSV data into DuckDB
 cd ../data/hwsd2
-python ../../scripts/load_hwsd2.py hwsd2.db
+uv run python ../../scripts/load_hwsd2.py hwsd2.db
 
-# 4. Extract soil profiles
-python ../../scripts/hwsd2_extractor.py 40.0 -105.0
+# 5. Extract soil profiles
+uv run python ../../scripts/hwsd2_extractor.py 40.0 -105.0
 
-# 5. Run tests
-python ../../scripts/test_extractor.py
+# 6. Run tests
+uv run python ../../scripts/test_extractor.py
 ```
 
 ## Directory Structure After Running Scripts

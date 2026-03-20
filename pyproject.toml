@@ -15,7 +15,9 @@ requires-python = ">=3.9,<4.0"
 dynamic = ["version"]
 
 dependencies = [
+  "duckdb>=1.0.0",
   "linkml-runtime >=1.9.4",
+  "pandas>=2.0.0",
 ]
 
 [dependency-groups]

@@ -84,18 +84,21 @@ cd fao-soils
 **Option 2: Build from source CSVs**
 
 ```bash
-# Install dependencies
-pip install duckdb  # or: uv add duckdb
+# Install project dependencies
+uv sync --dev
 
 # Build the database (takes ~10 seconds)
-python scripts/load_hwsd2.py export/hwsd2.ddb
+uv run python scripts/load_hwsd2.py export/hwsd2.ddb
 ```
 
 **Option 3: Download from FAO** (Complete dataset with rasters)
 
 ```bash
+# Install project dependencies
+uv sync --dev
+
 # Downloads and converts original FAO data
-python scripts/fetch_fao_soil_database.py
+uv run python scripts/fetch_fao_soil_database.py
 ```
 
 ### Using the Data
@@ -162,7 +165,7 @@ The LinkML schema can generate multiple formats:
 
 ```bash
 # Install dependencies
-pip install linkml
+uv sync --dev
 
 # Generate Python dataclasses
 gen-python src/fao_soils/schema/hwsd2.yaml > hwsd2_datamodel.py

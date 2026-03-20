@@ -44,12 +44,12 @@ These files are too large for Git and must be generated locally:
 - **`HWSD2_RASTER/HWSD2.bil`** - Global soil raster (~1.7 GB)
   - 30 arc-second resolution (43,200 × 21,600 pixels)
   - Links geographic locations to soil mapping units
-  - Download using `scripts/fetch_fao_soil_database.py`
+  - Download using `uv run python scripts/fetch_fao_soil_database.py`
 
 - **`../export/hwsd2.ddb`** - DuckDB database (~32 MB)
   - Fast SQL queries on soil data
   - Pre-built version available in `export/` directory
-  - Can be regenerated using `scripts/load_hwsd2.py`
+  - Can be regenerated using `uv run python scripts/load_hwsd2.py`
 
 ## Getting the Data
 
@@ -59,8 +59,9 @@ These files are too large for Git and must be generated locally:
 
 ```bash
 # From repository root
+uv sync --dev
 cd export/
-python -c "import duckdb; conn = duckdb.connect('hwsd2.ddb'); print(conn.execute('SELECT COUNT(*) FROM HWSD2_LAYERS').fetchone())"
+uv run python -c "import duckdb; conn = duckdb.connect('hwsd2.ddb'); print(conn.execute('SELECT COUNT(*) FROM HWSD2_LAYERS').fetchone())"
 ```
 
 See [export/README.md](../export/README.md) for usage examples.
@@ -71,7 +72,8 @@ CSVs are included in this repository (in `hwsd2/HWSD2_csv/`). Build the database
 
 ```bash
 # From repository root
-python scripts/load_hwsd2.py export/hwsd2.ddb
+uv sync --dev
+uv run python scripts/load_hwsd2.py export/hwsd2.ddb
 ```
 
 This takes ~10 seconds and creates a 32 MB database.
@@ -82,8 +84,8 @@ Download the complete dataset including raster files:
 
 ```bash
 # From repository root
-cd scripts/
-python fetch_fao_soil_database.py
+uv sync --dev
+uv run python scripts/fetch_fao_soil_database.py
 ```
 
 This downloads:
