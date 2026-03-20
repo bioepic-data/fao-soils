@@ -49,7 +49,7 @@ These files are too large for Git and must be generated locally:
 - **`../export/hwsd2.ddb`** - DuckDB database (~32 MB)
   - Fast SQL queries on soil data
   - Pre-built version available in `export/` directory
-  - Can be regenerated using `uv run python scripts/load_hwsd2.py`
+  - Can be regenerated using `uv run python scripts/load_hwsd2.py --force`
 
 ## Getting the Data
 
@@ -73,7 +73,7 @@ CSVs are included in this repository (in `hwsd2/HWSD2_csv/`). Build the database
 ```bash
 # From repository root
 uv sync --dev
-uv run python scripts/load_hwsd2.py export/hwsd2.ddb
+uv run python scripts/load_hwsd2.py --force export/hwsd2.ddb
 ```
 
 This takes ~10 seconds and creates a 32 MB database.

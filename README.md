@@ -87,8 +87,8 @@ cd fao-soils
 # Install project dependencies
 uv sync --dev
 
-# Build the database (takes ~10 seconds)
-uv run python scripts/load_hwsd2.py export/hwsd2.ddb
+# Rebuild the packaged database in place (overwrites existing file)
+uv run python scripts/load_hwsd2.py --force export/hwsd2.ddb
 ```
 
 **Option 3: Download from FAO** (Complete dataset with rasters)

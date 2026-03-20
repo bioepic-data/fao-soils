@@ -58,11 +58,15 @@ Loads HWSD2 CSV files into a DuckDB database for fast SQL queries.
 
 **Usage:**
 ```bash
-# Load data into DuckDB (requires CSV files in data/hwsd2/HWSD2_csv/)
-python load_hwsd2.py ../data/hwsd2/hwsd2.db
+# Load data into a new DuckDB file
+uv sync --dev
+uv run python load_hwsd2.py ../data/hwsd2/hwsd2.db
 
 # Use custom CSV directory
-python load_hwsd2.py output.db --csv-dir /path/to/HWSD2_csv
+uv run python load_hwsd2.py output.db --csv-dir /path/to/HWSD2_csv
+
+# Overwrite an existing DuckDB file
+uv run python load_hwsd2.py --force ../data/hwsd2/hwsd2.db
 ```
 
 **Output:**
@@ -151,7 +155,7 @@ uv run python fetch_fao_soil_database.py
 
 # 4. Load CSV data into DuckDB
 cd ../data/hwsd2
-uv run python ../../scripts/load_hwsd2.py hwsd2.db
+uv run python ../../scripts/load_hwsd2.py --force hwsd2.db
 
 # 5. Extract soil profiles
 uv run python ../../scripts/hwsd2_extractor.py 40.0 -105.0
