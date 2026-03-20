@@ -386,6 +386,15 @@
 
       SoilMappingUnit : wrb2
 
+
+
+
+
+        SoilMappingUnit --&gt; "0..1" FAOSoilTypeEnum : wrb2
+        click FAOSoilTypeEnum href "../FAOSoilTypeEnum/"
+
+
+
       SoilMappingUnit : wrb2_code
 
       SoilMappingUnit : wrb4
@@ -456,8 +465,8 @@
 </tr>
 <tr>
 <td><a href="../wrb2/">wrb2</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Soil Unit Symbol from WRB 2022 (2-character code)</td>
+<td>0..1 <br/> <a href="../FAOSoilTypeEnum/">FAOSoilTypeEnum</a></td>
+<td>Dominant WRB 2022 soil group code (2-character HWSD/WRB symbol)</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -718,7 +727,16 @@ attributes:
     range: string
   wrb2:
     name: wrb2
-    description: Soil Unit Symbol from WRB 2022 (2-character code)
+    description: 'Dominant WRB 2022 soil group code (2-character HWSD/WRB symbol).
+
+
+      Example usage:
+
+      wrb2: FR  # Ferralsols - tropical weathered soils
+
+      wrb2: CR  # Cryosols - permafrost soils
+
+      wrb2: GG  # Glaciers - non-soil areas'
     from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
     rank: 1000
     alias: wrb2
@@ -726,7 +744,7 @@ attributes:
     domain_of:
     - SoilMappingUnit
     - SoilLayer
-    range: string
+    range: FAOSoilTypeEnum
   wrb2_code:
     name: wrb2_code
     description: Numeric code for WRB2 dominant soil group

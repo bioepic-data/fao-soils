@@ -1,0 +1,1204 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://bioepic-data.github.io/fao-soils/elements/FAOSoilTypeEnum/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>Enum: FAOSoilTypeEnum - fao-soils</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#enum-faosoiltypeenum" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="fao-soils" class="md-header__button md-logo" aria-label="fao-soils" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            fao-soils
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Enum: FAOSoilTypeEnum
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/bioepic-data/fao-soils" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="fao-soils" class="md-nav__button md-logo" aria-label="fao-soils" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    fao-soils
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/bioepic-data/fao-soils" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Databases
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Databases
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hwsd2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HWSD2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Schema
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#permissible-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Permissible Values
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slots" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slots
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      See Also
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#identifier-and-mapping-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Identifier and Mapping Information
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Identifier and Mapping Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schema-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schema Source
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linkml-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      LinkML Source
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="enum-faosoiltypeenum">Enum: FAOSoilTypeEnum</h1>
+<p><em>FAO World Reference Base (WRB) soil classification codes used in HWSD2. This enum is adapted from the LinkML valuesets FAO soil valueset, but uses the 2-character HWSD/WRB symbols as permissible values so it can type the existing <code>wrb2</code> field directly.</em></p>
+<p>URI: <a href="https://w3id.org/bioepic-data/fao-soils/hwsd2/FAOSoilTypeEnum">hwsd2:FAOSoilTypeEnum</a></p>
+<h2 id="permissible-values">Permissible Values</h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AC</td>
+<td>None</td>
+<td>Acrisols - soils with subsurface accumulation of low-activity clays and low b...</td>
+</tr>
+<tr>
+<td>AL</td>
+<td>None</td>
+<td>Alisols - soils with high aluminium saturation and low base saturation</td>
+</tr>
+<tr>
+<td>AN</td>
+<td>ENVO:00002232</td>
+<td>Andosols - soils developed from volcanic ash with unique physical and chemica...</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>ENVO:00002229</td>
+<td>Arenosols - sandy soils with weak horizon development</td>
+</tr>
+<tr>
+<td>AT</td>
+<td>None</td>
+<td>Anthrosols - soils strongly modified by human activities</td>
+</tr>
+<tr>
+<td>CH</td>
+<td>None</td>
+<td>Chernozems - very dark, fertile soils with thick mollic horizon</td>
+</tr>
+<tr>
+<td>CL</td>
+<td>None</td>
+<td>Calcisols - soils with secondary calcium carbonate accumulation</td>
+</tr>
+<tr>
+<td>CM</td>
+<td>None</td>
+<td>Cambisols - soils with beginning of horizon differentiation</td>
+</tr>
+<tr>
+<td>CR</td>
+<td>ENVO:00002236</td>
+<td>Cryosols - soils formed under permafrost conditions</td>
+</tr>
+<tr>
+<td>FL</td>
+<td>ENVO:00002273</td>
+<td>Fluvisols - soils developed from recent alluvial deposits</td>
+</tr>
+<tr>
+<td>FR</td>
+<td>None</td>
+<td>Ferralsols - highly weathered soils with low-activity clay minerals</td>
+</tr>
+<tr>
+<td>GG</td>
+<td>ENVO:00000133</td>
+<td>Glaciers - areas covered by permanent ice (non-soil land cover category carri...</td>
+</tr>
+<tr>
+<td>GL</td>
+<td>ENVO:00002244</td>
+<td>Gleysols - soils with permanent or temporary waterlogging</td>
+</tr>
+<tr>
+<td>GY</td>
+<td>None</td>
+<td>Gypsisols - soils with secondary gypsum accumulation</td>
+</tr>
+<tr>
+<td>HS</td>
+<td>ENVO:00005774</td>
+<td>Histosols - soils formed from organic materials (peat soils)</td>
+</tr>
+<tr>
+<td>KS</td>
+<td>None</td>
+<td>Kastanozems - soils with chestnut-colored mollic horizon</td>
+</tr>
+<tr>
+<td>LP</td>
+<td>None</td>
+<td>Leptosols - shallow soils over hard rock or highly calcareous material</td>
+</tr>
+<tr>
+<td>LV</td>
+<td>None</td>
+<td>Luvisols - soils with clay illuviation and high base saturation</td>
+</tr>
+<tr>
+<td>LX</td>
+<td>None</td>
+<td>Lixisols - soils with clay illuviation and low base saturation</td>
+</tr>
+<tr>
+<td>NT</td>
+<td>None</td>
+<td>Nitisols - soils with deep, well-structured clay horizons</td>
+</tr>
+<tr>
+<td>PH</td>
+<td>None</td>
+<td>Phaeozems - soils with dark mollic horizon and high base saturation</td>
+</tr>
+<tr>
+<td>PL</td>
+<td>None</td>
+<td>Planosols - soils with abrupt textural change and impermeable subsoil</td>
+</tr>
+<tr>
+<td>PT</td>
+<td>None</td>
+<td>Plinthosols - soils with iron-rich, humus-poor mixture that hardens irreversi...</td>
+</tr>
+<tr>
+<td>PZ</td>
+<td>None</td>
+<td>Podzols - soils with subsurface accumulation of aluminium and iron complexes ...</td>
+</tr>
+<tr>
+<td>RG</td>
+<td>None</td>
+<td>Regosols - weakly developed soils without significant horizon differentiation</td>
+</tr>
+<tr>
+<td>RT</td>
+<td>None</td>
+<td>Retisols - soils with clay migration and tonguing of overlying material</td>
+</tr>
+<tr>
+<td>SC</td>
+<td>ENVO:00002252</td>
+<td>Solonchaks - soils with high salt content</td>
+</tr>
+<tr>
+<td>SN</td>
+<td>None</td>
+<td>Solonetz - soils with high exchangeable sodium content</td>
+</tr>
+<tr>
+<td>ST</td>
+<td>None</td>
+<td>Stagnosols - soils with seasonal waterlogging in upper horizons</td>
+</tr>
+<tr>
+<td>TC</td>
+<td>None</td>
+<td>Technosols - soils containing significant amounts of technical artifacts</td>
+</tr>
+<tr>
+<td>UM</td>
+<td>None</td>
+<td>Umbrisols - soils with dark acidic surface horizon</td>
+</tr>
+<tr>
+<td>VR</td>
+<td>ENVO:00002254</td>
+<td>Vertisols - clay-rich soils with shrink-swell properties</td>
+</tr>
+<tr>
+<td>WR</td>
+<td>ENVO:01001320</td>
+<td>Open inland water - areas covered by permanent water bodies (non-soil land co...</td>
+</tr>
+<tr>
+<td>ND</td>
+<td>None</td>
+<td>No data - areas where soil data is not available</td>
+</tr>
+</tbody>
+</table>
+<h2 id="slots">Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../wrb2/">wrb2</a></td>
+<td>Dominant WRB 2022 soil group code (2-character HWSD/WRB symbol)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="https://github.com/linkml/valuesets/pull/26">https://github.com/linkml/valuesets/pull/26</a></li>
+<li><a href="https://raw.githubusercontent.com/linkml/valuesets/main/src/valuesets/schema/earth_science/fao_soil.yaml">https://raw.githubusercontent.com/linkml/valuesets/main/src/valuesets/schema/earth_science/fao_soil.yaml</a></li>
+<li><a href="https://www.fao.org/soils-portal/data-hub/soil-classification/world-reference-base/en/">https://www.fao.org/soils-portal/data-hub/soil-classification/world-reference-base/en/</a></li>
+<li><a href="https://www.isric.org/explore/hwsd">https://www.isric.org/explore/hwsd</a></li>
+</ul>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: https://w3id.org/bioepic-data/fao-soils/hwsd2</li>
+</ul>
+<h2 id="linkml-source">LinkML Source</h2>
+<details>
+
+<pre><code class="language-yaml">name: FAOSoilTypeEnum
+description: FAO World Reference Base (WRB) soil classification codes used in HWSD2.
+  This enum is adapted from the LinkML valuesets FAO soil valueset, but uses the 2-character
+  HWSD/WRB symbols as permissible values so it can type the existing `wrb2` field
+  directly.
+from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
+see_also:
+- https://github.com/linkml/valuesets/pull/26
+- https://raw.githubusercontent.com/linkml/valuesets/main/src/valuesets/schema/earth_science/fao_soil.yaml
+- https://www.fao.org/soils-portal/data-hub/soil-classification/world-reference-base/en/
+- https://www.isric.org/explore/hwsd
+rank: 1000
+permissible_values:
+  AC:
+    text: AC
+    description: Acrisols - soils with subsurface accumulation of low-activity clays
+      and low base saturation
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Acrisols
+      fao_id:
+        tag: fao_id
+        value: 1
+      color_rgb:
+        tag: color_rgb
+        value: 247,152,4
+  AL:
+    text: AL
+    description: Alisols - soils with high aluminium saturation and low base saturation
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Alisols
+      fao_id:
+        tag: fao_id
+        value: 2
+      color_rgb:
+        tag: color_rgb
+        value: 255,255,190
+  AN:
+    text: AN
+    description: Andosols - soils developed from volcanic ash with unique physical
+      and chemical properties
+    meaning: ENVO:00002232
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Andosols
+      fao_id:
+        tag: fao_id
+        value: 3
+      color_rgb:
+        tag: color_rgb
+        value: 254,0,0
+  AR:
+    text: AR
+    description: Arenosols - sandy soils with weak horizon development
+    meaning: ENVO:00002229
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Arenosols
+      fao_id:
+        tag: fao_id
+        value: 4
+      color_rgb:
+        tag: color_rgb
+        value: 245,212,161
+  AT:
+    text: AT
+    description: Anthrosols - soils strongly modified by human activities
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Anthrosols
+      fao_id:
+        tag: fao_id
+        value: 5
+      color_rgb:
+        tag: color_rgb
+        value: 207,152,4
+  CH:
+    text: CH
+    description: Chernozems - very dark, fertile soils with thick mollic horizon
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Chernozems
+      fao_id:
+        tag: fao_id
+        value: 6
+      color_rgb:
+        tag: color_rgb
+        value: 145,77,53
+  CL:
+    text: CL
+    description: Calcisols - soils with secondary calcium carbonate accumulation
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Calcisols
+      fao_id:
+        tag: fao_id
+        value: 7
+      color_rgb:
+        tag: color_rgb
+        value: 254,244,0
+  CM:
+    text: CM
+    description: Cambisols - soils with beginning of horizon differentiation
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Cambisols
+      fao_id:
+        tag: fao_id
+        value: 8
+      color_rgb:
+        tag: color_rgb
+        value: 254,190,0
+  CR:
+    text: CR
+    description: Cryosols - soils formed under permafrost conditions
+    meaning: ENVO:00002236
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Cryosols
+      fao_id:
+        tag: fao_id
+        value: 9
+      color_rgb:
+        tag: color_rgb
+        value: 75,61,172
+  FL:
+    text: FL
+    description: Fluvisols - soils developed from recent alluvial deposits
+    meaning: ENVO:00002273
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Fluvisols
+      fao_id:
+        tag: fao_id
+        value: 10
+      color_rgb:
+        tag: color_rgb
+        value: 0,254,253
+  FR:
+    text: FR
+    description: Ferralsols - highly weathered soils with low-activity clay minerals
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Ferralsols
+      fao_id:
+        tag: fao_id
+        value: 11
+      color_rgb:
+        tag: color_rgb
+        value: 255,135,33
+  GG:
+    text: GG
+    description: Glaciers - areas covered by permanent ice (non-soil land cover category
+      carried in HWSD2)
+    meaning: ENVO:00000133
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Glaciers
+      fao_id:
+        tag: fao_id
+        value: 12
+      color_rgb:
+        tag: color_rgb
+        value: 212,212,212
+  GL:
+    text: GL
+    description: Gleysols - soils with permanent or temporary waterlogging
+    meaning: ENVO:00002244
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Gleysols
+      fao_id:
+        tag: fao_id
+        value: 13
+      color_rgb:
+        tag: color_rgb
+        value: 128,131,217
+  GY:
+    text: GY
+    description: Gypsisols - soils with secondary gypsum accumulation
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Gypsisols
+      fao_id:
+        tag: fao_id
+        value: 14
+      color_rgb:
+        tag: color_rgb
+        value: 254,246,164
+  HS:
+    text: HS
+    description: Histosols - soils formed from organic materials (peat soils)
+    meaning: ENVO:00005774
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Histosols
+      fao_id:
+        tag: fao_id
+        value: 15
+      color_rgb:
+        tag: color_rgb
+        value: 112,107,102
+  KS:
+    text: KS
+    description: Kastanozems - soils with chestnut-colored mollic horizon
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Kastanozems
+      fao_id:
+        tag: fao_id
+        value: 17
+      color_rgb:
+        tag: color_rgb
+        value: 202,147,127
+  LP:
+    text: LP
+    description: Leptosols - shallow soils over hard rock or highly calcareous material
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Leptosols
+      fao_id:
+        tag: fao_id
+        value: 18
+      color_rgb:
+        tag: color_rgb
+        value: 209,209,209
+  LV:
+    text: LV
+    description: Luvisols - soils with clay illuviation and high base saturation
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Luvisols
+      fao_id:
+        tag: fao_id
+        value: 19
+      color_rgb:
+        tag: color_rgb
+        value: 250,132,132
+  LX:
+    text: LX
+    description: Lixisols - soils with clay illuviation and low base saturation
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Lixisols
+      fao_id:
+        tag: fao_id
+        value: 20
+      color_rgb:
+        tag: color_rgb
+        value: 255,190,190
+  NT:
+    text: NT
+    description: Nitisols - soils with deep, well-structured clay horizons
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Nitisols
+      fao_id:
+        tag: fao_id
+        value: 21
+      color_rgb:
+        tag: color_rgb
+        value: 255,167,127
+  PH:
+    text: PH
+    description: Phaeozems - soils with dark mollic horizon and high base saturation
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Phaeozems
+      fao_id:
+        tag: fao_id
+        value: 22
+      color_rgb:
+        tag: color_rgb
+        value: 189,100,70
+  PL:
+    text: PL
+    description: Planosols - soils with abrupt textural change and impermeable subsoil
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Planosols
+      fao_id:
+        tag: fao_id
+        value: 23
+      color_rgb:
+        tag: color_rgb
+        value: 247,125,58
+  PT:
+    text: PT
+    description: Plinthosols - soils with iron-rich, humus-poor mixture that hardens
+      irreversibly
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Plinthosols
+      fao_id:
+        tag: fao_id
+        value: 24
+      color_rgb:
+        tag: color_rgb
+        value: 115,0,0
+  PZ:
+    text: PZ
+    description: Podzols - soils with subsurface accumulation of aluminium and iron
+      complexes with organic matter (spodic horizon)
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Podzols
+      fao_id:
+        tag: fao_id
+        value: 25
+      color_rgb:
+        tag: color_rgb
+        value: 12,217,0
+  RG:
+    text: RG
+    description: Regosols - weakly developed soils without significant horizon differentiation
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Regosols
+      fao_id:
+        tag: fao_id
+        value: 26
+      color_rgb:
+        tag: color_rgb
+        value: 254,227,164
+  RT:
+    text: RT
+    description: Retisols - soils with clay migration and tonguing of overlying material
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Retisols
+      fao_id:
+        tag: fao_id
+        value: 27
+      color_rgb:
+        tag: color_rgb
+        value: 254,194,194
+  SC:
+    text: SC
+    description: Solonchaks - soils with high salt content
+    meaning: ENVO:00002252
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Solonchaks
+      fao_id:
+        tag: fao_id
+        value: 28
+      color_rgb:
+        tag: color_rgb
+        value: 254,0,250
+  SN:
+    text: SN
+    description: Solonetz - soils with high exchangeable sodium content
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Solonetz
+      fao_id:
+        tag: fao_id
+        value: 29
+      color_rgb:
+        tag: color_rgb
+        value: 249,194,254
+  ST:
+    text: ST
+    description: Stagnosols - soils with seasonal waterlogging in upper horizons
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Stagnosols
+      fao_id:
+        tag: fao_id
+        value: 30
+      color_rgb:
+        tag: color_rgb
+        value: 64,192,233
+  TC:
+    text: TC
+    description: Technosols - soils containing significant amounts of technical artifacts
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Technosols
+      fao_id:
+        tag: fao_id
+        value: 31
+      color_rgb:
+        tag: color_rgb
+        value: 145,0,157
+  UM:
+    text: UM
+    description: Umbrisols - soils with dark acidic surface horizon
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Umbrisols
+      fao_id:
+        tag: fao_id
+        value: 32
+      color_rgb:
+        tag: color_rgb
+        value: 115,142,127
+  VR:
+    text: VR
+    description: Vertisols - clay-rich soils with shrink-swell properties
+    meaning: ENVO:00002254
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Vertisols
+      fao_id:
+        tag: fao_id
+        value: 33
+      color_rgb:
+        tag: color_rgb
+        value: 197,0,255
+  WR:
+    text: WR
+    description: Open inland water - areas covered by permanent water bodies (non-soil
+      land cover category carried in HWSD2)
+    meaning: ENVO:01001320
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: Open inland water
+      fao_id:
+        tag: fao_id
+        value: 34
+      color_rgb:
+        tag: color_rgb
+        value: 0,0,255
+  ND:
+    text: ND
+    description: No data - areas where soil data is not available
+    annotations:
+      soil_name:
+        tag: soil_name
+        value: No data
+      fao_id:
+        tag: fao_id
+        value: 35
+      color_rgb:
+        tag: color_rgb
+        value: 255,255,255
+
+</code></pre>
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

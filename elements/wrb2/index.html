@@ -455,7 +455,12 @@
 
 
 <h1 id="slot-wrb2">Slot: wrb2</h1>
-<p><em>Soil Unit Symbol from WRB 2022 (2-character code)</em></p>
+<p><em>Dominant WRB 2022 soil group code (2-character HWSD/WRB symbol).</em></p>
+<p>__</p>
+<p><em>Example usage:</em></p>
+<p><em>wrb2: FR  # Ferralsols - tropical weathered soils</em></p>
+<p><em>wrb2: CR  # Cryosols - permafrost soils</em></p>
+<p><em>wrb2: GG  # Glaciers - non-soil areas</em></p>
 <p>URI: <a href="https://w3id.org/bioepic-data/fao-soils/hwsd2/wrb2">hwsd2:wrb2</a>
 Alias: wrb2</p>
 <!-- no inheritance hierarchy -->
@@ -484,7 +489,7 @@ Alias: wrb2</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>Range: <a href="../FAOSoilTypeEnum/">FAOSoilTypeEnum</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -514,14 +519,23 @@ Alias: wrb2</p>
 <details>
 
 <pre><code class="language-yaml">name: wrb2
-description: Soil Unit Symbol from WRB 2022 (2-character code)
+description: 'Dominant WRB 2022 soil group code (2-character HWSD/WRB symbol).
+
+
+  Example usage:
+
+  wrb2: FR  # Ferralsols - tropical weathered soils
+
+  wrb2: CR  # Cryosols - permafrost soils
+
+  wrb2: GG  # Glaciers - non-soil areas'
 from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
 rank: 1000
 alias: wrb2
 domain_of:
 - SoilMappingUnit
 - SoilLayer
-range: string
+range: FAOSoilTypeEnum
 
 </code></pre>
 
