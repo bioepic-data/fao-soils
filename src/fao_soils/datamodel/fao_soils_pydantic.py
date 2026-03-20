@@ -100,7 +100,9 @@ linkml_meta = LinkMLMeta({'default_prefix': 'hwsd2',
      'imports': ['linkml:types'],
      'license': 'CC-BY-4.0',
      'name': 'hwsd2',
-     'prefixes': {'fao_soils': {'prefix_prefix': 'fao_soils',
+     'prefixes': {'ENVO': {'prefix_prefix': 'ENVO',
+                           'prefix_reference': 'http://purl.obolibrary.org/obo/ENVO_'},
+                  'fao_soils': {'prefix_prefix': 'fao_soils',
                                 'prefix_reference': 'https://w3id.org/bioepic-data/fao-soils/'},
                   'hwsd2': {'prefix_prefix': 'hwsd2',
                             'prefix_reference': 'https://w3id.org/bioepic-data/fao-soils/hwsd2/'},
@@ -114,6 +116,148 @@ linkml_meta = LinkMLMeta({'default_prefix': 'hwsd2',
                   'https://www.fao.org/soils-portal/data-hub/soil-maps-and-databases/harmonized-world-soil-database-v20/en/'],
      'source_file': 'src/fao_soils/schema/fao_soils.yaml',
      'title': 'FAO Harmonized World Soil Database v2.0 Schema'} )
+
+class FAOSoilTypeEnum(str, Enum):
+    """
+    FAO World Reference Base (WRB) soil classification codes used in HWSD2. This enum is adapted from the LinkML valuesets FAO soil valueset, but uses the 2-character HWSD/WRB symbols as permissible values so it can type the existing `wrb2` field directly.
+    """
+    AC = "AC"
+    """
+    Acrisols - soils with subsurface accumulation of low-activity clays and low base saturation
+    """
+    AL = "AL"
+    """
+    Alisols - soils with high aluminium saturation and low base saturation
+    """
+    AN = "AN"
+    """
+    Andosols - soils developed from volcanic ash with unique physical and chemical properties
+    """
+    AR = "AR"
+    """
+    Arenosols - sandy soils with weak horizon development
+    """
+    AT = "AT"
+    """
+    Anthrosols - soils strongly modified by human activities
+    """
+    CH = "CH"
+    """
+    Chernozems - very dark, fertile soils with thick mollic horizon
+    """
+    CL = "CL"
+    """
+    Calcisols - soils with secondary calcium carbonate accumulation
+    """
+    CM = "CM"
+    """
+    Cambisols - soils with beginning of horizon differentiation
+    """
+    CR = "CR"
+    """
+    Cryosols - soils formed under permafrost conditions
+    """
+    FL = "FL"
+    """
+    Fluvisols - soils developed from recent alluvial deposits
+    """
+    FR = "FR"
+    """
+    Ferralsols - highly weathered soils with low-activity clay minerals
+    """
+    GG = "GG"
+    """
+    Glaciers - areas covered by permanent ice (non-soil land cover category carried in HWSD2)
+    """
+    GL = "GL"
+    """
+    Gleysols - soils with permanent or temporary waterlogging
+    """
+    GY = "GY"
+    """
+    Gypsisols - soils with secondary gypsum accumulation
+    """
+    HS = "HS"
+    """
+    Histosols - soils formed from organic materials (peat soils)
+    """
+    KS = "KS"
+    """
+    Kastanozems - soils with chestnut-colored mollic horizon
+    """
+    LP = "LP"
+    """
+    Leptosols - shallow soils over hard rock or highly calcareous material
+    """
+    LV = "LV"
+    """
+    Luvisols - soils with clay illuviation and high base saturation
+    """
+    LX = "LX"
+    """
+    Lixisols - soils with clay illuviation and low base saturation
+    """
+    NT = "NT"
+    """
+    Nitisols - soils with deep, well-structured clay horizons
+    """
+    PH = "PH"
+    """
+    Phaeozems - soils with dark mollic horizon and high base saturation
+    """
+    PL = "PL"
+    """
+    Planosols - soils with abrupt textural change and impermeable subsoil
+    """
+    PT = "PT"
+    """
+    Plinthosols - soils with iron-rich, humus-poor mixture that hardens irreversibly
+    """
+    PZ = "PZ"
+    """
+    Podzols - soils with subsurface accumulation of aluminium and iron complexes with organic matter (spodic horizon)
+    """
+    RG = "RG"
+    """
+    Regosols - weakly developed soils without significant horizon differentiation
+    """
+    RT = "RT"
+    """
+    Retisols - soils with clay migration and tonguing of overlying material
+    """
+    SC = "SC"
+    """
+    Solonchaks - soils with high salt content
+    """
+    SN = "SN"
+    """
+    Solonetz - soils with high exchangeable sodium content
+    """
+    ST = "ST"
+    """
+    Stagnosols - soils with seasonal waterlogging in upper horizons
+    """
+    TC = "TC"
+    """
+    Technosols - soils containing significant amounts of technical artifacts
+    """
+    UM = "UM"
+    """
+    Umbrisols - soils with dark acidic surface horizon
+    """
+    VR = "VR"
+    """
+    Vertisols - clay-rich soils with shrink-swell properties
+    """
+    WR = "WR"
+    """
+    Open inland water - areas covered by permanent water bodies (non-soil land cover category carried in HWSD2)
+    """
+    ND = "ND"
+    """
+    No data - areas where soil data is not available
+    """
+
 
 class CoverageEnum(str, Enum):
     """
@@ -475,7 +619,7 @@ class SoilMappingUnit(ConfiguredBaseModel):
     share: Optional[float] = Field(default=None, description="""Percentage share in Soil Mapping Unit""", ge=0, le=100, json_schema_extra = { "linkml_meta": {'domain_of': ['SoilMappingUnit', 'SoilLayer'], 'unit': {'ucum_code': '%'}} })
     wrb4: Optional[str] = Field(default=None, description="""Soil Unit Symbol from World Reference Base 2022 (4-character code)""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilMappingUnit', 'SoilLayer']} })
     wrb_phases: Optional[str] = Field(default=None, description="""Detailed Soil Unit Symbol from WRB 2022 with phases""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilMappingUnit', 'SoilLayer']} })
-    wrb2: Optional[str] = Field(default=None, description="""Soil Unit Symbol from WRB 2022 (2-character code)""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilMappingUnit', 'SoilLayer']} })
+    wrb2: Optional[FAOSoilTypeEnum] = Field(default=None, description="""Dominant WRB 2022 soil group code (2-character HWSD/WRB symbol)""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilMappingUnit', 'SoilLayer']} })
     wrb2_code: Optional[str] = Field(default=None, description="""Numeric code for WRB2 dominant soil group""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilMappingUnit']} })
     fao90: Optional[str] = Field(default=None, description="""Soil Unit Symbol from FAO 1990 classification""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilMappingUnit', 'SoilLayer']} })
     koppen: Optional[KoppenEnum] = Field(default=None, description="""Köppen-Geiger climate classification""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilMappingUnit']} })
@@ -516,7 +660,7 @@ class SoilLayer(ConfiguredBaseModel):
     nsc: Optional[str] = Field(default=None, description="""National Soil Classification code""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilLayer']} })
     wrb_phases: Optional[str] = Field(default=None, description="""Detailed Soil Unit Symbol from WRB 2022 with phases""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilMappingUnit', 'SoilLayer']} })
     wrb4: Optional[str] = Field(default=None, description="""Soil Unit Symbol from World Reference Base 2022 (4-character code)""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilMappingUnit', 'SoilLayer']} })
-    wrb2: Optional[str] = Field(default=None, description="""Soil Unit Symbol from WRB 2022 (2-character code)""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilMappingUnit', 'SoilLayer']} })
+    wrb2: Optional[FAOSoilTypeEnum] = Field(default=None, description="""Dominant WRB 2022 soil group code (2-character HWSD/WRB symbol)""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilMappingUnit', 'SoilLayer']} })
     fao90: Optional[str] = Field(default=None, description="""Soil Unit Symbol from FAO 1990 classification""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilMappingUnit', 'SoilLayer']} })
     root_depth_layer: Optional[str] = Field(default=None, description="""Rootable soil depth for specific layer""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilLayer']} })
     phase1: Optional[PhaseEnum] = Field(default=None, description="""Primary soil phase (Stony, Lithic, Petric, etc.)""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoilMappingUnit', 'SoilLayer']} })
