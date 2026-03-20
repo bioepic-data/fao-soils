@@ -212,7 +212,13 @@ slots:
 
   wrb2:
     range: FAOSoilTypeEnum
-    description: Dominant WRB 2022 soil group code (2-character HWSD/WRB symbol)
+    description: |-
+      Dominant WRB 2022 soil group code (2-character HWSD/WRB symbol).
+
+      Example usage:
+      wrb2: FR  # Ferralsols - tropical weathered soils
+      wrb2: CR  # Cryosols - permafrost soils
+      wrb2: GG  # Glaciers - non-soil areas
 
   wrb2_code:
     range: string

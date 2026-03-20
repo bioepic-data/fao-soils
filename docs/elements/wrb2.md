@@ -3,7 +3,17 @@
 # Slot: wrb2 
 
 
-_Soil Unit Symbol from WRB 2022 (2-character code)_
+_Dominant WRB 2022 soil group code (2-character HWSD/WRB symbol)._
+
+__
+
+_Example usage:_
+
+_wrb2: FR  # Ferralsols - tropical weathered soils_
+
+_wrb2: CR  # Cryosols - permafrost soils_
+
+_wrb2: GG  # Glaciers - non-soil areas_
 
 
 
@@ -32,7 +42,7 @@ Alias: wrb2
 
 ## Properties
 
-* Range: [String](String.md)
+* Range: [FAOSoilTypeEnum](FAOSoilTypeEnum.md)
 
 
 
@@ -67,14 +77,23 @@ Alias: wrb2
 <details>
 ```yaml
 name: wrb2
-description: Soil Unit Symbol from WRB 2022 (2-character code)
+description: 'Dominant WRB 2022 soil group code (2-character HWSD/WRB symbol).
+
+
+  Example usage:
+
+  wrb2: FR  # Ferralsols - tropical weathered soils
+
+  wrb2: CR  # Cryosols - permafrost soils
+
+  wrb2: GG  # Glaciers - non-soil areas'
 from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
 rank: 1000
 alias: wrb2
 domain_of:
 - SoilMappingUnit
 - SoilLayer
-range: string
+range: FAOSoilTypeEnum
 
 ```
 </details>

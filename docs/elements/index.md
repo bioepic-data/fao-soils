@@ -90,7 +90,7 @@ Name: hwsd2
 | [topdep](topdep.md) | Depth of top of layer |
 | [total_n](total_n.md) | Total nitrogen content |
 | [wise30s_smu_id](wise30s_smu_id.md) | Soil Mapping Unit identifier from WISE30s database |
-| [wrb2](wrb2.md) | Soil Unit Symbol from WRB 2022 (2-character code) |
+| [wrb2](wrb2.md) | Dominant WRB 2022 soil group code (2-character HWSD/WRB symbol) |
 | [wrb2_code](wrb2_code.md) | Numeric code for WRB2 dominant soil group |
 | [wrb4](wrb4.md) | Soil Unit Symbol from World Reference Base 2022 (4-character code) |
 | [wrb_phases](wrb_phases.md) | Detailed Soil Unit Symbol from WRB 2022 with phases |
@@ -103,6 +103,7 @@ Name: hwsd2
 | [AddPropEnum](AddPropEnum.md) | Additional soil properties |
 | [CoverageEnum](CoverageEnum.md) | Data source coverage codes |
 | [DrainageEnum](DrainageEnum.md) | Soil drainage classes |
+| [FAOSoilTypeEnum](FAOSoilTypeEnum.md) | FAO World Reference Base (WRB) soil classification codes used in HWSD2 |
 | [ILEnum](ILEnum.md) | Impermeable layer depth ranges (ESDB) |
 | [KoppenEnum](KoppenEnum.md) | Köppen-Geiger climate classification |
 | [PhaseEnum](PhaseEnum.md) | Soil phase modifiers |
