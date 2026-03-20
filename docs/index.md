@@ -27,11 +27,12 @@ The HWSD v2.0 is a comprehensive global soil dataset with 30 arc-second resoluti
 The repository ships with packaged data products so you do not need to reconstruct them before exploring HWSD2:
 
 - [`export/hwsd2.ddb`](https://github.com/bioepic-data/fao-soils/blob/main/export/hwsd2.ddb) - pre-built DuckDB database
+- [`export/hwsd2_parquet/`](https://github.com/bioepic-data/fao-soils/tree/main/export/hwsd2_parquet) - Parquet export of all HWSD2 tables
 - [`data/hwsd2/HWSD2_csv/`](https://github.com/bioepic-data/fao-soils/tree/main/data/hwsd2/HWSD2_csv) - tidied CSV tables
 
-Use the DuckDB file for SQL-based analysis and the CSV directory when you want the individual source tables directly.
+Use the DuckDB file for SQL-based analysis, the Parquet directory for columnar analytical workflows, and the CSV directory when you want the individual source tables directly.
 
-To refresh repo-managed artifacts locally, use `just update-data`, `just update-export`, or `just update-artifacts` from the repository root. The data refresh commands require `mdb-tools` because they convert the FAO `.mdb` source database.
+To refresh repo-managed artifacts locally, use `just update-data`, `just update-export`, `just update-parquet`, or `just update-artifacts` from the repository root. The data refresh commands require `mdb-tools` because they convert the FAO `.mdb` source database.
 
 ## Using the Schemas
 

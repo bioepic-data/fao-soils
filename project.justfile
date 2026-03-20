@@ -13,4 +13,8 @@ update-export:
   uv run python scripts/load_hwsd2.py --force export/hwsd2.ddb
 
 [group('data maintenance')]
-update-artifacts: update-data update-export
+update-parquet:
+  uv run python scripts/export_hwsd2_parquet.py --force export/hwsd2.ddb export/hwsd2_parquet
+
+[group('data maintenance')]
+update-artifacts: update-data update-export update-parquet
