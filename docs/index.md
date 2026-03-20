@@ -13,6 +13,7 @@ The HWSD v2.0 is a comprehensive global soil dataset with 30 arc-second resoluti
 - **[HWSD2 Documentation](hwsd2.md)** - Comprehensive guide to the database and schema
 - **[HWSD2 Schema Reference](elements/hwsd2.md)** - Auto-generated schema documentation
 - **[Download Data](https://www.fao.org/soils-portal/data-hub/soil-maps-and-databases/harmonized-world-soil-database-v20/en/)** - Official FAO download page
+- **[Repository Data Files](https://github.com/bioepic-data/fao-soils/tree/main/export)** - Packaged DuckDB export and CSV tables in this repository
 
 **Key features:**
 - 58,405 soil mapping units globally
@@ -20,6 +21,15 @@ The HWSD v2.0 is a comprehensive global soil dataset with 30 arc-second resoluti
 - Physical properties: texture, bulk density, coarse fragments
 - Chemical properties: organic carbon, pH, nitrogen, CEC
 - Multiple classification systems: WRB, FAO-90, USDA
+
+## Repository Data Access
+
+The repository ships with packaged data products so you do not need to reconstruct them before exploring HWSD2:
+
+- [`export/hwsd2.ddb`](https://github.com/bioepic-data/fao-soils/blob/main/export/hwsd2.ddb) - pre-built DuckDB database
+- [`data/hwsd2/HWSD2_csv/`](https://github.com/bioepic-data/fao-soils/tree/main/data/hwsd2/HWSD2_csv) - tidied CSV tables
+
+Use the DuckDB file for SQL-based analysis and the CSV directory when you want the individual source tables directly.
 
 ## Using the Schemas
 

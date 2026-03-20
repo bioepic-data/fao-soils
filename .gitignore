@@ -1,5 +1,4 @@
-# generated part of documentation
-/docs/elements/*.md
+# generated schema docs are part of the published mkdocs site
 # linkml-run-examples output (not useful to have in git in its current form)
 /examples/output/
 
