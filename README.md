@@ -93,13 +93,26 @@ uv run python scripts/load_hwsd2.py --force export/hwsd2.ddb
 
 **Option 3: Download from FAO** (Complete dataset with rasters)
 
+Requires `mdb-tools` to convert the FAO `.mdb` database into CSV and SQLite artifacts.
+See [`scripts/README.md`](scripts/README.md) for installation help.
+
 ```bash
 # Install project dependencies
 uv sync --dev
 
-# Downloads and converts original FAO data
-uv run python scripts/fetch_fao_soil_database.py
+# Download and refresh the repo-managed source artifacts under data/hwsd2/
+uv run python scripts/fetch_fao_soil_database.py --data-dir data/hwsd2
 ```
+
+**Convenience targets**
+
+```bash
+just update-data       # refresh data/hwsd2 artifacts from FAO
+just update-export     # rebuild export/hwsd2.ddb from the CSVs
+just update-artifacts  # run both steps in order
+```
+
+`just update-data` and `just update-artifacts` require `mdb-tools` because they run the FAO `.mdb` conversion step.
 
 ### Using the Data
 

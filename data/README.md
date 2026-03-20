@@ -82,10 +82,13 @@ This takes ~10 seconds and creates a 32 MB database.
 
 Download the complete dataset including raster files:
 
+This step requires `mdb-tools` so the downloaded FAO `.mdb` database can be converted into CSV and SQLite outputs.
+See [`../scripts/README.md`](../scripts/README.md) for installation details.
+
 ```bash
 # From repository root
 uv sync --dev
-uv run python scripts/fetch_fao_soil_database.py
+uv run python scripts/fetch_fao_soil_database.py --data-dir data/hwsd2
 ```
 
 This downloads:
@@ -93,6 +96,22 @@ This downloads:
 - Raster files (.bil, ~1.7 GB)
 - Technical documentation (PDF)
 - Converts database to CSV and SQLite
+
+### Repo Update Targets
+
+Use the repo maintenance targets when you want to refresh checked-in artifacts:
+
+```bash
+just update-data
+just update-export
+just update-artifacts
+```
+
+- `just update-data` refreshes `data/hwsd2/HWSD2_csv/`, `data/hwsd2/HWSD2_RASTER/`, and `data/hwsd2/hwsd2.db`
+- `just update-export` rebuilds `export/hwsd2.ddb` from the CSVs
+- `just update-artifacts` runs both in order
+
+`just update-data` and `just update-artifacts` require `mdb-tools`; `just update-export` does not.
 
 ## Data Formats
 

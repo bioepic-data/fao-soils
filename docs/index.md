@@ -31,6 +31,8 @@ The repository ships with packaged data products so you do not need to reconstru
 
 Use the DuckDB file for SQL-based analysis and the CSV directory when you want the individual source tables directly.
 
+To refresh repo-managed artifacts locally, use `just update-data`, `just update-export`, or `just update-artifacts` from the repository root. The data refresh commands require `mdb-tools` because they convert the FAO `.mdb` source database.
+
 ## Using the Schemas
 
 ### Installation

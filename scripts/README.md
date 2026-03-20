@@ -16,12 +16,15 @@ Downloads and converts the FAO Harmonized World Soil Database (HWSD) v2.0 from i
 
 **Usage:**
 ```bash
-# Download all HWSD2 components
+# Refresh repo-managed HWSD2 source artifacts under data/hwsd2/
 uv sync --dev
-uv run python fetch_fao_soil_database.py
+uv run python fetch_fao_soil_database.py --data-dir ../data/hwsd2
 
 # Specify custom output directory
 uv run python fetch_fao_soil_database.py --data-dir /path/to/output
+
+# Re-download source archives before refreshing outputs
+uv run python fetch_fao_soil_database.py --data-dir ../data/hwsd2 --force-download
 ```
 
 **Requirements:**
@@ -67,6 +70,12 @@ uv run python load_hwsd2.py output.db --csv-dir /path/to/HWSD2_csv
 
 # Overwrite an existing DuckDB file
 uv run python load_hwsd2.py --force ../data/hwsd2/hwsd2.db
+```
+
+For the packaged export in this repo, use:
+
+```bash
+just update-export
 ```
 
 **Output:**
@@ -151,11 +160,10 @@ bash install_mdb_tools.sh
 uv sync --dev
 
 # 3. Download and convert HWSD2 data
-uv run python fetch_fao_soil_database.py
+uv run python fetch_fao_soil_database.py --data-dir ../data/hwsd2
 
 # 4. Load CSV data into DuckDB
-cd ../data/hwsd2
-uv run python ../../scripts/load_hwsd2.py --force hwsd2.db
+uv run python load_hwsd2.py --force ../export/hwsd2.ddb
 
 # 5. Extract soil profiles
 uv run python ../../scripts/hwsd2_extractor.py 40.0 -105.0
@@ -178,11 +186,24 @@ fao-soils/
 │   └── hwsd2/
 │       ├── HWSD2_csv/          # CSV exports (from fetch script)
 │       ├── HWSD2_RASTER/       # Raster files (from fetch script)
-│       ├── hwsd2.db            # DuckDB database (from load script)
+│       ├── hwsd2.db            # SQLite database (from fetch script)
 │       ├── hwsd2_duckdb_schema.sql
 │       └── README.md
+├── export/
+│   └── hwsd2.ddb               # DuckDB database (from load script)
 └── src/fao_soils/schema/
     └── hwsd2.yaml              # LinkML schema
+```
+
+## Just Targets
+
+From the repository root:
+
+```bash
+just update-data
+just refresh-data-downloads
+just update-export
+just update-artifacts
 ```
 
 ## Data Sources
@@ -203,7 +224,7 @@ If you get errors about mdb-tools:
 brew install mdb-tools
 
 # Ubuntu/Debian
-sudo apt-get install mdb-tools
+sudo apt-get install mdbtools
 
 # Or use the install script
 bash install_mdb_tools.sh
