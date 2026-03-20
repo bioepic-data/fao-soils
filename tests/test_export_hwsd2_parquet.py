@@ -65,6 +65,7 @@ def test_exported_parquet_reads_with_pyarrow_and_pandas(tmp_path):
     )
 
     assert result.returncode == 0, result.stderr
+    assert "(1/1)" in result.stdout
 
     parquet_path = output_dir / "example.parquet"
     assert parquet_path.exists()
@@ -78,3 +79,24 @@ def test_exported_parquet_reads_with_pyarrow_and_pandas(tmp_path):
     assert list(df.columns) == ["id", "label", "value"]
     assert df.to_dict(orient="records")[0] == {"id": 1, "label": "alpha", "value": 1.5}
     assert pd.isna(df.iloc[1]["value"])
+
+
+def test_export_hwsd2_parquet_rejects_unsafe_table_names(tmp_path):
+    """Unsafe table identifiers should be rejected before SQL execution."""
+    db_path = tmp_path / "test.ddb"
+    conn = duckdb.connect(str(db_path))
+    conn.execute('CREATE TABLE "bad-name" (id INTEGER)')
+    conn.execute('INSERT INTO "bad-name" VALUES (1)')
+    conn.close()
+
+    output_dir = tmp_path / "parquet"
+    script_path = Path(__file__).resolve().parent.parent / "scripts" / "export_hwsd2_parquet.py"
+    result = subprocess.run(
+        [sys.executable, str(script_path), "--force", str(db_path), str(output_dir)],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    assert result.returncode == 1
+    assert "Invalid table name: bad-name" in result.stderr

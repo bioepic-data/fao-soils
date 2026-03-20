@@ -7,10 +7,14 @@ Usage:
 """
 
 import argparse
+import re
+import shutil
 import sys
 from pathlib import Path
 
 import duckdb
+
+SAFE_TABLE_NAME = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
 
 
 def prepare_output_dir(output_dir: str, force: bool = False) -> Path:
@@ -44,6 +48,40 @@ def prepare_output_dir(output_dir: str, force: bool = False) -> Path:
     return parquet_dir
 
 
+def validate_table_name(table_name: str) -> str:
+    """
+    Validate that a DuckDB table name is safe to interpolate into SQL.
+
+    Args:
+        table_name: Table name to validate
+
+    Returns:
+        The validated table name
+
+    Raises:
+        ValueError: If the table name contains unsafe characters
+    """
+    if not SAFE_TABLE_NAME.fullmatch(table_name):
+        raise ValueError(f"Invalid table name: {table_name}")
+    return table_name
+
+
+def ensure_sufficient_disk_space(output_dir: Path, database_path: Path) -> None:
+    """
+    Perform a rough disk-space preflight for Parquet export.
+
+    Uses a conservative estimate of twice the DuckDB database size to leave room
+    for exported Parquet files and temporary write overhead.
+    """
+    required_bytes = max(database_path.stat().st_size * 2, 100 * 1024 * 1024)
+    free_bytes = shutil.disk_usage(output_dir).free
+    if free_bytes < required_bytes:
+        raise RuntimeError(
+            f"Insufficient disk space in {output_dir}: "
+            f"need at least {required_bytes:,} bytes free, found {free_bytes:,}."
+        )
+
+
 def export_hwsd2_parquet(
     db_path: str = "export/hwsd2.ddb",
     output_dir: str = "export/hwsd2_parquet",
@@ -64,9 +102,15 @@ def export_hwsd2_parquet(
     parquet_dir = prepare_output_dir(output_dir, force=force)
     print(f"Exporting Parquet files from database: {database_path}")
     print(f"Writing Parquet files to: {parquet_dir}")
+    ensure_sufficient_disk_space(parquet_dir, database_path)
 
     conn = duckdb.connect(str(database_path), read_only=True)
     try:
+        try:
+            conn.execute("SELECT 1").fetchone()
+        except Exception as e:
+            raise RuntimeError(f"Cannot access database {database_path}: {e}") from e
+
         tables = conn.execute(
             """
             SELECT table_name
@@ -79,11 +123,12 @@ def export_hwsd2_parquet(
         if not tables:
             raise RuntimeError(f"No tables found in database: {database_path}")
 
-        for (table_name,) in tables:
-            parquet_path = parquet_dir / f"{table_name}.parquet"
-            print(f"  Exporting: {table_name} -> {parquet_path.name}")
+        for index, (table_name,) in enumerate(tables, start=1):
+            safe_table_name = validate_table_name(table_name)
+            parquet_path = parquet_dir / f"{safe_table_name}.parquet"
+            print(f"  Exporting: {safe_table_name} -> {parquet_path.name} ({index}/{len(tables)})")
             conn.execute(
-                f"COPY (SELECT * FROM {table_name}) TO ? (FORMAT PARQUET, COMPRESSION ZSTD)",
+                f"COPY (SELECT * FROM {safe_table_name}) TO ? (FORMAT PARQUET, COMPRESSION ZSTD)",
                 [str(parquet_path)],
             )
 
