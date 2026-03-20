@@ -153,6 +153,15 @@ URI: [hwsd2:SoilMappingUnit](https://w3id.org/bioepic-data/fao-soils/hwsd2/SoilM
         
       SoilMappingUnit : wrb2
         
+          
+    
+        
+        
+        SoilMappingUnit --> "0..1" FAOSoilTypeEnum : wrb2
+        click FAOSoilTypeEnum href "../FAOSoilTypeEnum/"
+    
+
+        
       SoilMappingUnit : wrb2_code
         
       SoilMappingUnit : wrb4
@@ -180,7 +189,7 @@ URI: [hwsd2:SoilMappingUnit](https://w3id.org/bioepic-data/fao-soils/hwsd2/SoilM
 | [share](share.md) | 0..1 <br/> [Float](Float.md) | Percentage share in Soil Mapping Unit | direct |
 | [wrb4](wrb4.md) | 0..1 <br/> [String](String.md) | Soil Unit Symbol from World Reference Base 2022 (4-character code) | direct |
 | [wrb_phases](wrb_phases.md) | 0..1 <br/> [String](String.md) | Detailed Soil Unit Symbol from WRB 2022 with phases | direct |
-| [wrb2](wrb2.md) | 0..1 <br/> [String](String.md) | Soil Unit Symbol from WRB 2022 (2-character code) | direct |
+| [wrb2](wrb2.md) | 0..1 <br/> [FAOSoilTypeEnum](FAOSoilTypeEnum.md) | Dominant WRB 2022 soil group code (2-character HWSD/WRB symbol) | direct |
 | [wrb2_code](wrb2_code.md) | 0..1 <br/> [String](String.md) | Numeric code for WRB2 dominant soil group | direct |
 | [fao90](fao90.md) | 0..1 <br/> [String](String.md) | Soil Unit Symbol from FAO 1990 classification | direct |
 | [koppen](koppen.md) | 0..1 <br/> [KoppenEnum](KoppenEnum.md) | Köppen-Geiger climate classification | direct |
@@ -387,7 +396,16 @@ attributes:
     range: string
   wrb2:
     name: wrb2
-    description: Soil Unit Symbol from WRB 2022 (2-character code)
+    description: 'Dominant WRB 2022 soil group code (2-character HWSD/WRB symbol).
+
+
+      Example usage:
+
+      wrb2: FR  # Ferralsols - tropical weathered soils
+
+      wrb2: CR  # Cryosols - permafrost soils
+
+      wrb2: GG  # Glaciers - non-soil areas'
     from_schema: https://w3id.org/bioepic-data/fao-soils/hwsd2
     rank: 1000
     alias: wrb2
@@ -395,7 +413,7 @@ attributes:
     domain_of:
     - SoilMappingUnit
     - SoilLayer
-    range: string
+    range: FAOSoilTypeEnum
   wrb2_code:
     name: wrb2_code
     description: Numeric code for WRB2 dominant soil group

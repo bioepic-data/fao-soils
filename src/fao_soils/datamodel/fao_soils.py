@@ -1,5 +1,5 @@
 # Auto generated from fao_soils.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-11-10T17:07:48
+# Generation date: 2026-03-20T15:25:28
 # Schema: hwsd2
 #
 # id: https://w3id.org/bioepic-data/fao-soils/hwsd2
@@ -72,6 +72,7 @@ metamodel_version = "1.7.0"
 version = "2.0.0"
 
 # Namespaces
+ENVO = CurieNamespace('ENVO', 'http://purl.obolibrary.org/obo/ENVO_')
 FAO_SOILS = CurieNamespace('fao_soils', 'https://w3id.org/bioepic-data/fao-soils/')
 HWSD2 = CurieNamespace('hwsd2', 'https://w3id.org/bioepic-data/fao-soils/hwsd2/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
@@ -117,7 +118,7 @@ class SoilMappingUnit(YAMLRoot):
     share: Optional[float] = None
     wrb4: Optional[str] = None
     wrb_phases: Optional[str] = None
-    wrb2: Optional[str] = None
+    wrb2: Optional[Union[str, "FAOSoilTypeEnum"]] = None
     wrb2_code: Optional[str] = None
     fao90: Optional[str] = None
     koppen: Optional[Union[str, "KoppenEnum"]] = None
@@ -162,8 +163,8 @@ class SoilMappingUnit(YAMLRoot):
         if self.wrb_phases is not None and not isinstance(self.wrb_phases, str):
             self.wrb_phases = str(self.wrb_phases)
 
-        if self.wrb2 is not None and not isinstance(self.wrb2, str):
-            self.wrb2 = str(self.wrb2)
+        if self.wrb2 is not None and not isinstance(self.wrb2, FAOSoilTypeEnum):
+            self.wrb2 = FAOSoilTypeEnum(self.wrb2)
 
         if self.wrb2_code is not None and not isinstance(self.wrb2_code, str):
             self.wrb2_code = str(self.wrb2_code)
@@ -239,7 +240,7 @@ class SoilLayer(YAMLRoot):
     nsc: Optional[str] = None
     wrb_phases: Optional[str] = None
     wrb4: Optional[str] = None
-    wrb2: Optional[str] = None
+    wrb2: Optional[Union[str, "FAOSoilTypeEnum"]] = None
     fao90: Optional[str] = None
     root_depth_layer: Optional[str] = None
     phase1: Optional[Union[str, "PhaseEnum"]] = None
@@ -317,8 +318,8 @@ class SoilLayer(YAMLRoot):
         if self.wrb4 is not None and not isinstance(self.wrb4, str):
             self.wrb4 = str(self.wrb4)
 
-        if self.wrb2 is not None and not isinstance(self.wrb2, str):
-            self.wrb2 = str(self.wrb2)
+        if self.wrb2 is not None and not isinstance(self.wrb2, FAOSoilTypeEnum):
+            self.wrb2 = FAOSoilTypeEnum(self.wrb2)
 
         if self.fao90 is not None and not isinstance(self.fao90, str):
             self.fao90 = str(self.fao90)
@@ -485,6 +486,130 @@ class WRBClass(YAMLRoot):
 
 
 # Enumerations
+class FAOSoilTypeEnum(EnumDefinitionImpl):
+    """
+    FAO World Reference Base (WRB) soil classification codes used in HWSD2. This enum is adapted from the LinkML
+    valuesets FAO soil valueset, but uses the 2-character HWSD/WRB symbols as permissible values so it can type the
+    existing `wrb2` field directly.
+    """
+    AC = PermissibleValue(
+        text="AC",
+        description="Acrisols - soils with subsurface accumulation of low-activity clays and low base saturation")
+    AL = PermissibleValue(
+        text="AL",
+        description="Alisols - soils with high aluminium saturation and low base saturation")
+    AN = PermissibleValue(
+        text="AN",
+        description="Andosols - soils developed from volcanic ash with unique physical and chemical properties",
+        meaning=ENVO["00002232"])
+    AR = PermissibleValue(
+        text="AR",
+        description="Arenosols - sandy soils with weak horizon development",
+        meaning=ENVO["00002229"])
+    AT = PermissibleValue(
+        text="AT",
+        description="Anthrosols - soils strongly modified by human activities")
+    CH = PermissibleValue(
+        text="CH",
+        description="Chernozems - very dark, fertile soils with thick mollic horizon")
+    CL = PermissibleValue(
+        text="CL",
+        description="Calcisols - soils with secondary calcium carbonate accumulation")
+    CM = PermissibleValue(
+        text="CM",
+        description="Cambisols - soils with beginning of horizon differentiation")
+    CR = PermissibleValue(
+        text="CR",
+        description="Cryosols - soils formed under permafrost conditions",
+        meaning=ENVO["00002236"])
+    FL = PermissibleValue(
+        text="FL",
+        description="Fluvisols - soils developed from recent alluvial deposits",
+        meaning=ENVO["00002273"])
+    FR = PermissibleValue(
+        text="FR",
+        description="Ferralsols - highly weathered soils with low-activity clay minerals")
+    GG = PermissibleValue(
+        text="GG",
+        description="Glaciers - areas covered by permanent ice (non-soil land cover category carried in HWSD2)",
+        meaning=ENVO["00000133"])
+    GL = PermissibleValue(
+        text="GL",
+        description="Gleysols - soils with permanent or temporary waterlogging",
+        meaning=ENVO["00002244"])
+    GY = PermissibleValue(
+        text="GY",
+        description="Gypsisols - soils with secondary gypsum accumulation")
+    HS = PermissibleValue(
+        text="HS",
+        description="Histosols - soils formed from organic materials (peat soils)",
+        meaning=ENVO["00005774"])
+    KS = PermissibleValue(
+        text="KS",
+        description="Kastanozems - soils with chestnut-colored mollic horizon")
+    LP = PermissibleValue(
+        text="LP",
+        description="Leptosols - shallow soils over hard rock or highly calcareous material")
+    LV = PermissibleValue(
+        text="LV",
+        description="Luvisols - soils with clay illuviation and high base saturation")
+    LX = PermissibleValue(
+        text="LX",
+        description="Lixisols - soils with clay illuviation and low base saturation")
+    NT = PermissibleValue(
+        text="NT",
+        description="Nitisols - soils with deep, well-structured clay horizons")
+    PH = PermissibleValue(
+        text="PH",
+        description="Phaeozems - soils with dark mollic horizon and high base saturation")
+    PL = PermissibleValue(
+        text="PL",
+        description="Planosols - soils with abrupt textural change and impermeable subsoil")
+    PT = PermissibleValue(
+        text="PT",
+        description="Plinthosols - soils with iron-rich, humus-poor mixture that hardens irreversibly")
+    PZ = PermissibleValue(
+        text="PZ",
+        description="""Podzols - soils with subsurface accumulation of aluminium and iron complexes with organic matter (spodic horizon)""")
+    RG = PermissibleValue(
+        text="RG",
+        description="Regosols - weakly developed soils without significant horizon differentiation")
+    RT = PermissibleValue(
+        text="RT",
+        description="Retisols - soils with clay migration and tonguing of overlying material")
+    SC = PermissibleValue(
+        text="SC",
+        description="Solonchaks - soils with high salt content",
+        meaning=ENVO["00002252"])
+    SN = PermissibleValue(
+        text="SN",
+        description="Solonetz - soils with high exchangeable sodium content")
+    ST = PermissibleValue(
+        text="ST",
+        description="Stagnosols - soils with seasonal waterlogging in upper horizons")
+    TC = PermissibleValue(
+        text="TC",
+        description="Technosols - soils containing significant amounts of technical artifacts")
+    UM = PermissibleValue(
+        text="UM",
+        description="Umbrisols - soils with dark acidic surface horizon")
+    VR = PermissibleValue(
+        text="VR",
+        description="Vertisols - clay-rich soils with shrink-swell properties",
+        meaning=ENVO["00002254"])
+    WR = PermissibleValue(
+        text="WR",
+        description="""Open inland water - areas covered by permanent water bodies (non-soil land cover category carried in HWSD2)""",
+        meaning=ENVO["01001320"])
+    ND = PermissibleValue(
+        text="ND",
+        description="No data - areas where soil data is not available")
+
+    _defn = EnumDefinition(
+        name="FAOSoilTypeEnum",
+        description="""FAO World Reference Base (WRB) soil classification codes used in HWSD2. This enum is adapted from the LinkML valuesets FAO soil valueset, but uses the 2-character HWSD/WRB symbols as permissible values so it can type the existing `wrb2` field directly.""",
+    )
+
 class CoverageEnum(EnumDefinitionImpl):
     """
     Data source coverage codes
@@ -856,7 +981,7 @@ slots.wrb_phases = Slot(uri=HWSD2.wrb_phases, name="wrb_phases", curie=HWSD2.cur
                    model_uri=HWSD2.wrb_phases, domain=None, range=Optional[str])
 
 slots.wrb2 = Slot(uri=HWSD2.wrb2, name="wrb2", curie=HWSD2.curie('wrb2'),
-                   model_uri=HWSD2.wrb2, domain=None, range=Optional[str])
+                   model_uri=HWSD2.wrb2, domain=None, range=Optional[Union[str, "FAOSoilTypeEnum"]])
 
 slots.wrb2_code = Slot(uri=HWSD2.wrb2_code, name="wrb2_code", curie=HWSD2.curie('wrb2_code'),
                    model_uri=HWSD2.wrb2_code, domain=None, range=Optional[str])

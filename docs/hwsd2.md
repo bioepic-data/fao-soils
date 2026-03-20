@@ -161,6 +161,7 @@ The primary classification system with multiple levels of detail:
 
 - **WRB2**: 2-character codes (32 reference soil groups)
   - Examples: AC (Acrisols), CH (Chernozems), PT (Plinthosols)
+  - Example usage: `wrb2: FR` (Ferralsols), `wrb2: CR` (Cryosols), `wrb2: GG` (Glaciers / non-soil areas)
 - **WRB4**: 4-character codes with qualifier
   - Examples: ACfr (Ferric Acrisols), CHha (Haplic Chernozems)
 - **WRB Phases**: Detailed classification with multiple qualifiers

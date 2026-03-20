@@ -23,8 +23,8 @@ Alias: id
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [SoilMappingUnit](SoilMappingUnit.md) | A Soil Mapping Unit (SMU) represents a distinct area with relatively homogene... |  no  |
-| [WRBClass](WRBClass.md) | World Reference Base (WRB) soil classification with RGB color codes |  no  |
 | [SoilLayer](SoilLayer.md) | Detailed soil properties at a specific depth layer |  no  |
+| [WRBClass](WRBClass.md) | World Reference Base (WRB) soil classification with RGB color codes |  no  |
 
 
 
