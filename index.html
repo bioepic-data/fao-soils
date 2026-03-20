@@ -748,10 +748,11 @@
 <p>The repository ships with packaged data products so you do not need to reconstruct them before exploring HWSD2:</p>
 <ul>
 <li><a href="https://github.com/bioepic-data/fao-soils/blob/main/export/hwsd2.ddb"><code>export/hwsd2.ddb</code></a> - pre-built DuckDB database</li>
+<li><a href="https://github.com/bioepic-data/fao-soils/tree/main/export/hwsd2_parquet"><code>export/hwsd2_parquet/</code></a> - Parquet export of all HWSD2 tables</li>
 <li><a href="https://github.com/bioepic-data/fao-soils/tree/main/data/hwsd2/HWSD2_csv"><code>data/hwsd2/HWSD2_csv/</code></a> - tidied CSV tables</li>
 </ul>
-<p>Use the DuckDB file for SQL-based analysis and the CSV directory when you want the individual source tables directly.</p>
-<p>To refresh repo-managed artifacts locally, use <code>just update-data</code>, <code>just update-export</code>, or <code>just update-artifacts</code> from the repository root. The data refresh commands require <code>mdb-tools</code> because they convert the FAO <code>.mdb</code> source database.</p>
+<p>Use the DuckDB file for SQL-based analysis, the Parquet directory for columnar analytical workflows, and the CSV directory when you want the individual source tables directly.</p>
+<p>To refresh repo-managed artifacts locally, use <code>just update-data</code>, <code>just update-export</code>, <code>just update-parquet</code>, or <code>just update-artifacts</code> from the repository root. The data refresh commands require <code>mdb-tools</code> because they convert the FAO <code>.mdb</code> source database.</p>
 <h2 id="using-the-schemas">Using the Schemas</h2>
 <h3 id="installation">Installation</h3>
 <pre><code class="language-bash">pip install linkml linkml-runtime
