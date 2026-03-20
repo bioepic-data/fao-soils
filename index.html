@@ -751,6 +751,7 @@
 <li><a href="https://github.com/bioepic-data/fao-soils/tree/main/data/hwsd2/HWSD2_csv"><code>data/hwsd2/HWSD2_csv/</code></a> - tidied CSV tables</li>
 </ul>
 <p>Use the DuckDB file for SQL-based analysis and the CSV directory when you want the individual source tables directly.</p>
+<p>To refresh repo-managed artifacts locally, use <code>just update-data</code>, <code>just update-export</code>, or <code>just update-artifacts</code> from the repository root. The data refresh commands require <code>mdb-tools</code> because they convert the FAO <code>.mdb</code> source database.</p>
 <h2 id="using-the-schemas">Using the Schemas</h2>
 <h3 id="installation">Installation</h3>
 <pre><code class="language-bash">pip install linkml linkml-runtime
