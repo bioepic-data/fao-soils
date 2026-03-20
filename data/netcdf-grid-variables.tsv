@@ -1,0 +1,115 @@
+source_file	type	variable-data_type	variable-name	variable-shape	variable-FillValue	variable-Flag	variable-long_name	variable-unit	variable-flags	variable-missing_value
+Blodget_grid_20240622.nc.cdl	grid	float	AEC	ntopou,nlevs	-999.9		Anion exchange capacity	cmol kg soil-1		
+Blodget_grid_20240622.nc.cdl	grid	float	ALATG	ngrid			Latitude	degrees north		
+Blodget_grid_20240622.nc.cdl	grid	float	ALBS	ntopou			Wet soil albedo	none		
+Blodget_grid_20240622.nc.cdl	grid	float	ALTIG	ngrid			Altitude above sea-level	m		
+Blodget_grid_20240622.nc.cdl	grid	float	ASPX	ntopou			Aspect	degrees		
+Blodget_grid_20240622.nc.cdl	grid	float	ATCAG	ngrid			Mean annual temperaure	oC		
+Blodget_grid_20240622.nc.cdl	grid	float	BKDSI	ntopou,nlevs	-999.9		Initial bulk density	Mg m-3	0 for water	
+Blodget_grid_20240622.nc.cdl	grid	float	CAL	ntopou,nlevs	-999.9		Soluble soil Al content	g Al/Mg soil		
+Blodget_grid_20240622.nc.cdl	grid	float	CALOH	ntopou,nlevs	-999.9		Soil Al(OH)3 content	g Al/Mg soil		
+Blodget_grid_20240622.nc.cdl	grid	float	CALPO	ntopou,nlevs	-999.9		Soil AlPO4 content	g P/Mg soil		
+Blodget_grid_20240622.nc.cdl	grid	float	CCA	ntopou,nlevs	-999.9		Soluble soil Ca content	g Ca/Mg soil		
+Blodget_grid_20240622.nc.cdl	grid	float	CCACO	ntopou,nlevs	-999.9		Soil CaCO3 content	g Ca/Mg soil		
+Blodget_grid_20240622.nc.cdl	grid	float	CCAPD	ntopou,nlevs	-999.9		Soil CaHPO4 content	g P/Mg soil		
+Blodget_grid_20240622.nc.cdl	grid	float	CCAPH	ntopou,nlevs	-999.9		Soil apatite content	g P/Mg soil		
+Blodget_grid_20240622.nc.cdl	grid	float	CCASO	ntopou,nlevs	-999.9		Soil CaSO4 content	g Ca/Mg soil		
+Blodget_grid_20240622.nc.cdl	grid	float	CCL	ntopou,nlevs	-999.9		Soluble soil Cl content	g Cl/Mg soil		
+Blodget_grid_20240622.nc.cdl	grid	float	CDPTH	ntopou,nlevs	-999.9		Depth to bottom of soil layer	m		
+Blodget_grid_20240622.nc.cdl	grid	float	CEC	ntopou,nlevs	-999.9		Cation exchange capacity	cmol kg soil-1		
+Blodget_grid_20240622.nc.cdl	grid	float	CFE	ntopou,nlevs	-999.9		Soluble soil Fe content	g Fe/Mg soil		
+Blodget_grid_20240622.nc.cdl	grid	float	CFEOH	ntopou,nlevs	-999.9		Soil Fe(OH)3 content	g Fe/Mg soil		
+Blodget_grid_20240622.nc.cdl	grid	float	CFEPO	ntopou,nlevs	-999.9		Soil FePO4 content	g P/Mg soil		
+Blodget_grid_20240622.nc.cdl	grid	float	CH4EG	ngrid		0	Atmospheric CH4	ppm		
+Blodget_grid_20240622.nc.cdl	grid	float	CKA	ntopou,nlevs	-999.9		Soluble soil K content	g K/Mg soil		
+Blodget_grid_20240622.nc.cdl	grid	float	CMG	ntopou,nlevs	-999.9		Soluble soil MG content	g MG/Mg soil		
+Blodget_grid_20240622.nc.cdl	grid	float	CNA	ntopou,nlevs	-999.9		Soluble soil Na content	g Na/Mg soil		
+Blodget_grid_20240622.nc.cdl	grid	float	CNH4	ntopou,nlevs	-999.9		Total soil NH4 concentration	gN/Mg soil		
+Blodget_grid_20240622.nc.cdl	grid	float	CNO3	ntopou,nlevs	-999.9		Total soil NO3 concentration	gN/Mg soil		
+Blodget_grid_20240622.nc.cdl	grid	float	CO2EIG	ngrid		0	Atmospheric CO2	ppm		
+Blodget_grid_20240622.nc.cdl	grid	float	CORGC	ntopou,nlevs	-999.9		Total soil organic carbon	kg C/Mg soil		
+Blodget_grid_20240622.nc.cdl	grid	float	CORGN	ntopou,nlevs	-999.9		Total soil organic nitrogen	g N/Mg soil		
+Blodget_grid_20240622.nc.cdl	grid	float	CORGP	ntopou,nlevs	-999.9		Total soil organic phosphorus	g P/Mg soil		
+Blodget_grid_20240622.nc.cdl	grid	float	CORGR	ntopou,nlevs	-999.9		POC (part of SOC)	kg C/Mg soil		
+Blodget_grid_20240622.nc.cdl	grid	float	CPO4	ntopou,nlevs	-999.9		Total soil H2PO4 concentration	gP/Mg soil		
+Blodget_grid_20240622.nc.cdl	grid	float	CSAND	ntopou,nlevs	-999.9		Sand content	kg Mg-1		
+Blodget_grid_20240622.nc.cdl	grid	float	CSILT	ntopou,nlevs	-999.9		Silt content	kg Mg-1		
+Blodget_grid_20240622.nc.cdl	grid	float	CSO4	ntopou,nlevs	-999.9		Soluble soil SO4 content	g S/Mg soil		
+Blodget_grid_20240622.nc.cdl	grid	float	DHI	ngrid,ncol						
+Blodget_grid_20240622.nc.cdl	grid	float	DPTHSX	ntopou		0	Initial snowpack depth	m		
+Blodget_grid_20240622.nc.cdl	grid	float	DTBLDIG	ngrid			Depth of artificial water table	m		
+Blodget_grid_20240622.nc.cdl	grid	float	DTBLGG	ngrid			Slope of natural water table relative to landscape surface	none		
+Blodget_grid_20240622.nc.cdl	grid	float	DTBLIG	ngrid			Depth of natural water table	m		
+Blodget_grid_20240622.nc.cdl	grid	float	DVI	ngrid,nrow						
+Blodget_grid_20240622.nc.cdl	grid	float	FC	ntopou,nlevs	-999.9		Field capacity	m3 m-3		
+Blodget_grid_20240622.nc.cdl	grid	float	FHOL	ntopou,nlevs	-999.9		Macropore fraction in the non-rock fraction of soil	none	0-1	
+Blodget_grid_20240622.nc.cdl	grid	float	GKC4	ntopou,nlevs	-999.9		Ca-NH4 Gapon selectivity coefficient	none		
+Blodget_grid_20240622.nc.cdl	grid	float	GKCA	ntopou,nlevs	-999.9		Ca-Al Gapon selectivity coefficient	none		
+Blodget_grid_20240622.nc.cdl	grid	float	GKCH	ntopou,nlevs	-999.9		Ca-H Gapon selectivity coefficient	none		
+Blodget_grid_20240622.nc.cdl	grid	float	GKCK	ntopou,nlevs	-999.9		Ca-K Gapon selectivity coefficient	none		
+Blodget_grid_20240622.nc.cdl	grid	float	GKCM	ntopou,nlevs	-999.9		Ca-Mg Gapon selectivity coefficient	none		
+Blodget_grid_20240622.nc.cdl	grid	float	GKCN	ntopou,nlevs	-999.9		Ca-Na Gapon selectivity coefficient	none		
+Blodget_grid_20240622.nc.cdl	grid	byte	IDTBLG	ngrid			Water table flag	none	0=No water table,1=Natural stationary water table,2=Natural mobile water table,3=Artificialstationary water table,4=Artificial mobile water table	
+Blodget_grid_20240622.nc.cdl	grid	byte	IETYPG	ngrid			Koppen climate zone	none		
+Blodget_grid_20240622.nc.cdl	grid	byte	ISOILR	ntopou			Flag for soil profile type	none	0=natural,1=reconstructed	
+Blodget_grid_20240622.nc.cdl	grid	byte	IXTYP1	ntopou			plant surface fine litter type	none	1=maize,2=wheat,3=soybean,4=new straw,5=old straw,6=compost,7=green manure,8=new deciduos forest,9=new coniferous forest,10=old deciduous forest,11=old coniferous forest,12=default	
+Blodget_grid_20240622.nc.cdl	grid	byte	IXTYP2	ntopou			manure surface litter type	none	1=ruminant,2=non ruminant,3=others	
+Blodget_grid_20240622.nc.cdl	grid	byte	NH1	ntopou			Starting column from the west	none		
+Blodget_grid_20240622.nc.cdl	grid	byte	NH2	ntopou			Ending column at the east	none		
+Blodget_grid_20240622.nc.cdl	grid	int	NHE							
+Blodget_grid_20240622.nc.cdl	grid	int	NHW							
+Blodget_grid_20240622.nc.cdl	grid	byte	NJ	ntopou			Layer number of maximum rooting layer	none		
+Blodget_grid_20240622.nc.cdl	grid	byte	NL1	ntopou			Number of additional layers below NJ with data in file	none		
+Blodget_grid_20240622.nc.cdl	grid	byte	NL2	ntopou			Number of additional layers below NJ without data in file	none		
+Blodget_grid_20240622.nc.cdl	grid	byte	NUI	ntopou			Initial layer number of soil surface layer	none	usually is 1	
+Blodget_grid_20240622.nc.cdl	grid	byte	NV1	ntopou			Starting row from the north	none		
+Blodget_grid_20240622.nc.cdl	grid	byte	NV2	ntopou			Ending row at the south	none		
+Blodget_grid_20240622.nc.cdl	grid	int	NVN							
+Blodget_grid_20240622.nc.cdl	grid	int	NVS							
+Blodget_grid_20240622.nc.cdl	grid	float	OXYEG	ngrid			Atmospheric O2	ppm		
+Blodget_grid_20240622.nc.cdl	grid	float	PH	ntopou,nlevs	-999.9		depth-resolved pH	none		
+Blodget_grid_20240622.nc.cdl	grid	float	PH0	ntopou			Litter pH	none		
+Blodget_grid_20240622.nc.cdl	grid	float	PSIFC	ntopou			Water potential at field capacity	MPa		
+Blodget_grid_20240622.nc.cdl	grid	float	PSIWP	ntopou			Water potential at wilting point	MPa		
+Blodget_grid_20240622.nc.cdl	grid	float	RCHGDG	ngrid			Lower boundary conditions for water flow	none	varying between 0 and 1	
+Blodget_grid_20240622.nc.cdl	grid	float	RCHGETG	ngrid			East edge distance to water table	m		
+Blodget_grid_20240622.nc.cdl	grid	float	RCHGEUG	ngrid			Bound condition for E subsurf flow	none		
+Blodget_grid_20240622.nc.cdl	grid	float	RCHGNTG	ngrid			North edge distance to water table	m		
+Blodget_grid_20240622.nc.cdl	grid	float	RCHGNUG	ngrid			Bound condition for N subsurf flow	none		
+Blodget_grid_20240622.nc.cdl	grid	float	RCHGSTG	ngrid			South edge distance to water table	m		
+Blodget_grid_20240622.nc.cdl	grid	float	RCHGSUG	ngrid			Bound condition for S subsurf flow	none		
+Blodget_grid_20240622.nc.cdl	grid	float	RCHGWTG	ngrid			West edge distance to water table	m		
+Blodget_grid_20240622.nc.cdl	grid	float	RCHGWUG	ngrid			Bound condition for W subsurf flow	none		
+Blodget_grid_20240622.nc.cdl	grid	float	RCHQEG	ngrid			Boundary condition for East surface runoff	none	varying between 0 and 1	
+Blodget_grid_20240622.nc.cdl	grid	float	RCHQNG	ngrid			Boundary condition for North surface runoff	none	varying between 0 and 1	
+Blodget_grid_20240622.nc.cdl	grid	float	RCHQSG	ngrid			Boundary condition for S surface runoff	none	varying between 0 and 1	
+Blodget_grid_20240622.nc.cdl	grid	float	RCHQWG	ngrid			Boundary condition for W surface runoff	none	varying between 0 and 1	
+Blodget_grid_20240622.nc.cdl	grid	float	ROCK	ntopou,nlevs	-999.9		Rock fraction of the whole soil	none	0-1	
+Blodget_grid_20240622.nc.cdl	grid	float	RSCf	ntopou			C in surface fine litter	gC m-2		
+Blodget_grid_20240622.nc.cdl	grid	float	RSCfL	ntopou,nlevs	-999.9		Initial fine litter C	gC m-2		
+Blodget_grid_20240622.nc.cdl	grid	float	RSCm	ntopou			C in manure	gC m-2		
+Blodget_grid_20240622.nc.cdl	grid	float	RSCmL	ntopou,nlevs	-999.9		Initial manure liter C	gC m-2		
+Blodget_grid_20240622.nc.cdl	grid	float	RSCw	ntopou			C in surface woody litter	gC m-2		
+Blodget_grid_20240622.nc.cdl	grid	float	RSCwL	ntopou,nlevs	-999.9		Initial woody litter C	gC m-2		
+Blodget_grid_20240622.nc.cdl	grid	float	RSNf	ntopou			N in surface fine litter	gN m-2		
+Blodget_grid_20240622.nc.cdl	grid	float	RSNfL	ntopou,nlevs	-999.9		Initial fine litter N	gN m-2		
+Blodget_grid_20240622.nc.cdl	grid	float	RSNm	ntopou			N in manure	gN m-2		
+Blodget_grid_20240622.nc.cdl	grid	float	RSNmL	ntopou,nlevs	-999.9		Initial manure litter N	gN m-2		
+Blodget_grid_20240622.nc.cdl	grid	float	RSNw	ntopou			N in surface woody litter	gN m-2		
+Blodget_grid_20240622.nc.cdl	grid	float	RSNwL	ntopou,nlevs	-999.9		Initial woody litter N	gN m-2		
+Blodget_grid_20240622.nc.cdl	grid	float	RSPf	ntopou			P in surface fine litter	gP m-2		
+Blodget_grid_20240622.nc.cdl	grid	float	RSPfL	ntopou,nlevs	-999.9		Initial fine litter P	gP m-2		
+Blodget_grid_20240622.nc.cdl	grid	float	RSPm	ntopou			P in manure	gP m-2		
+Blodget_grid_20240622.nc.cdl	grid	float	RSPmL	ntopou,nlevs	-999.9		Initial manure litter P	gP m-2		
+Blodget_grid_20240622.nc.cdl	grid	float	RSPw	ntopou			P in surface woody litter	gP m-2		
+Blodget_grid_20240622.nc.cdl	grid	float	RSPwL	ntopou,nlevs	-999.9		Initial woody litter P	gP m-2		
+Blodget_grid_20240622.nc.cdl	grid	float	SCNH	ntopou,nlevs	-999.9		Lateral hydraulic conductivity Ksat	mm h-1		
+Blodget_grid_20240622.nc.cdl	grid	float	SCNV	ntopou,nlevs	-999.9		Vertical hydraulic conductivity Ksat	mm h-1		
+Blodget_grid_20240622.nc.cdl	grid	float	SL0	ntopou			Slope	degrees		
+Blodget_grid_20240622.nc.cdl	grid	float	THI	ntopou,nlevs	-999.9		Initial soil ice content	m3/m3		
+Blodget_grid_20240622.nc.cdl	grid	float	THW	ntopou,nlevs	-999.9		Initial soil water content	m3/m3		
+Blodget_grid_20240622.nc.cdl	grid	int	topo_grid	ntopou			grid ID of the topo unit	none		
+Blodget_grid_20240622.nc.cdl	grid	float	WP	ntopou,nlevs	-999.9		Wilting point	m3 m-3		
+Blodget_grid_20240622.nc.cdl	grid	float	Z2GEG	ngrid			Atmospheric N2	ppm		
+Blodget_grid_20240622.nc.cdl	grid	float	Z2OEG	ngrid			Atmospheric N2O	ppm		
+Blodget_grid_20240622.nc.cdl	grid	float	ZNH3EG	ngrid			Atmospheric NH3	ppm		
