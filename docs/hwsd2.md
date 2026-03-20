@@ -4,6 +4,15 @@
 
 The Harmonized World Soil Database (HWSD) version 2.0 is a comprehensive global soil dataset published by the Food and Agriculture Organization (FAO) of the United Nations. It provides detailed soil physical and chemical properties at multiple depth layers with global coverage.
 
+## Repository Files
+
+This repository includes the derived data products referenced throughout the documentation:
+
+- [`export/hwsd2.ddb`](https://github.com/bioepic-data/fao-soils/blob/main/export/hwsd2.ddb) - pre-built DuckDB database for direct querying
+- [`data/hwsd2/HWSD2_csv/`](https://github.com/bioepic-data/fao-soils/tree/main/data/hwsd2/HWSD2_csv) - tidied HWSD2 CSV tables
+
+Choose the DuckDB export when you want one file for analysis, or the CSV directory when you need the individual tables.
+
 ## Dataset Specifications
 
 ### Spatial Coverage

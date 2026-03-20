@@ -33,6 +33,15 @@ The [Harmonized World Soil Database v2.0](https://www.fao.org/soils-portal/data-
 
 [https://bioepic-data.github.io/fao-soils](https://bioepic-data.github.io/fao-soils)
 
+## Available Data Files
+
+This repository includes both the pre-built DuckDB export and the tidied CSV tables:
+
+- [`export/hwsd2.ddb`](export/hwsd2.ddb) - ready-to-query DuckDB database export
+- [`data/hwsd2/HWSD2_csv/`](data/hwsd2/HWSD2_csv/) - tidied HWSD2 CSV files
+
+If you want to start from packaged data in this repository, use `export/` for DuckDB workflows and `data/` for direct CSV access.
+
 ## Repository Structure
 
 * [docs/](docs/) - mkdocs-managed documentation
