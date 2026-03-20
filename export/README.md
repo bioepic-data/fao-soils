@@ -21,6 +21,20 @@ A compact, high-performance database containing all HWSD2 soil data:
 - **Embeddable**: No server needed, just a file
 - **Suffix**: We use `.ddb` to distinguish from SQLite `.db` files
 
+### `hwsd2_parquet/`
+
+**Parquet exports for HWSD v2.0 tables**
+
+This directory contains one `.parquet` file per DuckDB table, generated from `hwsd2.ddb`:
+- Main tables such as `HWSD2_LAYERS.parquet` and `HWSD2_SMU.parquet`
+- Lookup tables such as `D_WRB2.parquet` and `D_DRAINAGE.parquet`
+- Metadata and WRB reference tables
+
+Parquet is useful when you want:
+- Columnar analytics in Python, R, Spark, DuckDB, or Polars
+- Easy table interchange without reloading CSVs
+- Fast scans of individual tables
+
 ## Usage
 
 ### Python with DuckDB
@@ -111,6 +125,7 @@ If you need to rebuild the database (e.g., after updating CSV data):
 ```bash
 # From repository root
 just update-export
+just update-parquet
 ```
 
 The script will:
@@ -141,6 +156,7 @@ merged = layers.merge(drainage, left_on='DRAINAGE', right_on='CODE')
 **Trade-offs:**
 - **CSV**: Human-readable, easy to inspect, works anywhere
 - **DuckDB**: Much faster queries, automatic indexing, efficient storage
+- **Parquet**: Columnar, portable, and efficient for analytical tooling
 
 ## Schema
 
@@ -157,6 +173,7 @@ Full schema documentation: See `data/hwsd2/hwsd2_duckdb_schema.sql`
 ## File Size
 
 - **hwsd2.ddb**: 32 MB (compressed)
+- **hwsd2_parquet/**: one Parquet file per table
 - **Source CSVs**: ~100 MB (uncompressed text)
 - **Raster data** (not included): ~1.7 GB
 
@@ -168,9 +185,11 @@ To update the database when source CSVs change:
 
 ```bash
 just update-export
+just update-parquet
 
 # Or run the loader directly
 uv run python scripts/load_hwsd2.py --force export/hwsd2.ddb
+uv run python scripts/export_hwsd2_parquet.py --force export/hwsd2.ddb export/hwsd2_parquet
 ```
 
 The rebuild process takes ~5-10 seconds on modern hardware.

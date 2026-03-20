@@ -38,9 +38,10 @@ The [Harmonized World Soil Database v2.0](https://www.fao.org/soils-portal/data-
 This repository includes both the pre-built DuckDB export and the tidied CSV tables:
 
 - [`export/hwsd2.ddb`](export/hwsd2.ddb) - ready-to-query DuckDB database export
+- [`export/hwsd2_parquet/`](export/hwsd2_parquet/) - one Parquet file per HWSD2 table
 - [`data/hwsd2/HWSD2_csv/`](data/hwsd2/HWSD2_csv/) - tidied HWSD2 CSV files
 
-If you want to start from packaged data in this repository, use `export/` for DuckDB workflows and `data/` for direct CSV access.
+If you want to start from packaged data in this repository, use `export/` for DuckDB or Parquet workflows and `data/` for direct CSV access.
 
 ## Repository Structure
 
@@ -49,6 +50,7 @@ If you want to start from packaged data in this repository, use `export/` for Du
 * [examples/](examples/) - Examples of using the schema
 * [export/](export/) - **Pre-built databases** (ready to use!)
   * [`hwsd2.ddb`](export/hwsd2.ddb) - DuckDB database (32 MB)
+  * [`hwsd2_parquet/`](export/hwsd2_parquet/) - Parquet exports of all HWSD2 tables
 * [data/](data/) - Source CSV files
   * [hwsd2/](data/hwsd2/) - HWSD v2.0 data
     * [HWSD2_csv/](data/hwsd2/HWSD2_csv/) - 25 CSV files (~100 MB)
@@ -109,7 +111,8 @@ uv run python scripts/fetch_fao_soil_database.py --data-dir data/hwsd2
 ```bash
 just update-data       # refresh data/hwsd2 artifacts from FAO
 just update-export     # rebuild export/hwsd2.ddb from the CSVs
-just update-artifacts  # run both steps in order
+just update-parquet    # export DuckDB tables to export/hwsd2_parquet/
+just update-artifacts  # refresh data, DuckDB, and Parquet artifacts
 ```
 
 `just update-data` and `just update-artifacts` require `mdb-tools` because they run the FAO `.mdb` conversion step.

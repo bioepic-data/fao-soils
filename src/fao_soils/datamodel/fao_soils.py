@@ -1,5 +1,5 @@
 # Auto generated from fao_soils.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-03-20T16:29:04
+# Generation date: 2026-03-20T17:01:54
 # Schema: hwsd2
 #
 # id: https://w3id.org/bioepic-data/fao-soils/hwsd2

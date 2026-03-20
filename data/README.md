@@ -104,14 +104,16 @@ Use the repo maintenance targets when you want to refresh checked-in artifacts:
 ```bash
 just update-data
 just update-export
+just update-parquet
 just update-artifacts
 ```
 
 - `just update-data` refreshes `data/hwsd2/HWSD2_csv/`, `data/hwsd2/HWSD2_RASTER/`, and `data/hwsd2/hwsd2.db`
 - `just update-export` rebuilds `export/hwsd2.ddb` from the CSVs
-- `just update-artifacts` runs both in order
+- `just update-parquet` exports all DuckDB tables to `export/hwsd2_parquet/`
+- `just update-artifacts` runs all three in order
 
-`just update-data` and `just update-artifacts` require `mdb-tools`; `just update-export` does not.
+`just update-data` and `just update-artifacts` require `mdb-tools`; `just update-export` and `just update-parquet` do not.
 
 ## Data Formats
 

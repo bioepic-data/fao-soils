@@ -78,6 +78,23 @@ For the packaged export in this repo, use:
 just update-export
 ```
 
+### `export_hwsd2_parquet.py`
+
+Exports each table from the HWSD2 DuckDB database to a Parquet file.
+
+**Usage:**
+```bash
+# Export all tables from the packaged DuckDB database
+uv sync --dev
+uv run python export_hwsd2_parquet.py --force ../export/hwsd2.ddb ../export/hwsd2_parquet
+```
+
+For the packaged Parquet export in this repo, use:
+
+```bash
+just update-parquet
+```
+
 **Output:**
 - DuckDB database (~2.6 GB)
 - 25 tables (2 main + 18 lookup + 5 metadata)
@@ -165,10 +182,13 @@ uv run python fetch_fao_soil_database.py --data-dir ../data/hwsd2
 # 4. Load CSV data into DuckDB
 uv run python load_hwsd2.py --force ../export/hwsd2.ddb
 
-# 5. Extract soil profiles
+# 5. Export all tables to Parquet
+uv run python export_hwsd2_parquet.py --force ../export/hwsd2.ddb ../export/hwsd2_parquet
+
+# 6. Extract soil profiles
 uv run python ../../scripts/hwsd2_extractor.py 40.0 -105.0
 
-# 6. Run tests
+# 7. Run tests
 uv run python ../../scripts/test_extractor.py
 ```
 
@@ -190,7 +210,8 @@ fao-soils/
 │       ├── hwsd2_duckdb_schema.sql
 │       └── README.md
 ├── export/
-│   └── hwsd2.ddb               # DuckDB database (from load script)
+│   ├── hwsd2.ddb               # DuckDB database (from load script)
+│   └── hwsd2_parquet/          # Parquet exports (from Parquet export script)
 └── src/fao_soils/schema/
     └── hwsd2.yaml              # LinkML schema
 ```
@@ -203,6 +224,7 @@ From the repository root:
 just update-data
 just refresh-data-downloads
 just update-export
+just update-parquet
 just update-artifacts
 ```
 
